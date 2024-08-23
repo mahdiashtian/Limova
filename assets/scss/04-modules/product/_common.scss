@@ -1,0 +1,145 @@
+/* Product Tab Nav */
+.product-tab-nav {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-bottom: 40px;
+
+    gap: 50px;
+    @media #{$large-mobile} {
+        gap: 30px;
+    }
+    @media #{$small-mobile} {
+        gap: 20px;
+    }
+    @media #{$extra-small-mobile} {
+        gap: 15px;
+    }
+    & button {
+        font-family: $headings-font-family;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1;
+
+        padding: 5px;
+
+        text-transform: uppercase;
+
+        border: none;
+        background-color: transparent;
+        &:hover,
+        &.active {
+            color: $primary;
+        }
+    }
+}
+
+/* Product Deal Countdown */
+.product-deal-countdown {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 40px;
+    &-inner {
+        position: relative;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        width: 100%;
+        max-width: 770px;
+        padding: 15px 30px 20px;
+
+        gap: 25px;
+        @media #{$extra-small-mobile} {
+            padding: 15px 20px 20px;
+
+            gap: 15px;
+        }
+        &::before,
+        &::after {
+            position: absolute;
+            z-index: -1;
+            top: -7px;
+            right: -7px;
+            bottom: -7px;
+            left: -7px;
+
+            content: "";
+
+            box-shadow: 0 10px 30px 0 rgba($black, 0.05);
+        }
+        &::before {
+            bottom: 0;
+        }
+        &::after {
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+    }
+    & .countdown-item {
+        display: flex;
+
+        gap: 5px;
+        & .number {
+            font-family: $headings-font-family;
+            font-size: 36px;
+            line-height: 1;
+            @media #{$small-mobile} {
+                font-size: 30px;
+            }
+            @media #{$extra-small-mobile} {
+                font-size: 22px;
+            }
+        }
+        & .label {
+            font-size: 18px;
+            line-height: 1;
+
+            align-self: flex-end;
+            @media #{$small-mobile} {
+                font-size: 16px;
+            }
+            @media #{$extra-small-mobile} {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+/* Product Quantity */
+.product-quantity-count {
+    display: inline-flex;
+
+    margin: 0;
+
+    border: 1px solid $border-color;
+    & .product-quantity-box {
+        font-size: 14px;
+        line-height: 1;
+
+        width: 30px;
+
+        text-align: center;
+
+        border: none;
+        background-color: transparent;
+    }
+    & .qty-btn {
+        font-size: 20px;
+        line-height: 1;
+
+        width: 30px;
+        padding: 10px;
+
+        text-align: center;
+
+        border: none;
+        background-color: transparent;
+        &::hover {
+            color: $primary;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+/* Login Register Form */
+.login-register-form {
+    max-width: 570px;
+    margin: auto;
+    padding: 30px;
+
+    background-color: $light;
+    & .title {
+        text-align: center;
+    }
+    & p {
+        margin-bottom: 20px;
+
+        text-align: center;
+    }
+}

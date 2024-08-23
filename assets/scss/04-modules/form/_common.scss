@@ -1,0 +1,102 @@
+/* Form Common Style */
+fieldset {
+    padding: 20px;
+    padding-top: 10px;
+
+    border: 1px solid $border-color;
+    & legend {
+        font-size: 16px;
+        font-weight: 700;
+
+        float: none;
+
+        width: auto;
+        margin: 0;
+        padding: 0 10px;
+
+        background-color: $white;
+    }
+}
+/* Form Label */
+label {
+    font-size: 14px;
+    line-height: 1.25;
+
+    display: block;
+
+    margin-bottom: 10px;
+}
+/* Form Field Select */
+select.form-field {
+    font-size: 14px;
+
+    width: 100%;
+    height: 54px;
+    padding: 10px 20px;
+
+    border: 1px solid $border-color;
+    background-color: $white;
+    background-image: url("../images/icons/angle-down-solid.svg");
+    background-repeat: no-repeat;
+    background-position: center right 20px;
+    background-size: 12px;
+
+    -webkit-appearance: none;
+    &:focus {
+        border-color: $primary;
+    }
+    @media #{$tablet-device,
+    $desktop-device} {
+        height: 52px;
+    }
+    @media #{$large-mobile} {
+        height: 44px;
+    }
+}
+/* Form Field Input */
+input.form-field {
+    &:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]) {
+        font-size: 14px;
+
+        width: 100%;
+        height: 54px;
+        padding: 10px 24px;
+
+        border: 1px solid $border-color;
+        background-color: $white;
+
+@include placeholder {
+            color: rgba($body-color, 0.7);
+        }
+
+        @media #{$tablet-device,
+        $desktop-device} {
+            height: 52px;
+        }
+        @media #{$large-mobile} {
+            height: 44px;
+        }
+        &:focus {
+            border-color: $primary;
+        }
+    }
+}
+/* Form Field Textarea */
+textarea.form-field {
+    font-size: 14px;
+
+    width: 100%;
+    height: 140px;
+    padding: 10px 24px;
+
+    border: 1px solid $border-color;
+    background-color: $white;
+
+@include placeholder {
+        color: rgba($body-color, 0.7);
+    }
+
+    &:focus {
+        border-color: $primary;
+    }
+}

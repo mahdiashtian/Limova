@@ -1,0 +1,58 @@
+/*-----------------------------------
+    - Section, Spacing &
+    Container etc CSS
+-----------------------------------*/
+
+/* Section */
+.section {
+    width: 100%;
+    &-padding {
+        padding: 110px 0;
+        @media #{$desktop-device} {
+            padding: 100px 0;
+        }
+        @media #{$tablet-device} {
+            padding: 80px 0;
+        }
+        @media #{$large-mobile} {
+            padding: 60px 0;
+        }
+    }
+}
+
+/* Container */
+.container-fluid {
+    padding: 0 100px;
+    @media #{$laptop-device} {
+        padding: 0 50px;
+    }
+    @media #{$desktop-device,
+    $tablet-device,
+    $large-mobile} {
+        padding: 0 30px;
+    }
+    @media #{$extra-small-mobile} {
+        padding: 0 15px;
+    }
+}
+
+/* Other Sections Styles */
+.h1-coffee-menu-section {
+    background-image: url(../images/coffee-menu/coffee-menu-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.h1-testimonial-section {
+    background-image: url(../images/testimonial/testimonial-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.h2-testimonial-section,
+.h4-testimonial-section {
+    background-image: url(../images/testimonial/testimonial-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}

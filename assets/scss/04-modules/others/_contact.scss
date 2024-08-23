@@ -1,0 +1,21 @@
+/* Contact Information */
+.contact-info {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+    & li {
+        font-size: 18px;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 20px;
+        & + li {
+            margin-top: 25px;
+        }
+        & i {
+            font-size: 36px;
+        }
+    }
+}

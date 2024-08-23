@@ -1,0 +1,33 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name: Kofi
+    Version: 1.0.0
+-----------------------------------------------------------------------------------
+    
+    CSS INDEX
+    ===================
+	
+    01. Template default CSS
+    02. Layout CSS
+        - Header CSS
+        - Footer CSS
+        - Section, Spacing & Container etc CSS
+    03. Modules CSS
+        - Bootstrap Style Override
+        - Plugins Style Override
+        - Hero Slider CSS
+        - Title CSS
+        - Product CSS
+        - Shop CSS
+        - Blog CSS
+        - Form CSS
+        - Others CSS
+
+-----------------------------------------------------------------------------------*/
+
+@import "./01-helpers/index";
+@import "./06-plugins/bootstrap/functions";
+@import "./06-plugins/bootstrap/variables";
+@import "./02-basic/index";
+@import "./03-layout/index";
+@import "./04-modules/index";

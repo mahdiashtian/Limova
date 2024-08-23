@@ -1,0 +1,192 @@
+/*-----------------------------------
+    - Footer CSS
+-----------------------------------*/
+
+/* Footre Style One Section */
+.footer-section {
+    background-image: url(../images/footer/footer-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+/* Footre Style Two Section */
+.footer-2-section {
+    background-color: #F6F6F6;
+    background-image: url(../images/footer/footer-2-bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+/* Footre Top Section */
+.footer-top {
+    padding: 80px 0;
+    @media #{$large-mobile} {
+        padding: 60px 0;
+    }
+}
+
+/* Widget */
+.footer-widget {
+    // Title
+    &-title {
+        font-size: 24px;
+
+        margin-bottom: 30px;
+    }
+    & img {
+        margin-bottom: 30px;
+    }
+    & p {
+        &:not(:last-child) {
+            margin-bottom: 25px;
+        }
+    }
+    // Widget List
+    &-list,
+    &-list-icon {
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+        & li {
+            line-height: 1.5;
+
+            display: flex;
+
+            gap: 15px;
+            & + li {
+                margin-top: 15px;
+            }
+            & a {
+                display: flex;
+                flex: 1 0 100%;
+
+                gap: 15px;
+            }
+            & i {
+                align-self: center;
+            }
+        }
+    }
+    &-list {
+        & li {
+            & a {
+                &::before {
+                    align-self: center;
+                    flex: 1 0 8px;
+
+                    max-width: 8px;
+                    height: 8px;
+
+                    content: "";
+
+                    border: 1px solid currentColor;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+    // Widget About us
+    &-about {
+        & img {
+            margin-bottom: 20px;
+        }
+    }
+    // Widget Subscribe
+    &-subscribe {
+        position: relative;
+
+        width: 100%;
+        max-width: 550px;
+        & input[type="email"] {
+            width: 100%;
+            height: 60px !important;
+            padding: 10px 30px !important;
+            padding-right: 140px !important;
+
+            color: #696969;
+            border: 1px solid rgba($black, 0.1);
+            border-radius: 100px;
+            background-color: transparent;
+            @media #{$large-mobile} {
+                font-size: 14px;
+
+                height: 50px !important;
+            }
+        }
+        & input[type="submit"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            height: 60px;
+            padding: 10px 30px;
+
+            color: $white;
+            border: none;
+            border-radius: 100px;
+            background-color: $primary;
+            &:hover {
+                background-color: darken($primary, 7.5);
+            }
+            @media #{$large-mobile} {
+                font-size: 14px;
+
+                height: 50px;
+            }
+        }
+    }
+    // Widget Social
+    &-social {
+        display: flex;
+
+        gap: 25px;
+        & a {
+            display: flex;
+            & i {
+                font-size: 24px;
+            }
+        }
+    }
+    // Theme Dark
+    &-dark {
+        & .footer-widget {
+            // Title
+            &-title {
+                color: $white;
+            }
+            // List
+            &-list,
+            &-list-icon {
+                color: $white;
+            }
+            // Socail
+            &-socail {
+                color: $white;
+            }
+        }
+        & p {
+            color: $white;
+        }
+    }
+}
+
+/* Footre Bottom Section */
+.footer-bottom {
+    padding: 20px 0;
+
+    border-top: 1px solid rgba($black, 0.1);
+    &-dark {
+        border-top-color: rgba($white, 0.2);
+    }
+}
+.footer-copyright {
+    font-size: 14px;
+
+    margin: 0;
+
+    &-dark {
+        color: $white;
+    }
+}

@@ -1,0 +1,77 @@
+/*----------------------------------------*/
+/*  03. Modules CSS
+/*----------------------------------------*/
+
+/*-----------------------------------
+    - Bootstrap Style Override
+-----------------------------------*/
+@import "./bootstrap/accordion";
+@import "./bootstrap/alert";
+@import "./bootstrap/breadcrumb";
+@import "./bootstrap/button";
+@import "./bootstrap/form";
+@import "./bootstrap/modal";
+@import "./bootstrap/offcanvas";
+@import "./bootstrap/pagination";
+/*-----------------------------------
+    - Plugins Style Override
+-----------------------------------*/
+@import "./plugins/swiper";
+@import "./plugins/ion-range-slider";
+
+// Template Style
+
+/*-----------------------------------
+    - Hero Slider CSS
+-----------------------------------*/
+@import "./hero/common";
+@import "./hero/hero-1";
+@import "./hero/hero-2";
+@import "./hero/hero-3";
+@import "./hero/hero-4";
+/*-----------------------------------
+    - Title CSS
+-----------------------------------*/
+@import "./title/block";
+@import "./title/section";
+/*-----------------------------------
+    - Product CSS
+-----------------------------------*/
+@import "./product/common";
+@import "./product/product-item";
+@import "./product/product-single";
+@import "./product/product-single-description-area";
+/*-----------------------------------
+    - Shop CSS
+-----------------------------------*/
+@import "./shop/cart-checkout";
+@import "./shop/login-register";
+@import "./shop/my-account";
+@import "./shop/shop-sidebar";
+@import "./shop/shop";
+/*-----------------------------------
+    - Blog CSS
+-----------------------------------*/
+@import "./blog/blog-item";
+@import "./blog/blog-sidebar";
+@import "./blog/blog-single";
+/*-----------------------------------
+    - Form CSS
+-----------------------------------*/
+@import "./form/common";
+@import "./form/newsletter";
+@import "./form/reservation";
+/*-----------------------------------
+    - Others CSS
+-----------------------------------*/
+@import "./others/about-us";
+@import "./others/banner";
+@import "./others/coffee-menu";
+@import "./others/contact";
+@import "./others/feature";
+@import "./others/gallery";
+@import "./others/opening-time";
+@import "./others/page-banner";
+@import "./others/team";
+@import "./others/testimonial";
+@import "./others/scroll-to-top";

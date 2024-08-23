@@ -1,0 +1,45 @@
+/* Gallery */
+.gallery-item {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    padding: 10px;
+
+    color: $white;
+    border: 1px solid $border-color;
+    background-color: $white;
+    &:hover {
+        color: $white;
+        box-shadow: 0 4px 10px rgba($black, 0.1);
+        & .gallery-item-overlay {
+            visibility: visible;
+
+            opacity: 1;
+        }
+    }
+    & img {
+        width: 100%;
+    }
+    &-overlay {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+
+        display: flex;
+        visibility: hidden;
+        align-items: center;
+        justify-content: center;
+
+        transition: $transition-base;
+
+        opacity: 0;
+        background-color: rgba($primary, 0.85);
+        & i {
+            font-size: 30px;
+        }
+    }
+}

@@ -1,0 +1,57 @@
+/* Section Title */
+.section-title {
+    margin-bottom: 60px;
+    @media #{$tablet-device} {
+        margin-bottom: 50px;
+    }
+    @media #{$large-mobile} {
+        margin-bottom: 40px;
+    }
+    &-center {
+        text-align: center;
+        & .text {
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+    &-right {
+        text-align: right;
+        & .text {
+            margin-left: auto;
+        }
+    }
+    & .title {
+        font-size: 18px;
+        line-height: 1.25;
+
+        margin-bottom: 10px;
+
+        letter-spacing: 0.25px;
+
+        color: $primary;
+        @media #{$tablet-device,
+        $large-mobile} {
+            font-size: 16px;
+        }
+    }
+    & .sub-title {
+        font-size: 40px;
+
+        margin-bottom: 10px;
+
+        text-transform: uppercase;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        @media #{$tablet-device,
+        $large-mobile} {
+            font-size: 32px;
+        }
+        @media #{$small-mobile} {
+            font-size: 24px;
+        }
+    }
+    & .text {
+        max-width: 570px;
+    }
+}

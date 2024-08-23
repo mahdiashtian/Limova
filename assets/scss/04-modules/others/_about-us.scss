@@ -1,0 +1,52 @@
+/* About Us */
+.about-us-content {
+    & .sub-title {
+        font-size: 16px;
+        line-height: 1.25;
+
+        display: block;
+
+        margin-bottom: 15px;
+
+        color: $primary;
+    }
+    & .title {
+        font-size: 45px;
+
+        position: relative;
+
+        margin-bottom: 30px;
+        padding-bottom: 18px;
+        @media #{$desktop-device,
+        $large-mobile} {
+            font-size: 40px;
+        }
+        @media #{$small-mobile} {
+            font-size: 32px;
+
+            padding-bottom: 15px;
+        }
+        &::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            width: 70px;
+            height: 4px;
+
+            content: "";
+
+            background-color: $headings-color;
+            @media #{$small-mobile} {
+                width: 60px;
+                height: 3px;
+            }
+        }
+    }
+    & .text {
+        margin-bottom: 45px;
+        @media #{$large-mobile} {
+            margin-bottom: 30px;
+        }
+    }
+}

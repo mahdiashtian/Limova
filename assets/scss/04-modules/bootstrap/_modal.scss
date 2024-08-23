@@ -1,0 +1,20 @@
+/* Modal */
+.quickview-product-modal {
+    & .btn-close {
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        right: 0;
+
+        padding: 10px;
+
+        transform: translateX(40%) translateY(-40%);
+
+        border-radius: 50%;
+        background-color: $white;
+        box-shadow: 0 3px 5px rgba($black, 0.15);
+    }
+    & .modal-body {
+        padding: 30px;
+    }
+}

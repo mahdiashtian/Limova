@@ -1,0 +1,213 @@
+/* Swiper Slider */
+.swiper {
+    &-slide {
+        height: auto;
+    }
+}
+/* Swiper Navigation */
+.swiper-button-prev,
+.swiper-button-next {
+    z-index: 2;
+
+    visibility: hidden;
+
+    width: 50px;
+    height: 50px;
+    margin: 0;
+
+    cursor: pointer;
+    transition: $transition-base;
+    transform: translateY(-50%);
+
+    opacity: 0;
+    color: $body-color;
+    border: 1px solid $border-color;
+    border-radius: 50px;
+    background-color: $white;
+    &::after {
+        font-size: 16px;
+    }
+    &:hover {
+        color: $primary;
+        border-color: $primary;
+    }
+}
+.swiper-button-prev {
+    left: 15px;
+}
+.swiper-button-next {
+    right: 15px;
+}
+/* Swiper Navigation 2 */
+.swiper-outer-nav {
+    position: relative;
+
+    display: flex;
+
+    gap: 10px;
+    & .swiper-button-prev,
+    & .swiper-button-next {
+        line-height: 1;
+
+        position: static;
+
+        display: flex;
+        visibility: visible;
+
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0 5px;
+
+        cursor: pointer;
+        transition: $transition-base;
+        transform: translateY(0);
+
+        opacity: 1;
+        color: $body-color;
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+        &::after {
+            font-size: 18px;
+        }
+        &.swiper-button-disabled {
+            opacity: 0.5;
+        }
+        &:hover {
+            color: $primary;
+            border-color: $primary;
+        }
+    }
+}
+/* Swiper Pagination */
+.swiper-pagination {
+    line-height: 1;
+
+    bottom: 0 !important;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 0;
+
+    gap: 10px;
+    &-bullet {
+        position: relative;
+
+        display: flex;
+
+        width: 16px;
+        height: 16px;
+        margin: 0 !important;
+
+        transition: $transition-base;
+
+        opacity: 1;
+        border: 1px solid $primary;
+        border-radius: 0;
+        background-color: transparent;
+        &::before {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            bottom: 3px;
+            left: 3px;
+
+            content: "";
+            transition: $transition-base;
+
+            border: 1px solid $primary;
+        }
+        &-active {
+            &::before {
+                background-color: $primary;
+            }
+        }
+    }
+}
+
+/* Product Carousel */
+.product-carousel,
+.deal-product-carousel {
+    margin: -15px;
+    padding: 15px;
+    @media #{$large-mobile} {
+        margin-bottom: 0;
+        padding-bottom: 40px;
+    }
+    &:hover {
+        & .swiper-button-prev,
+        & .swiper-button-next {
+            visibility: visible;
+
+            opacity: 1;
+        }
+        & .swiper-button-prev {
+            left: 0;
+        }
+        & .swiper-button-next {
+            right: 0;
+        }
+    }
+}
+
+/* Testimonial Slider */
+.testimonial-slider {
+    padding: 0 60px;
+    @media #{$large-mobile} {
+        padding: 0 0 40px;
+    }
+    & .swiper-button-prev,
+    & .swiper-button-next {
+        right: 0;
+        left: auto;
+
+        visibility: visible;
+
+        opacity: 1;
+    }
+    & .swiper-button-prev {
+        margin-top: -35px;
+    }
+    & .swiper-button-next {
+        margin-top: 35px;
+    }
+    & .swiper-pagination {
+        flex-direction: column;
+
+        width: auto;
+        height: 100%;
+        @media #{$large-mobile} {
+            flex-direction: row;
+
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+/* Blog & Team Carousel */
+.blog-carousel,
+.team-carousel {
+    margin: -15px;
+    padding: 15px;
+    @media #{$large-mobile} {
+        margin-bottom: 0;
+        padding-bottom: 40px;
+    }
+    &:hover {
+        & .swiper-button-prev,
+        & .swiper-button-next {
+            visibility: visible;
+
+            opacity: 1;
+        }
+        & .swiper-button-prev {
+            left: 0;
+        }
+        & .swiper-button-next {
+            right: 0;
+        }
+    }
+}

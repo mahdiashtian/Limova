@@ -1,0 +1,39 @@
+/* Block Title */
+.block-title {
+    margin-bottom: 40px;
+    & .title {
+        font-size: 14px;
+
+        margin-bottom: 5px;
+
+        color: $primary;
+    }
+    & .sub-title {
+        font-size: 28px;
+
+        margin-bottom: 0;
+        @media #{$tablet-device,
+        $large-mobile} {
+            font-size: 24px;
+        }
+        @media #{$small-mobile} {
+            font-size: 20px;
+        }
+    }
+}
+
+/* Block Title Style 2 */
+.block-title-2 {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid $border-color;
+    & .title {
+        align-self: center;
+
+        margin-bottom: 0;
+    }
+}

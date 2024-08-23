@@ -1,0 +1,14 @@
+/* Offcanvas */
+.offcanvas {
+    &-header {
+        padding: 20px 30px;
+
+        border-bottom: 1px solid $border-color;
+        & h5 {
+            margin: 0;
+        }
+    }
+    &-body {
+        padding: 30px;
+    }
+}

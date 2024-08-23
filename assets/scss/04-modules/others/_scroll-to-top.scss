@@ -1,0 +1,37 @@
+/* Scroll To Top */
+.scroll-to-top {
+    position: fixed;
+    z-index: 6;
+    right: 20px;
+    bottom: -20px;
+
+    display: flex;
+    visibility: hidden;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+
+    transition: $transition-base;
+
+    opacity: 0;
+    color: $white;
+    border: none;
+    border-radius: 0;
+    background-color: $primary;
+    @media #{$large-mobile} {
+        font-size: 12px;
+
+        width: 32px;
+        height: 32px;
+    }
+    &.show {
+        bottom: 20px;
+
+        visibility: visible;
+
+        opacity: 1;
+    }
+}

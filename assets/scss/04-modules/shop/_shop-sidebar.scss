@@ -1,0 +1,49 @@
+/* Shop Sidebar */
+.shop-sidebar-item {
+    border: none !important;
+    &:not(:last-child) {
+        margin-bottom: 40px;
+    }
+    &:first-of-type {
+        border-radius: 0;
+        & .shop-sidebar-toggle {
+            border-radius: 0;
+        }
+    }
+}
+/* Shop Sidebar Toggle */
+.shop-sidebar-toggle {
+    font-family: $oswald;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+
+    padding: 0 0 15px;
+
+    color: $headings-color;
+    border-bottom: 1px solid $border-color;
+    &:not(.collapsed) {
+        color: $headings-color;
+        background-color: transparent;
+        box-shadow: none;
+        &::after {
+            filter: none;
+        }
+    }
+    &::after {
+        width: 16px;
+        height: 16px;
+
+        background-size: 16px;
+    }
+    &:focus {
+        border-color: $border-color;
+        box-shadow: none;
+    }
+}
+/* Shop Sidebar Body */
+.shop-sidebar-body {
+    padding: 20px 0 0;
+
+    border: none;
+}

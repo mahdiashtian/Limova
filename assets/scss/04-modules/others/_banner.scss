@@ -1,0 +1,9 @@
+/* Banner */
+.banner {
+    display: flex;
+
+    border: 1px solid $border-color;
+    & img {
+        width: 100%;
+    }
+}

@@ -1,0 +1,222 @@
+/* Single Product Description Area */
+.single-product-description-area {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 80px;
+    padding: 30px;
+
+    border: 1px solid $border-color;
+
+    @media #{$large-mobile} {
+        margin-top: 60px;
+    }
+    @media #{$small-mobile} {
+        padding: 20px;
+    }
+    &-nav {
+        display: flex;
+        flex-wrap: wrap;
+
+        margin-bottom: 30px;
+
+        gap: 30px;
+        @media #{$tablet-device} {
+            gap: 25px;
+        }
+        @media #{$large-mobile} {
+            gap: 20px;
+        }
+        @media #{$small-mobile} {
+            gap: 15px;
+        }
+        & button {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1;
+
+            position: relative;
+
+            padding: 0;
+            padding-bottom: 10px;
+
+            border: none;
+            background-color: transparent;
+            @media #{$tablet-device,
+            $large-mobile} {
+                font-size: 16px;
+            }
+            @media #{$small-mobile} {
+                font-size: 14px;
+
+                padding-bottom: 5px;
+            }
+            &::before {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+
+                width: 0;
+                height: 2px;
+
+                content: "";
+                transition: $transition-base;
+
+                background-color: $primary;
+            }
+            &.active,
+            &:hover {
+                &::before {
+                    right: auto;
+                    left: 0;
+
+                    width: 100%;
+                }
+            }
+        }
+    }
+    // Block Title
+    & .block-title-2 {
+        padding-bottom: 0;
+
+        border-bottom: none;
+    }
+}
+/* Description */
+.single-product-description {
+    & p {
+        font-size: 14px;
+    }
+}
+
+/* Review & Comment */
+.review,
+.comment {
+    // List
+    &-list {
+        max-width: 770px;
+        margin-bottom: 40px;
+        padding: 0;
+
+        list-style: none;
+    }
+    // Child
+    &-child {
+        margin: 0;
+        padding-left: 90px;
+
+        list-style: none;
+        @media #{$large-mobile} {
+            padding-left: 60px;
+        }
+        @media #{$small-mobile} {
+            padding-left: 30px;
+        }
+        @media #{$extra-small-mobile} {
+            padding-left: 10px;
+        }
+    }
+    // Item
+    &-item {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 20px;
+        @media #{$extra-small-mobile} {
+            flex-direction: column;
+        }
+        &:not(:last-child) {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+
+            border-bottom: 1px solid $border-color;
+        }
+    }
+    // Thumbnail
+    &-thumb {
+        overflow: hidden;
+
+        width: 70px;
+        height: 70px;
+
+        border-radius: 50%;
+        background-color: #F1F2F3;
+        & img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+    }
+    // Content
+    &-content {
+        flex: 1 0;
+        & p {
+            margin: 0;
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+    // Rating
+    &-rating {
+        display: flex;
+
+        margin-bottom: 10px;
+        &-bg,
+        &-active {
+            display: flex;
+
+            width: 70px;
+            height: 14px;
+
+            background-image: url(../images/products/rating-bg.svg);
+            background-repeat: repeat-x;
+        }
+        &-active {
+            background-image: url(../images/products/rating-active.svg);
+        }
+    }
+    // Meta
+    &-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        margin-bottom: 10px;
+
+        gap: 10px;
+    }
+    // Name
+    &-name {
+        font-size: 18px;
+        line-height: 1;
+
+        margin: 0;
+    }
+    // Date
+    &-date {
+        font-size: 14px;
+        line-height: 1;
+
+        display: flex;
+
+        gap: 10px;
+        &::before {
+            content: "/";
+        }
+    }
+    // Reply
+    &-reply {
+        font-size: 14px;
+        font-weight: 700;
+
+        text-transform: uppercase;
+    }
+}
+
+/* Review & Comment Form */
+.review-form,
+.comment-form {
+    max-width: 770px;
+}

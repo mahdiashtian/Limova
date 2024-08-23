@@ -1,0 +1,28 @@
+/* Opening Time */
+.opening-time {
+    border: 1px solid $border-color;
+    &-title {
+        font-size: 18px;
+
+        margin: -1px;
+        padding: 15px;
+
+        text-align: center;
+        text-transform: uppercase;
+
+        color: $white;
+        background-color: $primary;
+    }
+    &-schedule {
+        padding: 15px 20px;
+        & li {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 10px 0;
+            &:not(:last-child) {
+                border-bottom: 1px solid $border-color;
+            }
+        }
+    }
+}

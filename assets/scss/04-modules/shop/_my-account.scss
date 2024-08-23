@@ -1,0 +1,31 @@
+/* My Account Tab List */
+.my-account-tab-list {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    border: 1px solid $border-color;
+    & li {
+        & + li {
+            border-top: 1px solid $border-color;
+        }
+        & a {
+            display: flex;
+            align-items: center;
+
+            padding: 12px 20px;
+
+            text-transform: capitalize;
+
+            gap: 8px;
+            &.active {
+                color: $white;
+                background-color: $primary;
+            }
+        }
+    }
+}

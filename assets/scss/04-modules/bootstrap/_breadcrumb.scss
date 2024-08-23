@@ -1,0 +1,36 @@
+/* Breadcrumb CSS */
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    gap: 5px;
+    & li {
+        display: flex;
+
+        text-transform: uppercase;
+
+        color: $white;
+
+        gap: 5px;
+        &:not(:last-child) {
+            &::after {
+                display: block;
+                align-self: center;
+
+                width: 18px;
+                height: 1px;
+
+                content: "";
+                transform: rotate(115deg);
+
+                background-color: $white;
+            }
+        }
+    }
+}

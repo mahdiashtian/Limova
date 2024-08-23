@@ -1,0 +1,66 @@
+/* Ion Range Slider */
+.irs {
+    &.irs--flat {
+        & .irs {
+            &-line {
+                top: 26px;
+
+                height: 8px;
+
+                background-color: $border-color;
+            }
+            &-min,
+            &-max {
+                border-radius: 2px;
+            }
+            &-from {
+                transform: translateX(calc(50% - 8px));
+
+                border-radius: 2px;
+                background-color: $primary;
+                &::before {
+                    left: 8px;
+
+                    border-top-color: $primary;
+                }
+            }
+            &-to {
+                transform: translateX(calc(-50% + 8px));
+
+                border-radius: 2px;
+                background-color: $primary;
+                &::before {
+                    right: 5px;
+                    left: auto;
+
+                    border-top-color: $primary;
+                }
+            }
+            &-single {
+                border-radius: 2px;
+                background-color: $primary;
+                &::before {
+                    border-top-color: $primary;
+                }
+            }
+            &-bar {
+                top: 26px;
+
+                height: 8px;
+
+                background-color: $primary;
+            }
+            &-handle {
+                width: 16px;
+                height: 16px;
+
+                border: 2px solid $primary;
+                border-radius: 50%;
+                background-color: $white;
+                & i {
+                    display: none;
+                }
+            }
+        }
+    }
+}

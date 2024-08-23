@@ -1,0 +1,58 @@
+/* Hero Slider Common Style */
+.hero-slider {
+    // Navigation Button
+    & .swiper-button-prev,
+    & .swiper-button-next {
+        font-size: 24px;
+
+        width: 60px;
+        height: 60px;
+
+        transition: $transition-base;
+
+        opacity: 0;
+        color: $black;
+        border: 1px solid $border-color;
+        border-radius: 50px;
+        background-color: $white;
+        @media #{$large-mobile} {
+            font-size: 18px;
+
+            width: 44px;
+            height: 44px;
+        }
+        &::after {
+            font-size: inherit;
+        }
+        &:hover {
+            color: $white;
+            border-color: $primary;
+            background-color: $primary;
+        }
+    }
+    & .swiper-button-prev {
+        left: 18px;
+    }
+    & .swiper-button-next {
+        right: 18px;
+    }
+    // Pagination
+    & .swiper-pagination {
+        bottom: 20px !important;
+        &-bullet {
+            border-radius: 50%;
+            &::before {
+                border-radius: 50%;
+            }
+        }
+    }
+    // Hover
+    &:hover {
+        & .swiper-button-prev,
+        & .swiper-button-next {
+            visibility: visible;
+
+            opacity: 1;
+        }
+    }
+}

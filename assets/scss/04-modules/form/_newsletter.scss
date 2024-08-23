@@ -1,0 +1,41 @@
+/* News Letter Form */
+.subscribe-newsletter {
+    position: relative;
+
+    width: 100%;
+    max-width: 770px;
+    & input[type="email"] {
+        height: 60px !important;
+        padding: 10px 30px !important;
+        padding-right: 140px !important;
+
+        border-radius: 100px;
+        background-color: $light;
+        @media #{$large-mobile} {
+            font-size: 14px;
+
+            height: 50px !important;
+        }
+    }
+    & input[type="submit"] {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        height: 60px;
+        padding: 10px 30px;
+
+        color: $white;
+        border: none;
+        border-radius: 100px;
+        background-color: $primary;
+        &:hover {
+            background-color: darken($primary, 7.5);
+        }
+        @media #{$large-mobile} {
+            font-size: 14px;
+
+            height: 50px;
+        }
+    }
+}

@@ -1,0 +1,93 @@
+/* Coffee Menu */
+.coffee-menu {
+    position: relative;
+
+    display: flex;
+
+    margin-left: 43px;
+    padding: 20px;
+    padding-left: 70px;
+
+    border: 1px solid $border-color;
+    @media #{$extra-small-mobile} {
+        flex-direction: column;
+
+        margin-top: 43px;
+        margin-left: 0;
+        padding-top: 70px;
+        padding-left: 20px;
+
+        text-align: center;
+    }
+    &-thumb {
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 85px;
+        height: 85px;
+
+        transform: translateX(-50%) translateY(-50%);
+        @media #{$extra-small-mobile} {
+            top: 0;
+            left: 50%;
+        }
+    }
+    &-content {
+        max-width: 350px;
+        margin-right: auto;
+        padding-right: 20px;
+        @media #{$extra-small-mobile} {
+            padding: 0;
+        }
+        & p {
+            font-size: 14px;
+        }
+    }
+    &-title {
+        font-size: 20px;
+
+        letter-spacing: 0.5px;
+        @media #{$desktop-device} {
+            font-size: 18px;
+        }
+    }
+    &-price {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 1;
+
+        display: flex;
+        align-self: center;
+        flex: 0 0;
+        flex-direction: column;
+        justify-content: center;
+
+        min-height: 55px;
+        padding-left: 20px;
+
+        text-align: center;
+
+        color: $primary;
+        border-left: 1px solid $border-color;
+        @media #{$extra-small-mobile} {
+            min-height: auto;
+            margin-top: 20px;
+            padding: 15px 20px 0;
+
+            border-top: 1px solid $border-color;
+            border-left: none;
+        }
+        & del {
+            font-size: 16px;
+
+            margin-top: 5px;
+
+            color: $headings-color;
+        }
+    }
+}

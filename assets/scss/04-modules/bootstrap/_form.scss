@@ -1,0 +1,26 @@
+/* Form */
+/* Checkbox */
+.form-check {
+    min-height: auto;
+    margin-bottom: 0;
+    &:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    & .form-check-input {
+        margin-top: 1px;
+
+        border-width: 2px;
+        &:checked,
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    & .form-check-label {
+        font-size: 14px;
+        line-height: 1.25;
+
+        display: flex;
+
+        margin: 0;
+    }
+}

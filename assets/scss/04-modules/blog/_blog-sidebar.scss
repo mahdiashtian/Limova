@@ -1,0 +1,117 @@
+/* Blog Sidebar */
+.blog-sidebar-item {
+    &:not(:last-child) {
+        margin-bottom: 40px;
+    }
+}
+/* Blog Sidebar Title */
+.blog-sidebar-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+/* Blog Sidebar Search */
+.blog-sidebar-search {
+    position: relative;
+    & .form-field {
+        padding-right: 54px !important;
+    }
+    & .btn {
+        position: absolute;
+        z-index: 5;
+        top: 0;
+        right: 0;
+
+        width: 54px;
+        height: 54px;
+        padding: 10px;
+        @media #{$tablet-device,
+        $desktop-device} {
+            width: 52px;
+            height: 52px;
+        }
+        @media #{$large-mobile} {
+            width: 44px;
+            height: 44px;
+        }
+    }
+}
+/* Blog Sidebar Post */
+.blog-sidebar-post {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 15px;
+    &:not(:last-child) {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+
+        border-bottom: 1px solid $border-color;
+    }
+    &-thumb {
+        align-self: flex-start;
+        flex: 0 0 80px;
+
+        width: 80px;
+        height: 70px;
+        & img {
+            height: 100%;
+
+            object-fit: cover;
+        }
+    }
+    &-content {
+        flex: 1 0;
+    }
+    &-date {
+        font-size: 13px;
+
+        display: block;
+
+        margin-bottom: 3px;
+        @media #{$desktop-device} {
+            font-size: 12px;
+        }
+    }
+    &-title {
+        font-size: 16px;
+
+        margin: 0;
+    }
+}
+/* Blog Sidebar Archive */
+.blog-sidebar-archive {
+    margin: 0;
+    padding-left: 0;
+
+    list-style: none;
+    & li {
+        & + li {
+            margin-top: 10px;
+        }
+    }
+}
+/* Blog Sidebar Tags */
+.blog-sidebar-tag {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+    & a {
+        font-size: 14px;
+
+        display: flex;
+
+        padding: 7px 15px;
+
+        border: 1px solid $border-color;
+        &:hover {
+            color: $white;
+            border-color: $primary;
+            background-color: $primary;
+        }
+    }
+}
