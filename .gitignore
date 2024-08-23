@@ -48,9 +48,9 @@ pip-delete-this-directory.txt
 /media/
 
 # Ignore Django migration files
-*/migrations/*.py[cod]
-*/migrations/__pycache__/
-!*/migrations/__init__.py
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
 
 # Unit test / coverage reports
 htmlcov/
