@@ -8,7 +8,7 @@ from taxonomy.models import Tag, Category
 class ProductDiscount(models.Model):
     start_date = models.DateTimeField(verbose_name="تاریخ شروع")
     end_date = models.DateTimeField(verbose_name="تاریخ پایان")
-    value = models.PositiveSmallIntegerField(verbose_name="درصد")
+    value = models.PositiveSmallIntegerField(verbose_name="درصد", default=0)
 
     @property
     def is_active(self):
