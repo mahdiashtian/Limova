@@ -382,34 +382,34 @@
         // Get the messages div.
         var formMessages = $('.form-messege');
         // Set up an event listener for the contact form.
-        $(form).submit(function (e) {
-            // Stop the browser from submitting the form.
-            e.preventDefault();
-            // Serialize the form data.
-            var formData = $(form).serialize();
-            // Submit the form using AJAX.
-            $.ajax({
-                    type: 'POST',
-                    url: $(form).attr('action'),
-                    data: formData
-                })
-                .done(function (response) {
-                    // Make sure that the formMessages div has the 'success' class.
-                    formMessages.removeClass('error text-danger').addClass('success text-success learts-mt-10').text(response);
-                    // Clear the form.
-                    form.find('input:not([type="submit"]), textarea').val('');
-                })
-                .fail(function (data) {
-                    // Make sure that the formMessages div has the 'error' class.
-                    formMessages.removeClass('success text-success').addClass('error text-danger mt-3');
-                    // Set the message text.
-                    if (data.responseText !== '') {
-                        formMessages.text(data.responseText);
-                    } else {
-                        formMessages.text('Oops! An error occured and your message could not be sent.');
-                    }
-                });
-        });
+        // $(form).submit(function (e) {
+        //     // Stop the browser from submitting the form.
+        //     e.preventDefault();
+        //     // Serialize the form data.
+        //     var formData = $(form).serialize();
+        //     // Submit the form using AJAX.
+        //     $.ajax({
+        //             type: 'POST',
+        //             url: $(form).attr('action'),
+        //             data: formData
+        //         })
+        //         .done(function (response) {
+        //             // Make sure that the formMessages div has the 'success' class.
+        //             formMessages.removeClass('error text-danger').addClass('success text-success learts-mt-10').text(response);
+        //             // Clear the form.
+        //             form.find('input:not([type="submit"]), textarea').val('');
+        //         })
+        //         .fail(function (data) {
+        //             // Make sure that the formMessages div has the 'error' class.
+        //             formMessages.removeClass('success text-success').addClass('error text-danger mt-3');
+        //             // Set the message text.
+        //             if (data.responseText !== '') {
+        //                 formMessages.text(data.responseText);
+        //             } else {
+        //                 formMessages.text('Oops! An error occured and your message could not be sent.');
+        //             }
+        //         });
+        // });
     });
 
     /* Scroll To Top */
