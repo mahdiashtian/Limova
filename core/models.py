@@ -26,7 +26,11 @@ class Media(BaseModel):
 
 class ContactUs(BaseModel):
     owner = None
-    name = models.CharField(max_length=90)
-    email = models.EmailField()
-    subject = models.CharField(max_length=60)
-    message = models.TextField()
+    name = models.CharField(max_length=90, verbose_name='نام')
+    email = models.EmailField(verbose_name='ایمیل')
+    subject = models.CharField(max_length=60, verbose_name='موضوع')
+    message = models.TextField(verbose_name='متن پیام')
+
+    class Meta:
+        verbose_name = 'تماس'
+        verbose_name_plural = 'تماس ها'
