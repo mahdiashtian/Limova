@@ -1,7 +1,6 @@
 from django.contrib import messages
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, FormView
 
 from core.forms import ContactUsForm
 
@@ -18,3 +17,7 @@ class ContactUsView(CreateView):
     def form_valid(self, form):
         messages.success(self.request, 'Your message has been sent successfully!')
         return super().form_valid(form)
+
+
+class AboutUsView(TemplateView):
+    template_name = 'about-us.html'
