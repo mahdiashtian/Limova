@@ -22,3 +22,11 @@ class Media(BaseModel):
     class Meta:
         verbose_name = 'رسانه'
         verbose_name_plural = 'رسانه ها'
+
+
+class ContactUs(BaseModel):
+    owner = None
+    name = models.CharField(max_length=90)
+    email = models.EmailField()
+    subject = models.CharField(max_length=60)
+    message = models.TextField()
