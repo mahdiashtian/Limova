@@ -27,16 +27,7 @@
             <div class="col d-none d-lg-block">
                 <nav class="main-menu">
                     <ul>
-                        <li class="has-sub-menu">
-                            <a href="../core/templates/index.html">Home</a>
-
-                            <ul class="sub-menu">
-                                <li><a href="../core/templates/index.html">Home One</a></li>
-                                <li><a href="index-2.html">Home Two</a></li>
-                                <li><a href="index-3.html">Home Three</a></li>
-                                <li><a href="index-4.html">Home Four</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{% url 'core:home' %}">Home</a></li>
                         <li>
                             <a href="shop-left-sidebar.html">Shop</a>
 
