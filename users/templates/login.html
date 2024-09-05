@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Login Section Start -->
+    <div class="section section-padding">
+        <div class="container">
+            <div class="login-register-form">
+                <h3 class="title">Login</h3>
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p class="errornote">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+                {% else %}
+                    <p>Please Register using account detail bellow.</p>
+
+                {% endif %}
+                <form action="{% url 'users:login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row row-cols-1 g-4">
+                        <div class="col">
+
+                            {{ form.username.errors }}
+                            {{ form.username }}
+                        </div>
+                        <div class="col">
+                            {{ form.password.errors }}
+                            {{ form.password }}
+                        </div>
+                        <div class="col"><input class="btn btn-dark btn-primary-hover rounded-0 w-100" type="submit"
+                                                value="Sign In"></div>
+                        <div class="col">Don't have an account? <a href="register.html"><b>Create One</b></a></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Login Section End -->
+{% endblock %}
