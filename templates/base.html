@@ -75,17 +75,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="has-sub-menu">
-                            <a href="../core/templates/index.html">Pages</a>
-
-                            <ul class="sub-menu">
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="{% url 'core:contact-us' %}">Contact Us</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="register.html">Register</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                            </ul>
-                        </li>
+                        {#                        <li class="has-sub-menu">#}
+                        {#                            <a href="../core/templates/index.html">Pages</a>#}
+                        {##}
+                        {#                            <ul class="sub-menu">#}
+                        {#                                <li><a href="about-us.html">About Us</a></li>#}
+                        {#                                <li><a href="{% url 'core:contact-us' %}">Contact Us</a></li>#}
+                        {#                                <li><a href="login.html">Login</a></li>#}
+                        {#                                <li><a href="register.html">Register</a></li>#}
+                        {#                                <li><a href="faq.html">FAQ</a></li>#}
+                        {#                            </ul>#}
+                        {#                        </li>#}
                         <li class="has-sub-menu">
                             <a href="blog-left-sidebar.html">Blog</a>
 
@@ -99,11 +99,12 @@
                         </li>
                         <li><a href="{% url 'core:contact-us' %}">Contact Us</a></li>
                         <li><a href="{% url 'core:about-us' %}">About Us</a></li>
-{#                        {% if request.user.is_authenticated %}#}
-{#                            <li><a href="{% url 'core:contact-us' %}">Contact Us</a></li>#}
-{#                        {% else %}#}
-{#                            <li><a href="{% url 'users:register' %}">Register</a></li>#}
-{#                        {% endif %}#}
+                        {% if request.user.is_authenticated %}
+                            <li><a href="{% url 'users:logout' %}">Logout</a></li>
+                        {% else %}
+                            <li><a href="{% url 'users:login' %}">Login</a></li>
+                            <li><a href="{% url 'users:signup' %}">Register</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>
@@ -218,11 +219,7 @@
     <div class="offcanvas-body">
         <nav class="mobile-menu">
             <ul>
-
-
                 <li><a href="{% url 'core:home' %}">Home</a></li>
-
-
                 <li>
                     <a href="../../templates/shop-left-sidebar.html">Shop</a>
                     <button class="mobile-sub-menu-toggle"></button>
@@ -277,18 +274,18 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="index.html">Pages</a>
-                    <button class="mobile-sub-menu-toggle"></button>
-                    <ul class="mobile-sub-menu">
-                        <li><a href="{% url 'core:contact-us' %}l">Contact Us</a></li>
-                        <li><a href="{% url 'core:about-us' %}">About Us</a></li>
-
-                        <li><a href="../../templates/login.html">Login</a></li>
-                        <li><a href="../../templates/register.html">Register</a></li>
-                        <li><a href="../../templates/faq.html">FAQ</a></li>
-                    </ul>
-                </li>
+                {#                <li>#}
+                {#                    <a href="index.html">Pages</a>#}
+                {#                    <button class="mobile-sub-menu-toggle"></button>#}
+                {#                    <ul class="mobile-sub-menu">#}
+                {#                        <li><a href="{% url 'core:contact-us' %}l">Contact Us</a></li>#}
+                {#                        <li><a href="{% url 'core:about-us' %}">About Us</a></li>#}
+                {##}
+                {#                        <li><a href="../../templates/login.html">Login</a></li>#}
+                {#                        <li><a href="../../templates/register.html">Register</a></li>#}
+                {#                        <li><a href="../../templates/faq.html">FAQ</a></li>#}
+                {#                    </ul>#}
+                {#                </li>#}
                 <li>
                     <a href="../../templates/blog-left-sidebar.html">Blog</a>
                     <button class="mobile-sub-menu-toggle"></button>
@@ -303,7 +300,12 @@
                 </li>
                 <li><a href="{% url 'core:contact-us' %}">Contact Us</a></li>
                 <li><a href="{% url 'core:about-us' %}">About Us</a></li>
-
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'users:logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'users:login' %}">Login</a></li>
+                    <li><a href="{% url 'users:signup' %}">Register</a></li>
+                {% endif %}
             </ul>
         </nav>
     </div>

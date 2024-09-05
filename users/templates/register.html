@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Register Section Start -->
+    <div class="section section-padding">
+        <div class="container">
+            <div class="login-register-form">
+                <h3 class="title">Create Account</h3>
+                <p>Please Register using account detail bellow.</p>
+                <form action="{% url 'users:signup' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row row-cols-1 g-4">
+                        <div class="col">
+                            {{ form.first_name.errors }}
+                            {{ form.first_name }}
+                        </div>
+                        <div class="col">
+                            {{ form.last_name.errors }}
+                            {{ form.last_name }}
+                        </div>
+                        <div class="col">
+                            {{ form.email.errors }}
+                            {{ form.email }}
+                        </div>
+                        <div class="col">
+                            {{ form.username.errors }}
+                            {{ form.username }}
+                        </div>
+                        <div class="col">
+                            {{ form.password1.errors }}
+                            {{ form.password1 }}
+                        </div>
+                        <div class="col">
+                            {{ form.password2.errors }}
+                            {{ form.password2 }}
+                        </div>
+                        <div class="col"><input class="btn btn-dark btn-primary-hover rounded-0 w-100" type="submit"
+                                                value="Register"></div>
+                        <div class="col">Already have an account? <a href="{% url 'users:login' %}"><b>Login</b></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Register Section End -->
+{% endblock %}
