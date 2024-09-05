@@ -75,7 +75,9 @@ ROOT_URLCONF = 'limova.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [
+            BASE_DIR / 'templates',
+        ]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -158,3 +160,4 @@ AUTH_USER_MODEL = 'users.User'
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]
+APPEND_SLASH = True
