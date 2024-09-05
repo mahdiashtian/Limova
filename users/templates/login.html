@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
+    <!-- Page Banner Section Start -->
+    {% include 'includes/page_banner.html' with page_name='Login' %}
+    <!-- Page Banner Section End -->
     <!-- Login Section Start -->
     <div class="section section-padding">
         <div class="container">
@@ -31,7 +33,8 @@
                         </div>
                         <div class="col"><input class="btn btn-dark btn-primary-hover rounded-0 w-100" type="submit"
                                                 value="Sign In"></div>
-                        <div class="col">Don't have an account? <a href="{% url 'users:signup' %}"><b>Create One</b></a></div>
+                        <div class="col">Don't have an account? <a href="{% url 'users:signup' %}"><b>Create One</b></a>
+                        </div>
                     </div>
                 </form>
             </div>

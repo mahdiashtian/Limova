@@ -5154,11 +5154,19 @@ textarea.form-field:focus {
   border-bottom: 1px solid #E5E5E5;
 }
 
+.text-color-contrast {
+    color: #404040; /* Light gray color */
+}
+
+.text-color-contrast {
+    text-shadow: 1px 1px 2px rgba(1, 1, 1, 2); /* Adds a shadow for better readability */
+}
+
 /* Page Banner / Breadcrumb */
-.page-banner-section {
+  .page-banner-section {
   position: relative;
   padding: 50px 0;
-  background-image: url(../images/others/page-banner-bg.jpg);
+  background-image: url(../images/others/limova-header-light.jpeg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
