@@ -1,8 +1,13 @@
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView, FormView
+from django.views.generic import TemplateView, CreateView
 
 from core.forms import ContactUsForm
+from core.models import AboutUs
+from taxonomy.models import Comment
+
+User = get_user_model()
 
 
 class HomeView(TemplateView):
@@ -21,3 +26,10 @@ class ContactUsView(CreateView):
 
 class AboutUsView(TemplateView):
     template_name = 'about-us.html'
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['obj'] = AboutUs.objects.first()
+        data['comments'] = Comment.objects.all().filter(rate__range=[4, 5])[:4]
+        data['team_users'] = User.objects.filter(is_superuser=True)[:4]
+        return data
