@@ -1,0 +1,25 @@
+{% load static %}
+<div class="swiper-slide">
+    <div class="team">
+        <div class="team-thumb">
+            <img loading="lazy" src="
+                                        {% if team_user.avatar %}
+                                            {{ team_user.avatar.media.url }}
+                                        {% else %}
+                                            {% static 'images/team/team-1.png' %}
+                                        {% endif %}"
+                 alt="{{ team_user.get_full_name }}"
+                 width="270"
+                 height="324">
+            <div class="team-social">
+                <a href="#"><i class="sli-social-facebook"></i></a>
+                <a href="#"><i class="sli-social-twitter"></i></a>
+                <a href="#"><i class="sli-social-instagram"></i></a>
+            </div>
+        </div>
+        <div class="team-content">
+            <h4 class="team-name">{{ team_user.get_full_name }}</h4>
+            <p class="team-title">{{ team_user.rule }}</p>
+        </div>
+    </div>
+</div>

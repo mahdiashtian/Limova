@@ -1,0 +1,23 @@
+{% load static %}
+<div class="swiper-slide">
+    <div class="testimonial">
+
+        <div class="testimonial-client-thumb"><img loading="lazy"
+                                                   src="
+                                        {% if comment.owner.avatar %}
+                                            {{ comment.owner.avatar.media.url }}
+                                        {% else %}
+                                            {% static 'images/testimonial/testimonial-2.png' %}
+                                        {% endif %}"
+                                                   alt="Hester Perkins" width="100" height="100">
+        </div>
+        <div class="testimonial-text">
+            <p>
+                {{ comment.text }}
+            </p>
+        </div>
+        <div class="testimonial-client-info">
+            <h5 class="testimonial-client-name">{{ comment.owner.get_full_name }}</h5>
+        </div>
+    </div>
+</div>
