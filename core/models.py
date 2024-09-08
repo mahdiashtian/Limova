@@ -21,7 +21,7 @@ class Media(BaseModel):
     owner = None
     media = models.FileField()
     type = models.CharField(max_length=30, choices=TypeChoices.choices, default=TypeChoices.OTHER)
-    name = models.CharField(null=True, blank=True,max_length=50)
+    name = models.CharField(null=True, blank=True, max_length=50)
 
     class Meta:
         verbose_name = 'رسانه'
