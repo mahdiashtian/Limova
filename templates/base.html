@@ -4,6 +4,8 @@
 
 <head>
     {% include 'includes/header_plugin.html' %}
+    {% block script %}
+    {% endblock %}
 </head>
 
 <body>
@@ -31,53 +33,53 @@
                     <ul>
                         <li><a href="{% url 'core:home' %}">Home</a></li>
                         <li><a href="{% url 'products:product-list' %}">Shop</a></li>
-{#                        <li>#}
-{#                            <a href="shop-left-sidebar.html">Shop</a>#}
-{##}
-{#                            <ul class="mega-menu">#}
-{#                                <li>#}
-{#                                    <a href="shop.html">Shop Grid Layout</a>#}
-{##}
-{#                                    <ul>#}
-{#                                        <li><a href="shop-left-sidebar.html">Shop Grid Left Sidebar</a></li>#}
-{#                                        <li><a href="shop-right-sidebar.html">Shop Grid Right Sidebar</a></li>#}
-{#                                        <li><a href="shop-3-column.html">Shop Grid 3 Column (no sidebar)</a></li>#}
-{#                                        <li><a href="shop-4-column.html">Shop Grid 4 Column (no sidebar)</a></li>#}
-{#                                    </ul>#}
-{#                                </li>#}
-{#                                <li>#}
-{#                                    <a href="index-2.html">Shop List Layout</a>#}
-{##}
-{#                                    <ul>#}
-{#                                        <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>#}
-{#                                        <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>#}
-{#                                        <li><a href="shop-list-no-sidebar.html">Shop List (no sidebar)</a></li>#}
-{#                                    </ul>#}
-{#                                </li>#}
-{#                                <li>#}
-{#                                    <a href="index-3.html">Product Pages</a>#}
-{##}
-{#                                    <ul>#}
-{#                                        <li><a href="product-details.html">Product Details</a></li>#}
-{#                                        <li><a href="product-details-sticky-content.html">Product Details Sticky#}
-{#                                            Content</a></li>#}
-{#                                        <li><a href="product-details-thumbnail-right.html">Product Details Right#}
-{#                                            Thumbnail</a></li>#}
-{#                                        <li><a href="product-details-gallery.html">Product Details Gallery</a></li>#}
-{#                                    </ul>#}
-{#                                </li>#}
-{#                                <li>#}
-{#                                    <a href="index-4.html">Others</a>#}
-{##}
-{#                                    <ul>#}
-{#                                        <li><a href="shopping-cart.html">Shopping Cart</a></li>#}
-{#                                        <li><a href="checkout.html">Checkout</a></li>#}
-{#                                        <li><a href="wishlist.html">Wishlist</a></li>#}
-{#                                        <li><a href="my-account.html">My Account</a></li>#}
-{#                                    </ul>#}
-{#                                </li>#}
-{#                            </ul>#}
-{#                        </li>#}
+                        {#                        <li>#}
+                        {#                            <a href="shop-left-sidebar.html">Shop</a>#}
+                        {##}
+                        {#                            <ul class="mega-menu">#}
+                        {#                                <li>#}
+                        {#                                    <a href="shop.html">Shop Grid Layout</a>#}
+                        {##}
+                        {#                                    <ul>#}
+                        {#                                        <li><a href="shop-left-sidebar.html">Shop Grid Left Sidebar</a></li>#}
+                        {#                                        <li><a href="shop-right-sidebar.html">Shop Grid Right Sidebar</a></li>#}
+                        {#                                        <li><a href="shop-3-column.html">Shop Grid 3 Column (no sidebar)</a></li>#}
+                        {#                                        <li><a href="shop-4-column.html">Shop Grid 4 Column (no sidebar)</a></li>#}
+                        {#                                    </ul>#}
+                        {#                                </li>#}
+                        {#                                <li>#}
+                        {#                                    <a href="index-2.html">Shop List Layout</a>#}
+                        {##}
+                        {#                                    <ul>#}
+                        {#                                        <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>#}
+                        {#                                        <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>#}
+                        {#                                        <li><a href="shop-list-no-sidebar.html">Shop List (no sidebar)</a></li>#}
+                        {#                                    </ul>#}
+                        {#                                </li>#}
+                        {#                                <li>#}
+                        {#                                    <a href="index-3.html">Product Pages</a>#}
+                        {##}
+                        {#                                    <ul>#}
+                        {#                                        <li><a href="product-details.html">Product Details</a></li>#}
+                        {#                                        <li><a href="product-details-sticky-content.html">Product Details Sticky#}
+                        {#                                            Content</a></li>#}
+                        {#                                        <li><a href="product-details-thumbnail-right.html">Product Details Right#}
+                        {#                                            Thumbnail</a></li>#}
+                        {#                                        <li><a href="product-details-gallery.html">Product Details Gallery</a></li>#}
+                        {#                                    </ul>#}
+                        {#                                </li>#}
+                        {#                                <li>#}
+                        {#                                    <a href="index-4.html">Others</a>#}
+                        {##}
+                        {#                                    <ul>#}
+                        {#                                        <li><a href="shopping-cart.html">Shopping Cart</a></li>#}
+                        {#                                        <li><a href="checkout.html">Checkout</a></li>#}
+                        {#                                        <li><a href="wishlist.html">Wishlist</a></li>#}
+                        {#                                        <li><a href="my-account.html">My Account</a></li>#}
+                        {#                                    </ul>#}
+                        {#                                </li>#}
+                        {#                            </ul>#}
+                        {#                        </li>#}
                         {#                        <li class="has-sub-menu">#}
                         {#                            <a href="../core/templates/index.html">Pages</a>#}
                         {##}
@@ -224,60 +226,60 @@
             <ul>
                 <li><a href="{% url 'core:home' %}">Home</a></li>
                 <li><a href="{% url 'products:product-list' %}">Shop</a></li>
-{#                <li>#}
-{#                    <a href="../../templates/shop-left-sidebar.html">Shop</a>#}
-{#                    <button class="mobile-sub-menu-toggle"></button>#}
-{#                    <ul class="mobile-sub-menu">#}
-{#                        <li>#}
-{#                            <a href="shop.html">Shop Grid Layout</a>#}
-{#                            <button class="mobile-sub-menu-toggle"></button>#}
-{#                            <ul class="mobile-sub-menu">#}
-{#                                <li><a href="../../templates/shop-left-sidebar.html">Shop Grid Left Sidebar</a></li>#}
-{#                                <li><a href="../../templates/shop-right-sidebar.html">Shop Grid Right Sidebar</a></li>#}
-{#                                <li><a href="../../templates/shop-3-column.html">Shop Grid 3 Column (no sidebar)</a>#}
-{#                                </li>#}
-{#                                <li><a href="../../templates/shop-4-column.html">Shop Grid 4 Column (no sidebar)</a>#}
-{#                                </li>#}
-{#                            </ul>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <a href="../../templates/index-2.html">Shop List Layout</a>#}
-{#                            <button class="mobile-sub-menu-toggle"></button>#}
-{#                            <ul class="mobile-sub-menu">#}
-{#                                <li><a href="../../templates/shop-list-left-sidebar.html">Shop List Left Sidebar</a>#}
-{#                                </li>#}
-{#                                <li><a href="../../templates/shop-list-right-sidebar.html">Shop List Right Sidebar</a>#}
-{#                                </li>#}
-{#                                <li><a href="../../templates/shop-list-no-sidebar.html">Shop List (no sidebar)</a></li>#}
-{#                            </ul>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <a href="../../templates/index-3.html">Product Pages</a>#}
-{#                            <button class="mobile-sub-menu-toggle"></button>#}
-{#                            <ul class="mobile-sub-menu">#}
-{#                                <li><a href="../../templates/product-details.html">Product Details</a></li>#}
-{#                                <li><a href="../../templates/product-details-sticky-content.html">Product Details Sticky#}
-{#                                    Content</a>#}
-{#                                </li>#}
-{#                                <li><a href="../../templates/product-details-thumbnail-right.html">Product Details Right#}
-{#                                    Thumbnail</a>#}
-{#                                </li>#}
-{#                                <li><a href="../../templates/product-details-gallery.html">Product Details Gallery</a>#}
-{#                                </li>#}
-{#                            </ul>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <a href="../../templates/index-4.html">Others</a>#}
-{#                            <button class="mobile-sub-menu-toggle"></button>#}
-{#                            <ul class="mobile-sub-menu">#}
-{#                                <li><a href="../../templates/shopping-cart.html">Shopping Cart</a></li>#}
-{#                                <li><a href="../../templates/checkout.html">Checkout</a></li>#}
-{#                                <li><a href="../../templates/wishlist.html">Wishlist</a></li>#}
-{#                                <li><a href="../../templates/my-account.html">My Account</a></li>#}
-{#                            </ul>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                </li>#}
+                {#                <li>#}
+                {#                    <a href="../../templates/shop-left-sidebar.html">Shop</a>#}
+                {#                    <button class="mobile-sub-menu-toggle"></button>#}
+                {#                    <ul class="mobile-sub-menu">#}
+                {#                        <li>#}
+                {#                            <a href="shop.html">Shop Grid Layout</a>#}
+                {#                            <button class="mobile-sub-menu-toggle"></button>#}
+                {#                            <ul class="mobile-sub-menu">#}
+                {#                                <li><a href="../../templates/shop-left-sidebar.html">Shop Grid Left Sidebar</a></li>#}
+                {#                                <li><a href="../../templates/shop-right-sidebar.html">Shop Grid Right Sidebar</a></li>#}
+                {#                                <li><a href="../../templates/shop-3-column.html">Shop Grid 3 Column (no sidebar)</a>#}
+                {#                                </li>#}
+                {#                                <li><a href="../../templates/shop-4-column.html">Shop Grid 4 Column (no sidebar)</a>#}
+                {#                                </li>#}
+                {#                            </ul>#}
+                {#                        </li>#}
+                {#                        <li>#}
+                {#                            <a href="../../templates/index-2.html">Shop List Layout</a>#}
+                {#                            <button class="mobile-sub-menu-toggle"></button>#}
+                {#                            <ul class="mobile-sub-menu">#}
+                {#                                <li><a href="../../templates/shop-list-left-sidebar.html">Shop List Left Sidebar</a>#}
+                {#                                </li>#}
+                {#                                <li><a href="../../templates/shop-list-right-sidebar.html">Shop List Right Sidebar</a>#}
+                {#                                </li>#}
+                {#                                <li><a href="../../templates/shop-list-no-sidebar.html">Shop List (no sidebar)</a></li>#}
+                {#                            </ul>#}
+                {#                        </li>#}
+                {#                        <li>#}
+                {#                            <a href="../../templates/index-3.html">Product Pages</a>#}
+                {#                            <button class="mobile-sub-menu-toggle"></button>#}
+                {#                            <ul class="mobile-sub-menu">#}
+                {#                                <li><a href="../../templates/product-details.html">Product Details</a></li>#}
+                {#                                <li><a href="../../templates/product-details-sticky-content.html">Product Details Sticky#}
+                {#                                    Content</a>#}
+                {#                                </li>#}
+                {#                                <li><a href="../../templates/product-details-thumbnail-right.html">Product Details Right#}
+                {#                                    Thumbnail</a>#}
+                {#                                </li>#}
+                {#                                <li><a href="../../templates/product-details-gallery.html">Product Details Gallery</a>#}
+                {#                                </li>#}
+                {#                            </ul>#}
+                {#                        </li>#}
+                {#                        <li>#}
+                {#                            <a href="../../templates/index-4.html">Others</a>#}
+                {#                            <button class="mobile-sub-menu-toggle"></button>#}
+                {#                            <ul class="mobile-sub-menu">#}
+                {#                                <li><a href="../../templates/shopping-cart.html">Shopping Cart</a></li>#}
+                {#                                <li><a href="../../templates/checkout.html">Checkout</a></li>#}
+                {#                                <li><a href="../../templates/wishlist.html">Wishlist</a></li>#}
+                {#                                <li><a href="../../templates/my-account.html">My Account</a></li>#}
+                {#                            </ul>#}
+                {#                        </li>#}
+                {#                    </ul>#}
+                {#                </li>#}
                 {#                <li>#}
                 {#                    <a href="index.html">Pages</a>#}
                 {#                    <button class="mobile-sub-menu-toggle"></button>#}
