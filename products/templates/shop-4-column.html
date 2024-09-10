@@ -74,7 +74,7 @@
                                     <div class="product-thumb">
                                         <a href="product-details.html" class="product-image"><img loading="lazy"
                                                                                                   src="{% static 'images/products/product-1.jpg' %}"
-                                                                                                  alt="House Coffee Original"
+                                                                                                  alt="{{ object.name }}"
                                                                                                   width="268"
                                                                                                   height="306"></a>
 
@@ -121,8 +121,7 @@
                                     </div>
                                     <div class="product-content">
 
-                                        <h5 class="product-title"><a href="product-details.html">House Coffee
-                                            Original</a>
+                                        <h5 class="product-title"><a href="product-details.html">{{ object.name }}</a>
                                         </h5>
                                         <div class="product-price">
                                             <del>$130.00</del>
@@ -147,7 +146,7 @@
                                     <div class="product-thumb">
                                         <a href="product-details.html" class="product-image"><img loading="lazy"
                                                                                                   src="{% static 'images/products/product-1.jpg' %}"
-                                                                                                  alt="House Coffee Original"
+                                                                                                  alt="{{ object.name }}"
                                                                                                   width="268"
                                                                                                   height="306"></a>
 
@@ -188,8 +187,7 @@
                                     </div>
                                     <div class="product-content">
 
-                                        <h5 class="product-title"><a href="product-details.html">House Coffee
-                                            Original</a>
+                                        <h5 class="product-title"><a href="product-details.html">{{ object.name }}</a>
                                         </h5>
                                         <p class="product-excerpt">Contrary to popular belief, Lorem Ipsum is not simply
                                             random text. It has roots in a piece of classical Latin literature from 45
@@ -226,37 +224,55 @@
             {% if page_obj.paginator.num_pages > 1 %}
                 <div class="shop-bottom-bar">
                     <ul class="pagination">
+                        <!-- Previous Page Link -->
                         {% if page_obj.has_previous %}
-                            <li><a href="?page={{ page_obj.previous_page_number }}"><i class="sli-arrow-left"></i></a>
+                            <li>
+                                <a href="?{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}{% if request.GET.paginateBy %}paginateBy={{ request.GET.paginateBy }}&{% endif %}page={{ page_obj.previous_page_number }}">
+                                    <i class="sli-arrow-left"></i>
+                                </a>
                             </li>
                         {% else %}
                             <li class="disabled"><a href="#"><i class="sli-arrow-left"></i></a></li>
                         {% endif %}
 
+                        <!-- First Page Link -->
                         {% if page_obj.number > 4 %}
-                            <li><a href="?page=1">1</a></li>
+                            <li>
+                                <a href="?{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}{% if request.GET.paginateBy %}paginateBy={{ request.GET.paginateBy }}&{% endif %}page=1">1</a>
+                            </li>
                             <li class="disabled"><span>...</span></li>
                         {% endif %}
 
+                        <!-- Page Number Links -->
                         {% for i in page_obj.paginator.page_range %}
                             {% if page_obj.number|add:'-3' <= i and i <= page_obj.number|add:'3' %}
                                 {% if page_obj.number == i %}
-                                    <li><a class="active" href="?page={{ i }}">{{ i }}</a></li>
+                                    <li><a class="active"
+                                           href="?{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}{% if request.GET.paginateBy %}paginateBy={{ request.GET.paginateBy }}&{% endif %}page={{ i }}">{{ i }}</a>
+                                    </li>
                                 {% else %}
-                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                    <li>
+                                        <a href="?{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}{% if request.GET.paginateBy %}paginateBy={{ request.GET.paginateBy }}&{% endif %}page={{ i }}">{{ i }}</a>
+                                    </li>
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
 
+                        <!-- Last Page Link -->
                         {% if page_obj.number < page_obj.paginator.num_pages|add:'-3' %}
                             <li class="disabled"><span>...</span></li>
                             <li>
-                                <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                                <a href="?{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}{% if request.GET.paginateBy %}paginateBy={{ request.GET.paginateBy }}&{% endif %}page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
                             </li>
                         {% endif %}
 
+                        <!-- Next Page Link -->
                         {% if page_obj.has_next %}
-                            <li><a href="?page={{ page_obj.next_page_number }}"><i class="sli-arrow-right"></i></a></li>
+                            <li>
+                                <a href="?{% if request.GET.sort %}sort={{ request.GET.sort }}&{% endif %}{% if request.GET.paginateBy %}paginateBy={{ request.GET.paginateBy }}&{% endif %}page={{ page_obj.next_page_number }}">
+                                    <i class="sli-arrow-right"></i>
+                                </a>
+                            </li>
                         {% else %}
                             <li class="disabled"><a href="#"><i class="sli-arrow-right"></i></a></li>
                         {% endif %}
@@ -264,6 +280,7 @@
                 </div>
             {% endif %}
             <!-- Shop Bottom Bar End -->
+
 
         </div>
     </div>
