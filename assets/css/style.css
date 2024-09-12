@@ -2914,13 +2914,7 @@ hr {
     overflow: hidden;
 }
 
-.product-thumb-image img{
 
-    width: 304px;
-    height: 347px;
-    object-fit: cover;
-
-}
 .product-thumb-image-slid img{
 
     width: 270px;
@@ -5847,18 +5841,26 @@ textarea.form-field:focus {
     color: #404040; /* Light gray color */
 }
 
-.about-us-image img {
-    width: 560px;
-    height: 472px;
-    object-fit: cover;
-}
+/*.product-thumb-image img{*/
+
+/*    width: 304px;*/
+/*    height: 347px;*/
+/*    object-fit: cover;*/
+
+/*}*/
+
+/*.about-us-image img {*/
+/*    width: 560px;*/
+/*    height: 472px;*/
+/*    object-fit: cover;*/
+/*}*/
 
 
-.gallery-item img {
-    width: 348px;
-    height: 418px;
-    object-fit: cover;
-}
+/*.gallery-item img {*/
+/*    width: 348px;*/
+/*    height: 418px;*/
+/*    object-fit: cover;*/
+/*}*/
 
 .text-color-contrast {
     text-shadow: 1px 1px 2px rgba(1, 1, 1, 2); /* Adds a shadow for better readability */
