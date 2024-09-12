@@ -84,11 +84,13 @@ class AboutUs(BaseModel):
         verbose_name_plural = 'درباره ما'
 
 
-class Slider(models.Model):
-    image = models.OneToOneField(Media, on_delete=models.CASCADE)
+class Slider(BaseModel):
+    owner = None
+    image = models.OneToOneField(Media, on_delete=models.CASCADE, null=True, blank=True)
     small_text = models.CharField(max_length=25)
     medium_text = models.CharField(max_length=50)
     large_text = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'اسلایدر'
