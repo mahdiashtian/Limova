@@ -11,3 +11,8 @@ class TypeChoices(models.TextChoices):
     GALLERY = "gallery", "GALLERY"
     PRODUCT = "product", "PRODUCT"
     OTHER = "other", "OTHER"
+
+
+class CommentTypeChoices(models.TextChoices):
+    PRODUCT = "product", "PRODUCT"
+    BLOG = "blog", "BLOG"

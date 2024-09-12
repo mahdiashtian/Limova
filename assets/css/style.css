@@ -2914,6 +2914,14 @@ hr {
     overflow: hidden;
 }
 
+.product-thumb-image img{
+
+    width: 304px;
+    height: 347px;
+    object-fit: cover;
+
+}
+
 .product-thumb .product-action {
     position: absolute;
     top: 50%;

@@ -1,8 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-from core.models import BaseModel
-from taxonomy.models import Tag, Category
+from core.models import BaseModel, Media
 
 
 class ProductDiscount(models.Model):
@@ -12,7 +11,8 @@ class ProductDiscount(models.Model):
 
     @property
     def is_active(self):
-        return True if timezone.now() > self.end_date else False
+        print(True if timezone.now() > self.end_date else False)
+        return True if self.start_date < timezone.now() < self.end_date else False
 
     class Meta:
         verbose_name = 'تخفیف'
@@ -48,10 +48,12 @@ class Product(BaseModel):
     availability = models.PositiveSmallIntegerField(verbose_name="تعداد کالای باقی مانده")
     discount = models.ForeignKey(ProductDiscount, null=True, blank=True, on_delete=models.SET_NULL,
                                  verbose_name="تخفیف")
-    tags = models.ManyToManyField(Tag, related_name='products', verbose_name="تگ ها")
-    categories = models.ManyToManyField(Category, related_name='products', verbose_name="دسته بندی ها")
-    colors = models.ManyToManyField(ProductColor, related_name='products', verbose_name="رنگ ها")
-    sizes = models.ManyToManyField(ProductSize, related_name='products', verbose_name="سایز ها")
+    tags = models.ManyToManyField('taxonomy.Tag', related_name='products', verbose_name="تگ ها", blank=True)
+    categories = models.ManyToManyField('taxonomy.Category', related_name='products', verbose_name="دسته بندی ها",
+                                        blank=True)
+    colors = models.ManyToManyField(ProductColor, related_name='products', verbose_name="رنگ ها", blank=True)
+    sizes = models.ManyToManyField(ProductSize, related_name='products', verbose_name="سایز ها", blank=True)
+    images = models.ManyToManyField(Media, related_name='products', verbose_name="تصاویر", blank=True)
 
     class Meta:
         verbose_name = 'محصول'
