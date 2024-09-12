@@ -11,9 +11,9 @@
         <div class="container">
             <div class="row row-cols-lg-2 row-cols-1 mb-n8">
 
-                <div class="col mb-8 about-us-image" >
+                <div class="col mb-8 about-us-image">
                     <img loading="lazy" src="{{ obj.image.media.url }}" alt="about us image" width="560"
-                         height="472" >
+                         height="472">
                 </div>
 
                 <div class="col mb-8">
@@ -238,11 +238,9 @@
             </div>
 
             <div class="mfp-zoom-gallery row row-cols-lg-3 row-cols-sm-2 row-cols-1 mb-n6">
-                {% if obj.gallery.all %}
-                    {% for image in obj.gallery.all %}
-                        {% include 'includes/limova_gallery.html' with immage=image %}
-                    {% endfor %}
-                {% else %}
+                {% for image in obj.gallery.all %}
+                    {% include 'includes/limova_gallery.html' with immage=image %}
+                {% empty %}
                     <div class="col mb-6">
                         <a href="{% static 'images/gallery/big/gallery-1.jpg' %}" class="gallery-item">
                             <img loading="lazy" src="{% static 'images/gallery/gallery-1.jpg' %}" alt="gallery 1"
@@ -291,7 +289,7 @@
                             <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>
                         </a>
                     </div>
-                {% endif %}
+                {% endfor %}
 
             </div>
 
