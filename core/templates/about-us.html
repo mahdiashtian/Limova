@@ -54,11 +54,9 @@
             <div class="testimonial-slider swiper">
 
                 <div class="swiper-wrapper">
-                    {% if comments %}
-                        {% for comment in comments %}
-                            {% include 'includes/testimonials.html' with comment=comment %}
-                        {% endfor %}
-                    {% else %}
+                    {% for comment in comments %}
+                        {% include 'includes/testimonials.html' with comment=comment %}
+                    {% empty %}
                         <div class="swiper-slide">
                             <div class="testimonial">
                                 <div class="testimonial-client-thumb"><img loading="lazy"
@@ -97,7 +95,8 @@
                                 </div>
                             </div>
                         </div>
-                    {% endif %}
+                    {% endfor %}
+
                 </div>
 
                 <div class="swiper-pagination"></div>
