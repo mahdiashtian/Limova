@@ -270,7 +270,7 @@
 
                 <div class="col-lg-7 col mb-8">
                     <iframe title="store location"
-                            src="https://www.google.com/maps/embed?pb=!1m22!1m8!1m3!1d12097.224885425992!2d-74.0068449!3d40.7112749!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d40.7114538!2d-74.0067591!4m5!1s0x89c25a1878c40c3d%3A0x5ce593d3e428d3ef!2sTemple%20Court%205%20Beekman%20St%20New%20York%2C%20NY%2010038%20United%20States!3m2!1d40.7112749!2d-74.00684489999999!5e0!3m2!1sen!2sbd!4v1636363083312!5m2!1sen!2sbd"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2433.732568574142!2d13.5021279!3d52.411522899999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a846663ba4eb27%3A0x2394d90945acfad7!2sExiner%20Str.%2023A%2C%2012355%20Berlin!5e0!3m2!1sfa!2sde!4v1726077692779!5m2!1sfa!2sde"
                             style="border:0; width: 100%; min-height: 400px; height: 100%;" allowfullscreen=""
                             loading="lazy"></iframe>
                 </div>
@@ -304,102 +304,113 @@
     <div class="h1-coffee-menu-section  section section-padding">
         <div class="container">
             <div class="section-title section-title-center">
-                <p class="title">Simple Menu</p>
-                <h2 class="sub-title">OUR POPULAR MENU</h2>
+                <p class="title">Simple Shop</p>
+                <h2 class="sub-title">OUR POPULAR PRODUCT</h2>
 
             </div>
             <div class="row row-cols-lg-2 row-cols-1 mb-n6">
+                {% for product in popular_product %}
+                    <div class="col mb-6">
 
-                <div class="col mb-6">
-                    <div class="coffee-menu">
-                        <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
-                                                                                                      src="{% static  'images/coffee-menu/coffee-1.png' %}"
-                                                                                                      alt="Grilled Cheese Sandwich"
-                                                                                                      width="85"
-                                                                                                      height="85"></a>
-                        <div class="coffee-menu-content">
-                            <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Grilled Cheese
-                                Sandwich</a></h3>
-                            <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
-                        </div>
-                        <span class="coffee-menu-price">$19.99 <del>$25.99</del></span>
+                        {% include 'includes/popular_product.html' %}
                     </div>
-                </div>
-                <div class="col mb-6">
-                    <div class="coffee-menu">
-                        <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
-                                                                                                      src="{% static  'images/coffee-menu/coffee-2.png' %}"
-                                                                                                      alt="Italian Rosted Coffee"
-                                                                                                      width="85"
-                                                                                                      height="85"></a>
-                        <div class="coffee-menu-content">
-                            <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Italian Rosted
-                                Coffee</a></h3>
-                            <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                {% empty %}
+                    <div class="col mb-6">
+                        <div class="coffee-menu">
+                            <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
+                                                                                                          src="{% static  'images/coffee-menu/coffee-1.png' %}"
+                                                                                                          alt="Grilled Cheese Sandwich"
+                                                                                                          width="85"
+                                                                                                          height="85"></a>
+                            <div class="coffee-menu-content">
+                                <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Grilled
+                                    Cheese
+                                    Sandwich</a></h3>
+                                <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                            </div>
+                            <span class="coffee-menu-price">$19.99 <del>$25.99</del></span>
                         </div>
-                        <span class="coffee-menu-price">$19.99 </span>
                     </div>
-                </div>
-                <div class="col mb-6">
-                    <div class="coffee-menu">
-                        <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
-                                                                                                      src="{% static 'images/coffee-menu/coffee-3.png' %}"
-                                                                                                      alt="Brazilan Rosted Coffee"
-                                                                                                      width="85"
-                                                                                                      height="85"></a>
-                        <div class="coffee-menu-content">
-                            <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Brazilan Rosted
-                                Coffee</a></h3>
-                            <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                    <div class="col mb-6">
+                        <div class="coffee-menu">
+                            <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
+                                                                                                          src="{% static  'images/coffee-menu/coffee-2.png' %}"
+                                                                                                          alt="Italian Rosted Coffee"
+                                                                                                          width="85"
+                                                                                                          height="85"></a>
+                            <div class="coffee-menu-content">
+                                <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Italian
+                                    Rosted
+                                    Coffee</a></h3>
+                                <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                            </div>
+                            <span class="coffee-menu-price">$19.99 </span>
                         </div>
-                        <span class="coffee-menu-price">$19.99 </span>
                     </div>
-                </div>
-                <div class="col mb-6">
-                    <div class="coffee-menu">
-                        <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
-                                                                                                      src="{% static 'images/coffee-menu/coffee-4.png' %}"
-                                                                                                      alt="Mexican Cold Coffee"
-                                                                                                      width="85"
-                                                                                                      height="85"></a>
-                        <div class="coffee-menu-content">
-                            <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Mexican Cold
-                                Coffee</a></h3>
-                            <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                    <div class="col mb-6">
+                        <div class="coffee-menu">
+                            <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
+                                                                                                          src="{% static 'images/coffee-menu/coffee-3.png' %}"
+                                                                                                          alt="Brazilan Rosted Coffee"
+                                                                                                          width="85"
+                                                                                                          height="85"></a>
+                            <div class="coffee-menu-content">
+                                <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Brazilan
+                                    Rosted
+                                    Coffee</a></h3>
+                                <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                            </div>
+                            <span class="coffee-menu-price">$19.99 </span>
                         </div>
-                        <span class="coffee-menu-price">$19.99 </span>
                     </div>
-                </div>
-                <div class="col mb-6">
-                    <div class="coffee-menu">
-                        <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
-                                                                                                      src="{% static 'images/coffee-menu/coffee-5.png' %}"
-                                                                                                      alt="Mericano Cold Coffee"
-                                                                                                      width="85"
-                                                                                                      height="85"></a>
-                        <div class="coffee-menu-content">
-                            <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Mericano Cold
-                                Coffee</a></h3>
-                            <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                    <div class="col mb-6">
+                        <div class="coffee-menu">
+                            <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
+                                                                                                          src="{% static 'images/coffee-menu/coffee-4.png' %}"
+                                                                                                          alt="Mexican Cold Coffee"
+                                                                                                          width="85"
+                                                                                                          height="85"></a>
+                            <div class="coffee-menu-content">
+                                <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Mexican
+                                    Cold
+                                    Coffee</a></h3>
+                                <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                            </div>
+                            <span class="coffee-menu-price">$19.99 </span>
                         </div>
-                        <span class="coffee-menu-price">$19.99 </span>
                     </div>
-                </div>
-                <div class="col mb-6">
-                    <div class="coffee-menu">
-                        <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
-                                                                                                      src="{% static 'images/coffee-menu/coffee-6.png' %}"
-                                                                                                      alt="Americano Rosted Coffee"
-                                                                                                      width="85"
-                                                                                                      height="85"></a>
-                        <div class="coffee-menu-content">
-                            <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Americano
-                                Rosted Coffee</a></h3>
-                            <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                    <div class="col mb-6">
+                        <div class="coffee-menu">
+                            <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
+                                                                                                          src="{% static 'images/coffee-menu/coffee-5.png' %}"
+                                                                                                          alt="Mericano Cold Coffee"
+                                                                                                          width="85"
+                                                                                                          height="85"></a>
+                            <div class="coffee-menu-content">
+                                <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Mericano
+                                    Cold
+                                    Coffee</a></h3>
+                                <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                            </div>
+                            <span class="coffee-menu-price">$19.99 </span>
                         </div>
-                        <span class="coffee-menu-price">$19.99 </span>
                     </div>
-                </div>
+                    <div class="col mb-6">
+                        <div class="coffee-menu">
+                            <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
+                                                                                                          src="{% static 'images/coffee-menu/coffee-6.png' %}"
+                                                                                                          alt="Americano Rosted Coffee"
+                                                                                                          width="85"
+                                                                                                          height="85"></a>
+                            <div class="coffee-menu-content">
+                                <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">Americano
+                                    Rosted Coffee</a></h3>
+                                <p>It is produced by grinding roasted coffee beans, then boiling them.</p>
+                            </div>
+                            <span class="coffee-menu-price">$19.99 </span>
+                        </div>
+                    </div>
+                {% endfor %}
 
             </div>
         </div>

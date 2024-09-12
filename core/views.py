@@ -41,6 +41,7 @@ class HomeView(TemplateView):
         data['comments'] = Comment.objects.all().filter(rate__range=[4, 5])[:2]
         data['obj'] = AboutUs.objects.first()
         data['product'] = product_list.order_by('-average_score', 'created_at')[:6]
+        data['popular_product'] = data['product']
         return data
 
 

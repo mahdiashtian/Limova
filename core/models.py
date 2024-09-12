@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.db.models import Model
 from django.utils import timezone
 
 from core.choices import TypeChoices
@@ -46,9 +45,8 @@ class ContactUs(BaseModel):
 
 class AboutUs(BaseModel):
     owner = None
-    image = models.ForeignKey(Media, on_delete=models.CASCADE, verbose_name="تصویر", related_name='about_us_image')
-    # thumbnail = models.ForeignKey(Media, on_delete=models.CASCADE, verbose_name="تصویر کوچک",
-    #                               related_name='about_us_thumbnail', null=True, blank=True)
+    image = models.ForeignKey(Media, on_delete=models.SET_NULL, verbose_name="تصویر", related_name='about_us_image',
+                              null=True, blank=True)
     title_1 = models.CharField(max_length=255, verbose_name="عنوان یک")
     under_title_1 = models.TextField(verbose_name="زیر عنوان یک")
     title_2 = models.CharField(max_length=255, verbose_name="عنوان دو")
@@ -86,7 +84,7 @@ class AboutUs(BaseModel):
 
 class Slider(BaseModel):
     owner = None
-    image = models.OneToOneField(Media, on_delete=models.CASCADE, null=True, blank=True)
+    image = models.OneToOneField(Media, on_delete=models.SET_NULL, null=True, blank=True)
     small_text = models.CharField(max_length=25)
     medium_text = models.CharField(max_length=50)
     large_text = models.CharField(max_length=255)

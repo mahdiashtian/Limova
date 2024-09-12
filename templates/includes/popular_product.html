@@ -1,0 +1,27 @@
+{% load static %}
+{% load math_filters %}
+<div class="coffee-menu">
+    <a href="../../templates/product-details.html" class="coffee-menu-thumb"><img loading="lazy"
+                                                                                  src="
+                                                                                          {% if product.images.exists %}
+                                                                        {{ product.images.first.media.url }}
+                                                {% else %}
+                                                {% static  'images/coffee-menu/coffee-1.png' %}
+                                                                            {% endif %}"
+                                                                                  alt="{{ product.name }}"
+                                                                                  width="85"
+                                                                                  height="85"></a>
+    <div class="coffee-menu-content">
+        <h3 class="coffee-menu-title"><a href="../../templates/product-details.html">{{ product.name }}</a></h3>
+        <p>{{ product.description|slice:":50" }}</p>
+    </div>
+    <span class="coffee-menu-price">
+        {% if product.discount and product.discount.is_active %}
+            ${{ product.price|discount_percentage:product.discount.value }}
+            <del>${{ product.price }}</del>
+        {% else %}
+            ${{ product.price }}
+
+        {% endif %}
+    </span>
+</div>

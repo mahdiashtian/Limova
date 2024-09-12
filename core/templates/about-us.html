@@ -12,7 +12,11 @@
             <div class="row row-cols-lg-2 row-cols-1 mb-n8">
 
                 <div class="col mb-8">
-                    <img loading="lazy" src="{{ obj.image.media.url }}" alt="about us image" width="560"
+                    <img loading="lazy" src="{% if obj.image %}
+                                    {{ obj.image.media.url }}
+                                    {% else %}
+                                     {% static 'images/others/about-us.png' %}
+                                    {% endif %}" alt="about us image" width="560"
                          height="472">
                 </div>
 
