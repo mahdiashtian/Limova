@@ -2921,6 +2921,13 @@ hr {
     object-fit: cover;
 
 }
+.product-thumb-image-slid img{
+
+    width: 270px;
+    height: 308px;
+    object-fit: cover;
+
+}
 
 .product-thumb .product-action {
     position: absolute;
