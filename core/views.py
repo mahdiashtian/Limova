@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView
 
 from core.forms import ContactUsForm
-from core.models import AboutUs
+from core.models import AboutUs, Slider
 from taxonomy.models import Comment
 
 User = get_user_model()
@@ -12,6 +12,11 @@ User = get_user_model()
 
 class HomeView(TemplateView):
     template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        data['sliders'] = Slider.objects.all().filter(is_active=True).order_by('created_at')[:3]
+        return data
 
 
 class ContactUsView(CreateView):
