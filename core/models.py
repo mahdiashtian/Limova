@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import Model
 from django.utils import timezone
 
 from core.choices import TypeChoices
@@ -81,3 +82,14 @@ class AboutUs(BaseModel):
     class Meta:
         verbose_name = 'درباره ما'
         verbose_name_plural = 'درباره ما'
+
+
+class Slider(models.Model):
+    image = models.OneToOneField(Media, on_delete=models.CASCADE)
+    small_text = models.CharField(max_length=25)
+    medium_text = models.CharField(max_length=50)
+    large_text = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name = 'اسلایدر'
+        verbose_name_plural = 'اسلایدر ها'
