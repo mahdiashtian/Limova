@@ -16,7 +16,7 @@
             {#                <li>14 November, 2023</li>#}
             {#                <li><a href="blog-details-left-sidebar.html">0 Comments</a></li>#}
             {#            </ul>#}
-            <p>{{ object.description|slice:":66" }}</p>
+            <p>{{ object.description|safe|slice:":66" }}</p>
             <a href="{% url 'articles:article-detail' object.id %}" class="btn">Explore More</a>
         </div>
     </div>
