@@ -10,7 +10,7 @@
                                                                          alt="{{ object.title }}"
                                                                          width="348" height="232"></a>
         <div class="blog-content">
-            <h4 class="blog-title"><a href="blog-details-left-sidebar.html">{{ object.title }}</a>
+            <h4 class="blog-title"><a href="{% url 'articles:article-detail' object.id %}">{{ object.title }}</a>
             </h4>
             {#            <ul class="blog-meta">#}
             {#                <li>14 November, 2023</li>#}
