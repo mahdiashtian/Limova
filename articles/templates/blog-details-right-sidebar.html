@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Page Banner Section Start -->
+    {% include 'includes/page_banner.html' with page_name="BLOG DETAIL" %}
+    <!-- Page Banner Section End -->
+
+    <!-- Blog Section Start -->
+    <div class="shop-product-section section section-padding">
+        <div class="container">
+            <div class="row mb-n8">
+
+                <div class="col-lg-9 col-12 mb-8">
+                    <div class="single-blog">
+                        <div class="single-blog-image"><img src="{% if object.media %}
+                           {{ object.media.media.url }}
+                        {% else %}
+                        {% static 'images/blog/blog-single-1.jpg' %}
+                        {% endif %}"
+                                                            alt="{{ object.title }}"></div>
+                        <div class="single-blog-content">
+                            <h1 class="single-blog-title">{{ object.title }}</h1>
+                            <ul class="single-blog-meta">
+                                <li>Limova Team</li>
+                            </ul>
+                            <div class="single-blog-description">
+                                {% if object.description %}
+                                    {{ object.description|safe }}
+                                {% else %}
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud
+                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                        irure
+                                        dolor in reprhendit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur.
+                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qei officia deser
+                                        mollit
+                                        anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit
+                                        voluptatem
+                                        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
+                                        inventore
+                                        veritatis et</p>
+                                    <blockquote>
+                                        <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con
+                                            el
+                                            contenido del texto de un sitio mientras que mira su diseño.</p>
+                                    </blockquote>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud
+                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                        irure
+                                        dolor in reprehendrit in voluptate velit esse cillum dolore eu fugiat nulla
+                                        pariatur.</p>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                    <ul class="next-prev-post-nav">
+                        {% if previous_object %}
+
+                            <li><a href="{% url 'articles:article-detail' previous_object.id %}"><i
+                                    class="sli-arrow-left"></i>Older Post</a></li>
+                            {% else %}
+
+                            <li><a><i
+                                    class="sli-arrow-left"></i>Older Post</a></li>
+                        {% endif %}
+
+                        {% if next_object %}
+                            <li><a href="{% url 'articles:article-detail' next_object.id %}"><i
+                                    class="sli-arrow-right"></i>Newer Post</a></li>
+                            {% else %}
+                            <li><a><i
+                                    class="sli-arrow-right"></i>Newer Post</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Blog Section End -->
+
+    <!-- JS Vendor, Plugins & Activation Script Files -->
+{% endblock %}
