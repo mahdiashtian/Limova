@@ -5,11 +5,11 @@ from articles.models import Article
 
 # Create your views here.
 class ArticleList(ListView):
-    model = Article
+    # model = Article
     template_name = 'blog-no-sidebar.html'
 
     def get_queryset(self):
-        return self.get_queryset().order_by('id')
+        return Article.objects.all().order_by('id')
 
 
 class ArticleDetail(DetailView):
