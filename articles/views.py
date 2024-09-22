@@ -20,3 +20,6 @@ class ArticleDetail(DetailView):
         context['previous_object'] = previous_object
         context['next_object'] = next_object
         return context
+
+    def get_queryset(self):
+        return self.get_queryset().order_by('id')
