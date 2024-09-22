@@ -2,10 +2,15 @@ from django.contrib.contenttypes.models import ContentType
 from django.db.models import BooleanField, Case, When, Avg, OuterRef, Subquery, Value, FloatField
 from django.db.models.functions import Now, Coalesce
 from django.utils import timezone
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, TemplateView
 
 from products.models import Product
 from taxonomy.models import Comment
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product-details.html'
 
 
 class ProductListView(ListView):
