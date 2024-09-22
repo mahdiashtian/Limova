@@ -14,7 +14,7 @@ class ArticleModelManager(models.Manager):
 class Article(BaseModel):
     title = models.CharField(max_length=255, verbose_name='عنوان')
     description = models.TextField(verbose_name='توضیحات')
-    media = models.OneToOneField('core.Media', related_name='article', on_delete=models.SET_NULL, null=True, blank=True,
+    media = models.ForeignKey('core.Media', related_name='article', on_delete=models.SET_NULL, null=True, blank=True,
                                  limit_choices_to={'archived_at__isnull': True}, verbose_name='رسانه')
     objects = ArticleModelManager()
 
