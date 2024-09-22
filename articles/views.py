@@ -1,4 +1,4 @@
-from django.views.generic import ListView, TemplateView, DetailView
+from django.views.generic import ListView, DetailView
 
 from articles.models import Article
 
@@ -7,6 +7,9 @@ from articles.models import Article
 class ArticleList(ListView):
     model = Article
     template_name = 'blog-no-sidebar.html'
+
+    def get_queryset(self):
+        return self.get_queryset().order_by('id')
 
 
 class ArticleDetail(DetailView):
