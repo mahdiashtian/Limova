@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load math_filters %}
 {% load static %}
 {% block content %}
 
@@ -20,27 +21,36 @@
                         <!-- Product Image Slider Start -->
                         <div class="product-image-slider swiper">
                             <!-- Product Badge Start -->
-                            <div class="single-product-badge-left">
-                                <span class="single-product-badge-new">new</span>
-                            </div>
-                            <div class="single-product-badge-right">
-                                <span class="single-product-badge-sale">sale</span>
-                                <span class="single-product-badge-sale">-11%</span>
-                            </div>
+                            {% if object.is_recent %}
+                                {% include 'includes/new-product.html' %}
+                            {% endif %}
+                            {% if object.availability == 0 %}
+                                {% include 'includes/soldout-product.html' %}
+                            {% else %}
+                                {% if object.discount and object.discount.is_active %}
+                                    {% include 'includes/sale-product.html' with value=object.discount.value %}
+                                {% endif %}
+                            {% endif %}
                             <!-- Product Badge End -->
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide image-zoom"><img
-                                        src="{% static 'images/products/single/single-product-1.jpg' %}"
-                                        alt="Signature Blend Roast Coffee"></div>
-                                <div class="swiper-slide image-zoom"><img
-                                        src="{% static 'images/products/single/single-product-2.jpg' %}"
-                                        alt="Signature Blend Roast Coffee"></div>
-                                <div class="swiper-slide image-zoom"><img
-                                        src="{% static 'images/products/single/single-product-3.jpg' %}"
-                                        alt="Signature Blend Roast Coffee"></div>
-                                <div class="swiper-slide image-zoom"><img
-                                        src="{% static 'images/products/single/single-product-4.jpg' %}"
-                                        alt="Signature Blend Roast Coffee"></div>
+                                {% for image in object.images.all %}
+                                    <div class="swiper-slide image-zoom"><img
+                                            src="{{ image.media.url }}"
+                                            alt="Signature Blend Roast Coffee"></div>
+                                {% empty %}
+                                    <div class="swiper-slide image-zoom"><img
+                                            src="{% static 'images/products/single/single-product-1.jpg' %}"
+                                            alt="Signature Blend Roast Coffee"></div>
+                                    <div class="swiper-slide image-zoom"><img
+                                            src="{% static 'images/products/single/single-product-2.jpg' %}"
+                                            alt="Signature Blend Roast Coffee"></div>
+                                    <div class="swiper-slide image-zoom"><img
+                                            src="{% static 'images/products/single/single-product-3.jpg' %}"
+                                            alt="Signature Blend Roast Coffee"></div>
+                                    <div class="swiper-slide image-zoom"><img
+                                            src="{% static 'images/products/single/single-product-4.jpg' %}"
+                                            alt="Signature Blend Roast Coffee"></div>
+                                {% endfor %}
                             </div>
                             <div class="swiper-pagination d-none"></div>
                             <div class="swiper-button-prev d-none"></div>
@@ -51,6 +61,11 @@
                         <!-- Product Thumbnail Carousel Start -->
                         <div class="product-thumb-carousel swiper">
                             <div class="swiper-wrapper">
+                                {% for image in object.images.all %}
+                                    <div class="swiper-slide"><img
+                                        src="{{ image.media.url }}"
+                                        alt="Signature Blend Roast Coffee"></div>
+                                {% empty %}
                                 <div class="swiper-slide"><img
                                         src="{% static 'images/products/single/single-product-thumb-1.jpg' %}"
                                         alt="Signature Blend Roast Coffee"></div>
@@ -63,6 +78,7 @@
                                 <div class="swiper-slide"><img
                                         src="{% static 'images/products/single/single-product-thumb-4.jpg' %}"
                                         alt="Signature Blend Roast Coffee"></div>
+                                {% endfor %}
                             </div>
                             <div class="swiper-pagination d-none"></div>
                             <div class="swiper-button-prev"></div>
@@ -77,9 +93,14 @@
                 <!-- Product Content Start -->
                 <div class="col mb-6">
                     <div class="single-product-content">
-                        <h1 class="single-product-title">Signature Blend Roast Coffee</h1>
-                        <div class="single-product-price">$99.00
-                            <del>$110.00</del>
+                        <h1 class="single-product-title">{{ object.title }}</h1>
+                        <div class="single-product-price">
+                            {% if object.discount and object.discount.is_active %}
+                                <del>${{ object.price }}</del>
+                                ${{ object.price|discount_percentage:object.discount.value }}
+                            {% else %}
+                                ${{ object.price }}
+                            {% endif %}
                         </div>
                         <ul class="single-product-meta">
                             <li><span class="label">SKU :</span> <span class="value">1110</span></li>
@@ -208,23 +229,23 @@
                             <a href="#" class="btn btn-dark btn-primary-hover rounded-0">Buy it Now</a>
                         </div>
                         <ul class="single-product-meta">
-{#                            <li><span class="label">Categories :</span> <span class="value links">#}
-{#                                <a href="#">Coffee</a>#}
-{#                                <a href="#">Deal Collection</a>#}
-{#                                <a href="#">Featured Products</a>#}
-{#                                <a href="#">Green coffee</a>#}
-{#                                <a href="#">Italian</a>#}
-{#                            </span></li>#}
-{#                            <li><span class="label">Tags :</span> <span class="value links">#}
-{#                                <a href="#">black</a>#}
-{#                                <a href="#">fiber</a>#}
-{#                                <a href="#">leather</a>#}
-{#                            </span></li>#}
-{#                            <li><span class="label">Share :</span> <span class="value social">#}
-{#                                <a href="#"><img src="{% static 'images/icons/social/facebook.png' %}" alt="facebook"></a>#}
-{#                                <a href="#"><img src="{% static 'images/icons/social/twitter.png' %}" alt="twitter"></a>#}
-{#                                <a href="#"><img src="{% static 'images/icons/social/pinterest.png' %}" alt="pinterest"></a>#}
-{#                            </span></li>#}
+                            {#                            <li><span class="label">Categories :</span> <span class="value links">#}
+                            {#                                <a href="#">Coffee</a>#}
+                            {#                                <a href="#">Deal Collection</a>#}
+                            {#                                <a href="#">Featured Products</a>#}
+                            {#                                <a href="#">Green coffee</a>#}
+                            {#                                <a href="#">Italian</a>#}
+                            {#                            </span></li>#}
+                            {#                            <li><span class="label">Tags :</span> <span class="value links">#}
+                            {#                                <a href="#">black</a>#}
+                            {#                                <a href="#">fiber</a>#}
+                            {#                                <a href="#">leather</a>#}
+                            {#                            </span></li>#}
+                            {#                            <li><span class="label">Share :</span> <span class="value social">#}
+                            {#                                <a href="#"><img src="{% static 'images/icons/social/facebook.png' %}" alt="facebook"></a>#}
+                            {#                                <a href="#"><img src="{% static 'images/icons/social/twitter.png' %}" alt="twitter"></a>#}
+                            {#                                <a href="#"><img src="{% static 'images/icons/social/pinterest.png' %}" alt="pinterest"></a>#}
+                            {#                            </span></li>#}
                         </ul>
                         <div class="single-product-safe-payment">
                             <p>Guaranteed safe checkout</p>
@@ -242,9 +263,9 @@
                 <div class="nav single-product-description-area-nav">
                     <button class="active" data-bs-toggle="tab" data-bs-target="#product-description">Description
                     </button>
-{#                    <button data-bs-toggle="tab" data-bs-target="#product-comments">Comments</button>#}
-{#                    <button data-bs-toggle="tab" data-bs-target="#product-reviews">Reviews</button>#}
-{#                    <button data-bs-toggle="tab" data-bs-target="#product-size-chart">Size Chart</button>#}
+                    {#                    <button data-bs-toggle="tab" data-bs-target="#product-comments">Comments</button>#}
+                    {#                    <button data-bs-toggle="tab" data-bs-target="#product-reviews">Reviews</button>#}
+                    {#                    <button data-bs-toggle="tab" data-bs-target="#product-size-chart">Size Chart</button>#}
                     <button data-bs-toggle="tab" data-bs-target="#product-shipping-policy">Shipping Policy</button>
                 </div>
                 <div class="tab-content">
@@ -280,7 +301,7 @@
                     </div>
                     <!-- Description End -->
 
-{% comment %}
+                    {% comment %}
                     <!-- Comments Start -->
                     <div class="tab-pane fade" id="product-comments">
 
@@ -551,300 +572,300 @@
     <!-- Product Details Section End -->
 
     <!-- Product Section Start -->
-{#    <div class="h1-product-section section section-padding pt-0">#}
-{#        <div class="container">#}
-{#            <div class="section-title section-title-center">#}
-{#                <p class="title">POPULAR ITEM</p>#}
-{#                <h2 class="sub-title">Related Products</h2>#}
-{##}
-{#            </div>#}
-{##}
-{#            <div class="product-carousel swiper">#}
-{##}
-{#                <div class="swiper-wrapper">#}
-{#                    <div class="swiper-slide">#}
-{#                        <div class="product">#}
-{#                            <div class="product-thumb">#}
-{#                                <a href="product-details.html" class="product-image"><img loading="lazy"#}
-{#                                                                                          src="./assets/images/products/product-1.jpg"#}
-{#                                                                                          alt="House Coffee Original"#}
-{#                                                                                          width="268" height="306"></a>#}
-{##}
-{##}
-{#                                <div class="product-badge-left">#}
-{#                                    <span class="product-badge-new">new</span>#}
-{#                                </div>#}
-{##}
-{#                                <div class="product-badge-right">#}
-{#                                    <span class="product-badge-sale">sale</span>#}
-{#                                    <span class="product-badge-sale">-15%</span>#}
-{##}
-{#                                </div>#}
-{#                                <div class="product-action">#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Quick View"#}
-{#                                            data-bs-toggle="modal"#}
-{#                                            data-bs-target="#exampleProductModal"><i class="sli-magnifier"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
-{#                                            class="sli-heart"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Compare"><i#}
-{#                                            class="sli-refresh"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
-{#                                            class="sli-bag"></i></button>#}
-{#                                </div>#}
-{##}
-{#                                <div class="product-variation">#}
-{#                                    <div class="product-variation-type">#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="White"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-1.jpg"#}
-{#                                                alt="white" width="23" height="23"></button>#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="Gold"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-2.jpg"#}
-{#                                                alt="gold" width="23" height="23"></button>#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="Black"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-3.jpg"#}
-{#                                                alt="black" width="23" height="23"></button>#}
-{#                                    </div>#}
-{#                                </div>#}
-{##}
-{#                            </div>#}
-{#                            <div class="product-content">#}
-{##}
-{#                                <h5 class="product-title"><a href="product-details.html">House Coffee Original</a></h5>#}
-{#                                <div class="product-price">#}
-{#                                    <del>$130.00</del>#}
-{#                                    $110.00#}
-{#                                </div>#}
-{#                                <div class="product-rating">#}
-{#                                <span class="product-rating-bg"><span class="product-rating-active"#}
-{#                                                                      style="width: 90%;"></span></span>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="swiper-slide">#}
-{#                        <div class="product">#}
-{#                            <div class="product-thumb">#}
-{#                                <a href="product-details.html" class="product-image"><img loading="lazy"#}
-{#                                                                                          src="./assets/images/products/product-2.jpg"#}
-{#                                                                                          alt="Medium Roast Ground Coffee"#}
-{#                                                                                          width="268" height="306"></a>#}
-{##}
-{##}
-{#                                <div class="product-badge-right">#}
-{#                                    <span class="product-badge-sale">sale</span>#}
-{#                                    <span class="product-badge-sale">-10%</span>#}
-{##}
-{#                                </div>#}
-{#                                <div class="product-action">#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Quick View"#}
-{#                                            data-bs-toggle="modal"#}
-{#                                            data-bs-target="#exampleProductModal"><i class="sli-magnifier"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
-{#                                            class="sli-heart"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Compare"><i#}
-{#                                            class="sli-refresh"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
-{#                                            class="sli-bag"></i></button>#}
-{#                                </div>#}
-{##}
-{#                                <div class="product-variation">#}
-{#                                    <div class="product-variation-type">#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="White"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-1.jpg"#}
-{#                                                alt="white" width="23" height="23"></button>#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="Gold"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-2.jpg"#}
-{#                                                alt="gold" width="23" height="23"></button>#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="Black"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-3.jpg"#}
-{#                                                alt="black" width="23" height="23"></button>#}
-{#                                    </div>#}
-{#                                </div>#}
-{##}
-{#                            </div>#}
-{#                            <div class="product-content">#}
-{##}
-{#                                <h5 class="product-title"><a href="product-details.html">Medium Roast Ground Coffee</a>#}
-{#                                </h5>#}
-{#                                <div class="product-price">#}
-{#                                    <del>$21.00</del>#}
-{#                                    $19.00#}
-{#                                </div>#}
-{#                                <div class="product-rating">#}
-{#                                <span class="product-rating-bg"><span class="product-rating-active"#}
-{#                                                                      style="width: 80%;"></span></span>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="swiper-slide">#}
-{#                        <div class="product">#}
-{#                            <div class="product-thumb">#}
-{#                                <a href="product-details.html" class="product-image"><img loading="lazy"#}
-{#                                                                                          src="./assets/images/products/product-3.jpg"#}
-{#                                                                                          alt="Premium Roast Coffee"#}
-{#                                                                                          width="268" height="306"></a>#}
-{##}
-{#                                <div class="product-action">#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Quick View"#}
-{#                                            data-bs-toggle="modal"#}
-{#                                            data-bs-target="#exampleProductModal"><i class="sli-magnifier"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
-{#                                            class="sli-heart"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Compare"><i#}
-{#                                            class="sli-refresh"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
-{#                                            class="sli-bag"></i></button>#}
-{#                                </div>#}
-{##}
-{#                                <div class="product-variation">#}
-{#                                    <div class="product-variation-type">#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="White"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-1.jpg"#}
-{#                                                alt="white" width="23" height="23"></button>#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="Gold"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-2.jpg"#}
-{#                                                alt="gold" width="23" height="23"></button>#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="Black"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-3.jpg"#}
-{#                                                alt="black" width="23" height="23"></button>#}
-{#                                    </div>#}
-{#                                </div>#}
-{##}
-{#                            </div>#}
-{#                            <div class="product-content">#}
-{##}
-{#                                <h5 class="product-title"><a href="product-details.html">Premium Roast Coffee</a></h5>#}
-{#                                <div class="product-price">$39.00</div>#}
-{#                                <div class="product-rating">#}
-{#                                <span class="product-rating-bg"><span class="product-rating-active"#}
-{#                                                                      style="width: 100%;"></span></span>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="swiper-slide">#}
-{#                        <div class="product">#}
-{#                            <div class="product-thumb">#}
-{#                                <a href="product-details.html" class="product-image"><img loading="lazy"#}
-{#                                                                                          src="./assets/images/products/product-4.jpg"#}
-{#                                                                                          alt="Signature Blend Roast Coffee"#}
-{#                                                                                          width="268" height="306"></a>#}
-{##}
-{##}
-{#                                <div class="product-badge-right">#}
-{#                                    <span class="product-badge-sale">sale</span>#}
-{#                                    <span class="product-badge-sale">-11%</span>#}
-{##}
-{#                                </div>#}
-{#                                <div class="product-action">#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Quick View"#}
-{#                                            data-bs-toggle="modal"#}
-{#                                            data-bs-target="#exampleProductModal"><i class="sli-magnifier"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
-{#                                            class="sli-heart"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Compare"><i#}
-{#                                            class="sli-refresh"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
-{#                                            class="sli-bag"></i></button>#}
-{#                                </div>#}
-{##}
-{#                                <div class="product-variation">#}
-{#                                    <div class="product-variation-type">#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="White"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-1.jpg"#}
-{#                                                alt="white" width="23" height="23"></button>#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="Gold"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-2.jpg"#}
-{#                                                alt="gold" width="23" height="23"></button>#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="Black"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-3.jpg"#}
-{#                                                alt="black" width="23" height="23"></button>#}
-{#                                    </div>#}
-{#                                </div>#}
-{##}
-{#                            </div>#}
-{#                            <div class="product-content">#}
-{##}
-{#                                <h5 class="product-title"><a href="product-details.html">Signature Blend Roast#}
-{#                                    Coffee</a>#}
-{#                                </h5>#}
-{#                                <div class="product-price">#}
-{#                                    <del>$110.00</del>#}
-{#                                    $99.00#}
-{#                                </div>#}
-{#                                <div class="product-rating">#}
-{#                                <span class="product-rating-bg"><span class="product-rating-active"#}
-{#                                                                      style="width: 75%;"></span></span>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="swiper-slide">#}
-{#                        <div class="product">#}
-{#                            <div class="product-thumb">#}
-{#                                <a href="product-details.html" class="product-image"><img loading="lazy"#}
-{#                                                                                          src="./assets/images/products/product-5.jpg"#}
-{#                                                                                          alt="Supreme Dark Roast Coffee"#}
-{#                                                                                          width="268" height="306"></a>#}
-{##}
-{##}
-{#                                <div class="product-badge-left">#}
-{#                                    <span class="product-badge-new">new</span>#}
-{#                                </div>#}
-{##}
-{#                                <div class="product-action">#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Quick View"#}
-{#                                            data-bs-toggle="modal"#}
-{#                                            data-bs-target="#exampleProductModal"><i class="sli-magnifier"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
-{#                                            class="sli-heart"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Compare"><i#}
-{#                                            class="sli-refresh"></i></button>#}
-{#                                    <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
-{#                                            class="sli-bag"></i></button>#}
-{#                                </div>#}
-{##}
-{#                                <div class="product-variation">#}
-{#                                    <div class="product-variation-type">#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="White"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-1.jpg"#}
-{#                                                alt="white" width="23" height="23"></button>#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="Gold"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-2.jpg"#}
-{#                                                alt="gold" width="23" height="23"></button>#}
-{#                                        <button class="product-variation-type-btn" data-tooltip-text="Black"><img#}
-{#                                                loading="lazy" src="./assets/images/products/variation/type/type-3.jpg"#}
-{#                                                alt="black" width="23" height="23"></button>#}
-{#                                    </div>#}
-{#                                </div>#}
-{##}
-{#                            </div>#}
-{#                            <div class="product-content">#}
-{##}
-{#                                <h5 class="product-title"><a href="product-details.html">Supreme Dark Roast Coffee</a>#}
-{#                                </h5>#}
-{#                                <div class="product-price">$80.00</div>#}
-{#                                <div class="product-rating">#}
-{#                                <span class="product-rating-bg"><span class="product-rating-active"#}
-{#                                                                      style="width: 90%;"></span></span>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{##}
-{#                <div class="swiper-pagination d-md-none"></div>#}
-{#                <div class="swiper-button-prev d-none d-md-flex"></div>#}
-{#                <div class="swiper-button-next d-none d-md-flex"></div>#}
-{#            </div>#}
-{##}
-{#        </div>#}
-{#    </div>#}
+    {#    <div class="h1-product-section section section-padding pt-0">#}
+    {#        <div class="container">#}
+    {#            <div class="section-title section-title-center">#}
+    {#                <p class="title">POPULAR ITEM</p>#}
+    {#                <h2 class="sub-title">Related Products</h2>#}
+    {##}
+    {#            </div>#}
+    {##}
+    {#            <div class="product-carousel swiper">#}
+    {##}
+    {#                <div class="swiper-wrapper">#}
+    {#                    <div class="swiper-slide">#}
+    {#                        <div class="product">#}
+    {#                            <div class="product-thumb">#}
+    {#                                <a href="product-details.html" class="product-image"><img loading="lazy"#}
+    {#                                                                                          src="./assets/images/products/product-1.jpg"#}
+    {#                                                                                          alt="House Coffee Original"#}
+    {#                                                                                          width="268" height="306"></a>#}
+    {##}
+    {##}
+    {#                                <div class="product-badge-left">#}
+    {#                                    <span class="product-badge-new">new</span>#}
+    {#                                </div>#}
+    {##}
+    {#                                <div class="product-badge-right">#}
+    {#                                    <span class="product-badge-sale">sale</span>#}
+    {#                                    <span class="product-badge-sale">-15%</span>#}
+    {##}
+    {#                                </div>#}
+    {#                                <div class="product-action">#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Quick View"#}
+    {#                                            data-bs-toggle="modal"#}
+    {#                                            data-bs-target="#exampleProductModal"><i class="sli-magnifier"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
+    {#                                            class="sli-heart"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Compare"><i#}
+    {#                                            class="sli-refresh"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
+    {#                                            class="sli-bag"></i></button>#}
+    {#                                </div>#}
+    {##}
+    {#                                <div class="product-variation">#}
+    {#                                    <div class="product-variation-type">#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="White"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-1.jpg"#}
+    {#                                                alt="white" width="23" height="23"></button>#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="Gold"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-2.jpg"#}
+    {#                                                alt="gold" width="23" height="23"></button>#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="Black"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-3.jpg"#}
+    {#                                                alt="black" width="23" height="23"></button>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {##}
+    {#                            </div>#}
+    {#                            <div class="product-content">#}
+    {##}
+    {#                                <h5 class="product-title"><a href="product-details.html">House Coffee Original</a></h5>#}
+    {#                                <div class="product-price">#}
+    {#                                    <del>$130.00</del>#}
+    {#                                    $110.00#}
+    {#                                </div>#}
+    {#                                <div class="product-rating">#}
+    {#                                <span class="product-rating-bg"><span class="product-rating-active"#}
+    {#                                                                      style="width: 90%;"></span></span>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                    <div class="swiper-slide">#}
+    {#                        <div class="product">#}
+    {#                            <div class="product-thumb">#}
+    {#                                <a href="product-details.html" class="product-image"><img loading="lazy"#}
+    {#                                                                                          src="./assets/images/products/product-2.jpg"#}
+    {#                                                                                          alt="Medium Roast Ground Coffee"#}
+    {#                                                                                          width="268" height="306"></a>#}
+    {##}
+    {##}
+    {#                                <div class="product-badge-right">#}
+    {#                                    <span class="product-badge-sale">sale</span>#}
+    {#                                    <span class="product-badge-sale">-10%</span>#}
+    {##}
+    {#                                </div>#}
+    {#                                <div class="product-action">#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Quick View"#}
+    {#                                            data-bs-toggle="modal"#}
+    {#                                            data-bs-target="#exampleProductModal"><i class="sli-magnifier"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
+    {#                                            class="sli-heart"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Compare"><i#}
+    {#                                            class="sli-refresh"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
+    {#                                            class="sli-bag"></i></button>#}
+    {#                                </div>#}
+    {##}
+    {#                                <div class="product-variation">#}
+    {#                                    <div class="product-variation-type">#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="White"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-1.jpg"#}
+    {#                                                alt="white" width="23" height="23"></button>#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="Gold"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-2.jpg"#}
+    {#                                                alt="gold" width="23" height="23"></button>#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="Black"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-3.jpg"#}
+    {#                                                alt="black" width="23" height="23"></button>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {##}
+    {#                            </div>#}
+    {#                            <div class="product-content">#}
+    {##}
+    {#                                <h5 class="product-title"><a href="product-details.html">Medium Roast Ground Coffee</a>#}
+    {#                                </h5>#}
+    {#                                <div class="product-price">#}
+    {#                                    <del>$21.00</del>#}
+    {#                                    $19.00#}
+    {#                                </div>#}
+    {#                                <div class="product-rating">#}
+    {#                                <span class="product-rating-bg"><span class="product-rating-active"#}
+    {#                                                                      style="width: 80%;"></span></span>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                    <div class="swiper-slide">#}
+    {#                        <div class="product">#}
+    {#                            <div class="product-thumb">#}
+    {#                                <a href="product-details.html" class="product-image"><img loading="lazy"#}
+    {#                                                                                          src="./assets/images/products/product-3.jpg"#}
+    {#                                                                                          alt="Premium Roast Coffee"#}
+    {#                                                                                          width="268" height="306"></a>#}
+    {##}
+    {#                                <div class="product-action">#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Quick View"#}
+    {#                                            data-bs-toggle="modal"#}
+    {#                                            data-bs-target="#exampleProductModal"><i class="sli-magnifier"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
+    {#                                            class="sli-heart"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Compare"><i#}
+    {#                                            class="sli-refresh"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
+    {#                                            class="sli-bag"></i></button>#}
+    {#                                </div>#}
+    {##}
+    {#                                <div class="product-variation">#}
+    {#                                    <div class="product-variation-type">#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="White"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-1.jpg"#}
+    {#                                                alt="white" width="23" height="23"></button>#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="Gold"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-2.jpg"#}
+    {#                                                alt="gold" width="23" height="23"></button>#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="Black"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-3.jpg"#}
+    {#                                                alt="black" width="23" height="23"></button>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {##}
+    {#                            </div>#}
+    {#                            <div class="product-content">#}
+    {##}
+    {#                                <h5 class="product-title"><a href="product-details.html">Premium Roast Coffee</a></h5>#}
+    {#                                <div class="product-price">$39.00</div>#}
+    {#                                <div class="product-rating">#}
+    {#                                <span class="product-rating-bg"><span class="product-rating-active"#}
+    {#                                                                      style="width: 100%;"></span></span>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                    <div class="swiper-slide">#}
+    {#                        <div class="product">#}
+    {#                            <div class="product-thumb">#}
+    {#                                <a href="product-details.html" class="product-image"><img loading="lazy"#}
+    {#                                                                                          src="./assets/images/products/product-4.jpg"#}
+    {#                                                                                          alt="Signature Blend Roast Coffee"#}
+    {#                                                                                          width="268" height="306"></a>#}
+    {##}
+    {##}
+    {#                                <div class="product-badge-right">#}
+    {#                                    <span class="product-badge-sale">sale</span>#}
+    {#                                    <span class="product-badge-sale">-11%</span>#}
+    {##}
+    {#                                </div>#}
+    {#                                <div class="product-action">#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Quick View"#}
+    {#                                            data-bs-toggle="modal"#}
+    {#                                            data-bs-target="#exampleProductModal"><i class="sli-magnifier"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
+    {#                                            class="sli-heart"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Compare"><i#}
+    {#                                            class="sli-refresh"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
+    {#                                            class="sli-bag"></i></button>#}
+    {#                                </div>#}
+    {##}
+    {#                                <div class="product-variation">#}
+    {#                                    <div class="product-variation-type">#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="White"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-1.jpg"#}
+    {#                                                alt="white" width="23" height="23"></button>#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="Gold"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-2.jpg"#}
+    {#                                                alt="gold" width="23" height="23"></button>#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="Black"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-3.jpg"#}
+    {#                                                alt="black" width="23" height="23"></button>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {##}
+    {#                            </div>#}
+    {#                            <div class="product-content">#}
+    {##}
+    {#                                <h5 class="product-title"><a href="product-details.html">Signature Blend Roast#}
+    {#                                    Coffee</a>#}
+    {#                                </h5>#}
+    {#                                <div class="product-price">#}
+    {#                                    <del>$110.00</del>#}
+    {#                                    $99.00#}
+    {#                                </div>#}
+    {#                                <div class="product-rating">#}
+    {#                                <span class="product-rating-bg"><span class="product-rating-active"#}
+    {#                                                                      style="width: 75%;"></span></span>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                    <div class="swiper-slide">#}
+    {#                        <div class="product">#}
+    {#                            <div class="product-thumb">#}
+    {#                                <a href="product-details.html" class="product-image"><img loading="lazy"#}
+    {#                                                                                          src="./assets/images/products/product-5.jpg"#}
+    {#                                                                                          alt="Supreme Dark Roast Coffee"#}
+    {#                                                                                          width="268" height="306"></a>#}
+    {##}
+    {##}
+    {#                                <div class="product-badge-left">#}
+    {#                                    <span class="product-badge-new">new</span>#}
+    {#                                </div>#}
+    {##}
+    {#                                <div class="product-action">#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Quick View"#}
+    {#                                            data-bs-toggle="modal"#}
+    {#                                            data-bs-target="#exampleProductModal"><i class="sli-magnifier"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
+    {#                                            class="sli-heart"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Compare"><i#}
+    {#                                            class="sli-refresh"></i></button>#}
+    {#                                    <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
+    {#                                            class="sli-bag"></i></button>#}
+    {#                                </div>#}
+    {##}
+    {#                                <div class="product-variation">#}
+    {#                                    <div class="product-variation-type">#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="White"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-1.jpg"#}
+    {#                                                alt="white" width="23" height="23"></button>#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="Gold"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-2.jpg"#}
+    {#                                                alt="gold" width="23" height="23"></button>#}
+    {#                                        <button class="product-variation-type-btn" data-tooltip-text="Black"><img#}
+    {#                                                loading="lazy" src="./assets/images/products/variation/type/type-3.jpg"#}
+    {#                                                alt="black" width="23" height="23"></button>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {##}
+    {#                            </div>#}
+    {#                            <div class="product-content">#}
+    {##}
+    {#                                <h5 class="product-title"><a href="product-details.html">Supreme Dark Roast Coffee</a>#}
+    {#                                </h5>#}
+    {#                                <div class="product-price">$80.00</div>#}
+    {#                                <div class="product-rating">#}
+    {#                                <span class="product-rating-bg"><span class="product-rating-active"#}
+    {#                                                                      style="width: 90%;"></span></span>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {##}
+    {#                <div class="swiper-pagination d-md-none"></div>#}
+    {#                <div class="swiper-button-prev d-none d-md-flex"></div>#}
+    {#                <div class="swiper-button-next d-none d-md-flex"></div>#}
+    {#            </div>#}
+    {##}
+    {#        </div>#}
+    {#    </div>#}
     <!-- Product Section End -->
 
     <!-- Product Section Start -->
-{% comment %}
+    {% comment %}
     <div class="h1-product-section section section-padding pt-0">
         <div class="container">
             <div class="section-title section-title-center">
