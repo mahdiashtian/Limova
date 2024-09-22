@@ -3,7 +3,7 @@
 
 <div class="product product-list">
     <div class="product-thumb">
-        <a href="product-details.html" class="product-image"><img loading="lazy"
+        <a href="{% url 'products:product-detail' object.id %}" class="product-image"><img loading="lazy"
                                                                   src="{% if object.images.exists %}
                                                                                                   {{ object.images.first.media.url }}
                                                                                                   {% else %}
@@ -69,7 +69,7 @@
     </div>
     <div class="product-content">
 
-        <h5 class="product-title"><a href="product-details.html">{{ object.name }}</a>
+        <h5 class="product-title"><a href="{% url 'products:product-detail' object.id %}">{{ object.name }}</a>
         </h5>
         <p class="product-excerpt">{{ object.description }}</p>
         <div class="product-price">

@@ -2,15 +2,15 @@
 {% load math_filters %}
 <div class="product">
     <div class="product-thumb">
-        <a href="product-details.html" class="product-image"><img loading="lazy"
-                                                                  src="{% if object.images.exists %}
+        <a href="{% url 'products:product-detail' object.id %}" class="product-image"><img loading="lazy"
+                                                                                           src="{% if object.images.exists %}
                                                                                                   {{ object.images.first.media.url }}
                                                                                                   {% else %}
                                                                                                   {% static 'images/products/product-1.jpg' %}
                                                                                                   {% endif %}"
-                                                                  alt="{{ object.name }}"
-                                                                  width="268"
-                                                                  height="306"></a>
+                                                                                           alt="{{ object.name }}"
+                                                                                           width="268"
+                                                                                           height="306"></a>
         {% if object.is_recent %}
             {% include 'includes/new-product.html' %}
         {% endif %}
@@ -22,9 +22,9 @@
             {% endif %}
         {% endif %}
         <div class="product-action">
-{#            <button class="product-action-btn" data-tooltip-text="Quick View"#}
-{#                    data-bs-toggle="modal" data-bs-target="#example{{ object.id }}"><i#}
-{#                    class="sli-magnifier"></i></button>#}
+            {#            <button class="product-action-btn" data-tooltip-text="Quick View"#}
+            {#                    data-bs-toggle="modal" data-bs-target="#example{{ object.id }}"><i#}
+            {#                    class="sli-magnifier"></i></button>#}
             {#                                            <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
             {#                                                    class="sli-heart"></i></button>#}
             {#                                            <button class="product-action-btn" data-tooltip-text="Compare"><i#}
@@ -72,7 +72,7 @@
     </div>
     <div class="product-content">
 
-        <h5 class="product-title"><a href="product-details.html">{{ object.name }}</a>
+        <h5 class="product-title"><a href="{% url 'products:product-detail' object.id %}">{{ object.name }}</a>
         </h5>
         <div class="product-price">
             {% if object.discount and object.discount.is_active %}
