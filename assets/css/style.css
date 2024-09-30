@@ -2915,7 +2915,7 @@ hr {
 }
 
 
-.product-thumb-image-slid img{
+.product-thumb-image-slid img {
 
     width: 270px;
     height: 308px;
@@ -5730,6 +5730,8 @@ textarea.form-field:focus {
 
 .feature-2 .feature-icon {
     margin-bottom: 20px;
+    width: 80px;
+    height: 80px;
 }
 
 .feature-2 .feature-content {

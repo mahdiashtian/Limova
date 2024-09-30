@@ -93,3 +93,20 @@ class Slider(BaseModel):
     class Meta:
         verbose_name = 'اسلایدر'
         verbose_name_plural = 'اسلایدر ها'
+
+
+class Feature(BaseModel):
+    owner = None
+    image = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True)
+    title = models.CharField(max_length=30)
+    description = models.CharField(max_length=150)
+    is_active = models.BooleanField(default=True)
+
+
+class Meet(BaseModel):
+    owner = None
+    email = models.EmailField()
+    count = models.PositiveSmallIntegerField()
+    date = models.DateField(null=True)
+    time = models.TimeField(null=True)
+    message = models.TextField()
