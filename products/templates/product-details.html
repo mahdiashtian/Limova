@@ -110,33 +110,39 @@
                             </li>
                         </ul>
                         <div class="single-product-text">
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look
-                                even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to
-                                be
-                                sure there isn't anything embarrassing hidden in the middle of text.</p>
+                            {% if object.description %}
+                                {{ object.description|safe }}
+                            {% else %}
+                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have
+                                    suffered alteration in some form, by injected humour, or randomised words which
+                                    don't
+                                    look
+                                    even slightly believable. If you are going to use a passage of Lorem Ipsum, you need
+                                    to
+                                    be
+                                    sure there isn't anything embarrassing hidden in the middle of text.</p>
+                            {% endif %}
                         </div>
                         <ul class="single-product-variations">
-                            <li><span class="label">Size :</span>
-                                <div class="value">
-                                    <div class="single-product-variation-size-wrap">
-                                        <div class="single-product-variation-size-item"><input type="radio" name="size"
-                                                                                               id="size-s"
-                                                                                               checked><label
-                                                for="size-s">s</label></div>
-                                        <div class="single-product-variation-size-item"><input type="radio" name="size"
-                                                                                               id="size-m"><label
-                                                for="size-m">m</label></div>
-                                        <div class="single-product-variation-size-item"><input type="radio" name="size"
-                                                                                               id="size-l"><label
-                                                for="size-l">l</label></div>
-                                        <div class="single-product-variation-size-item"><input type="radio" name="size"
-                                                                                               id="size-xl"><label
-                                                for="size-xl">xl</label></div>
-                                    </div>
-                                </div>
-                            </li>
+                            {#                            <li><span class="label">Size :</span>#}
+                            {#                                <div class="value">#}
+                            {#                                    <div class="single-product-variation-size-wrap">#}
+                            {#                                        <div class="single-product-variation-size-item"><input type="radio" name="size"#}
+                            {#                                                                                               id="size-s"#}
+                            {#                                                                                               checked><label#}
+                            {#                                                for="size-s">s</label></div>#}
+                            {#                                        <div class="single-product-variation-size-item"><input type="radio" name="size"#}
+                            {#                                                                                               id="size-m"><label#}
+                            {#                                                for="size-m">m</label></div>#}
+                            {#                                        <div class="single-product-variation-size-item"><input type="radio" name="size"#}
+                            {#                                                                                               id="size-l"><label#}
+                            {#                                                for="size-l">l</label></div>#}
+                            {#                                        <div class="single-product-variation-size-item"><input type="radio" name="size"#}
+                            {#                                                                                               id="size-xl"><label#}
+                            {#                                                for="size-xl">xl</label></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </li>#}
                             <li><span class="label">Color :</span>
                                 <div class="value">
                                     <div class="single-product-variation-color-wrap">
@@ -172,25 +178,25 @@
                                     <div class="single-product-variation-material-wrap">
                                         <div class="single-product-variation-material-item"><input type="radio"
                                                                                                    name="material"
-                                                                                                   id="material-metal"
+                                                                                                   id="material-stone-paper"
                                                                                                    checked><label
-                                                for="material-metal">metal</label></div>
-                                        <div class="single-product-variation-material-item"><input type="radio"
-                                                                                                   name="material"
-                                                                                                   id="material-resin"><label
-                                                for="material-resin">resin</label></div>
-                                        <div class="single-product-variation-material-item"><input type="radio"
-                                                                                                   name="material"
-                                                                                                   id="material-leather"><label
-                                                for="material-leather">leather</label></div>
-                                        <div class="single-product-variation-material-item"><input type="radio"
-                                                                                                   name="material"
-                                                                                                   id="material-slag"><label
-                                                for="material-slag">slag</label></div>
-                                        <div class="single-product-variation-material-item"><input type="radio"
-                                                                                                   name="material"
-                                                                                                   id="material-fiber"><label
-                                                for="material-fiber">fiber</label></div>
+                                                for="material-metal">stone-paper</label></div>
+                                        {#                                        <div class="single-product-variation-material-item"><input type="radio"#}
+                                        {#                                                                                                   name="material"#}
+                                        {#                                                                                                   id="material-resin"><label#}
+                                        {#                                                for="material-resin">resin</label></div>#}
+                                        {#                                        <div class="single-product-variation-material-item"><input type="radio"#}
+                                        {#                                                                                                   name="material"#}
+                                        {#                                                                                                   id="material-leather"><label#}
+                                        {#                                                for="material-leather">leather</label></div>#}
+                                        {#                                        <div class="single-product-variation-material-item"><input type="radio"#}
+                                        {#                                                                                                   name="material"#}
+                                        {#                                                                                                   id="material-slag"><label#}
+                                        {#                                                for="material-slag">slag</label></div>#}
+                                        {#                                        <div class="single-product-variation-material-item"><input type="radio"#}
+                                        {#                                                                                                   name="material"#}
+                                        {#                                                                                                   id="material-fiber"><label#}
+                                        {#                                                for="material-fiber">fiber</label></div>#}
                                     </div>
                                 </div>
                             </li>
@@ -204,48 +210,81 @@
                                 <i class="sli-envelope"></i> Ask About This product
                             </button>
                         </div>
-                        <div class="single-product-actions">
-                            <div class="single-product-actions-item">
-                                <div class="product-quantity-count">
-                                    <button class="dec qty-btn">-</button>
-                                    <input class="product-quantity-box" type="text" name="quantity" value="1">
-                                    <button class="inc qty-btn">+</button>
+                        {% if request.user.is_authenticated %}
+                            <div class="single-product-actions">
+
+                                <form action="{% url 'products:add-to-cart' product.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="single-product-actions-container">
+                                        <div class="product-quantity-count">
+                                            <button type="button" class="qty-btn dec">-</button>
+                                            <input class="product-quantity-box" type="text" name="quantity"
+                                                   value={% if object_in_cart %}{{ object_in_cart.quantity }}{% else %}1{% endif %}
+                                                           >
+                                            <button type="button" class="qty-btn inc">+</button>
+                                        </div>
+                                        <button type="submit" class="btn btn-dark btn-primary-hover rounded-0">ADD TO
+                                            CART
+                                        </button>
+                                    </div>
+                                </form>
+
+                                {#                                <div class="single-product-actions-item">#}
+                                {#                                    <div class="product-quantity-count">#}
+                                {#                                        <button class="dec qty-btn">-</button>#}
+                                {#                                        <input class="product-quantity-box" type="text" name="quantity" value="1">#}
+                                {#                                        <button class="inc qty-btn">+</button>#}
+                                {#                                    </div>#}
+                                {#                                </div>#}
+                                {#                                <div class="single-product-actions-item">#}
+                                {#                                    <button class="btn btn-dark btn-primary-hover rounded-0">ADD TO CART</button>#}
+                                {#                                </div>#}
+                                {#                                <div class="single-product-actions-item">#}
+                                {#                                    <button class="btn btn-icon btn-light btn-primary-hover rounded-0"><i#}
+                                {#                                            class="sli-heart"></i>#}
+                                {#                                    </button>#}
+                                {#                                </div>#}
+                                <div class="single-product-actions-item">
+                                    <a href="{% url 'products:product-detail' object.id %}"
+                                       class="btn btn-icon btn-light btn-primary-hover rounded-0"><i
+                                            class="sli-refresh"></i></a>
+                                    {#                                    <button class="btn btn-icon btn-light btn-primary-hover rounded-0"><i#}
+                                    {#                                            class="sli-refresh"></i></button>#}
                                 </div>
                             </div>
-                            <div class="single-product-actions-item">
-                                <button class="btn btn-dark btn-primary-hover rounded-0">ADD TO CART</button>
+                        {% else %}
+
+                            <div class="single-product-buy-now">
+                                <a href="{% url 'users:login' %}" class="btn btn-dark btn-primary-hover rounded-0">Sign
+                                    in</a>
                             </div>
-                            {#                            <div class="single-product-actions-item">#}
-                            {#                                <button class="btn btn-icon btn-light btn-primary-hover rounded-0"><i#}
-                            {#                                        class="sli-heart"></i>#}
-                            {#                                </button>#}
-                            {#                            </div>#}
-                            {#                            <div class="single-product-actions-item">#}
-                            {#                                <button class="btn btn-icon btn-light btn-primary-hover rounded-0"><i#}
-                            {#                                        class="sli-refresh"></i></button>#}
-                            {#                            </div>#}
-                        </div>
-                        <div class="single-product-buy-now">
-                            <a href="#" class="btn btn-dark btn-primary-hover rounded-0">Buy it Now</a>
-                        </div>
+
+                        {% endif %}
                         <ul class="single-product-meta">
-                            {#                            <li><span class="label">Categories :</span> <span class="value links">#}
-                            {#                                <a href="#">Coffee</a>#}
-                            {#                                <a href="#">Deal Collection</a>#}
-                            {#                                <a href="#">Featured Products</a>#}
-                            {#                                <a href="#">Green coffee</a>#}
-                            {#                                <a href="#">Italian</a>#}
-                            {#                            </span></li>#}
-                            {#                            <li><span class="label">Tags :</span> <span class="value links">#}
-                            {#                                <a href="#">black</a>#}
-                            {#                                <a href="#">fiber</a>#}
-                            {#                                <a href="#">leather</a>#}
-                            {#                            </span></li>#}
-                            {#                            <li><span class="label">Share :</span> <span class="value social">#}
-                            {#                                <a href="#"><img src="{% static 'images/icons/social/facebook.png' %}" alt="facebook"></a>#}
-                            {#                                <a href="#"><img src="{% static 'images/icons/social/twitter.png' %}" alt="twitter"></a>#}
-                            {#                                <a href="#"><img src="{% static 'images/icons/social/pinterest.png' %}" alt="pinterest"></a>#}
-                            {#                            </span></li>#}
+                            <li><span class="label">Categories :</span> <span class="value links">
+                                 {% if object.categories.exists %}
+                                     {% for category in object.categories.all %}
+                                         <a>{{ category.name }}</a>
+
+                                     {% endfor %}
+                                 {% endif %}
+                                                        </span></li>
+                            <li><span class="label">Tags :</span> <span class="value links">
+                                                            {% if object.tags.exists %}
+                                                                {% for tag in object.tags.all %}
+                                                                    <a>{{ tag.name }}</a>
+
+                                                                    {#                                                            <a href="#">black</a>#}
+                                                                    {#                                                            <a href="#">fiber</a>#}
+                                                                    {#                                                            <a href="#">leather</a>#}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        </span></li>
+                            {#                                                        <li><span class="label">Share :</span> <span class="value social">#}
+                            {#                                                            <a href="#"><img src="{% static 'images/icons/social/facebook.png' %}" alt="facebook"></a>#}
+                            {#                                                            <a href="#"><img src="{% static 'images/icons/social/twitter.png' %}" alt="twitter"></a>#}
+                            {#                                                            <a href="#"><img src="{% static 'images/icons/social/pinterest.png' %}" alt="pinterest"></a>#}
+                            {#                                                        </span></li>#}
                         </ul>
                         <div class="single-product-safe-payment">
                             <p>Guaranteed safe checkout</p>
@@ -273,7 +312,7 @@
                     <div class="tab-pane fade show active" id="product-description">
                         <div class="single-product-description">
                             {% if object.description %}
-                                {{ object.description }}
+                                {{ object.description|safe }}
                             {% else %}
 
                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have

@@ -1,16 +1,41 @@
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import BooleanField, Case, When, Avg, OuterRef, Subquery, Value, FloatField
 from django.db.models.functions import Now, Coalesce
+from django.shortcuts import get_object_or_404, redirect
 from django.utils import timezone
-from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic import ListView, DetailView
 
-from products.models import Product
+from products.models import Product, Order, OrderItem
 from taxonomy.models import Comment
+
+
+class OrderDetail(DetailView):
+    template_name = 'shopping-cart.html'
+
+    def get_queryset(self):
+        return Order.objects.filter(owner=self.request.user)
+
+
+class LastOrderDetail(DetailView):
+    template_name = 'shopping-cart.html'
+
+    def get_queryset(self):
+        return Order.objects.filter(owner=self.request.user)
+
+    def get_object(self, queryset=None):
+        obj, _ = Order.objects.get_or_create(owner=self.request.user, status='pending')
+        return obj
 
 
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'product-details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_in_cart'] = OrderItem.objects.filter(order__status='pending', order__owner=self.request.user,
+                                                             product=self.get_object()).first()
+        return context
 
 
 class ProductListView(ListView):
@@ -55,3 +80,41 @@ class ProductListView(ListView):
             ('-average_score', 'Rate (Most)'),
         ]  # Options for sorting
         return context
+
+
+def add_to_cart(request, product_id):
+    quantity = int(request.POST.get('quantity', 1))
+    product = get_object_or_404(Product, id=product_id)
+    order, created = Order.objects.get_or_create(owner=request.user, status='pending')
+
+    order_item, created = OrderItem.objects.get_or_create(order=order, product=product)
+    order_item.quantity = quantity  # Increase quantity if already in cart
+
+    order_item.save()
+    order.save()
+    referer = request.META.get('HTTP_REFERER', '/')
+    return redirect(referer)  # Redirect to cart detail page
+
+
+def remove_to_cart(request, product_id):
+    if request.method == 'POST':
+        product = get_object_or_404(Product, id=product_id)
+        order, created = Order.objects.get_or_create(owner=request.user, status='pending')
+        order_item = OrderItem.objects.filter(order=order, product=product)
+        order_item.delete()
+        referer = request.META.get('HTTP_REFERER', '/')
+        return redirect(referer)
+    else:
+        return redirect('/')
+
+
+def clear_cart(request):
+    if request.method == 'POST':
+        user = request.user
+        order = Order.objects.filter(owner=user, status='pending').first()
+        if order:
+            order.items.all().delete()
+        referer = request.META.get('HTTP_REFERER', '/')
+        return redirect(referer)
+    else:
+        return redirect('/')

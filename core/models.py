@@ -102,6 +102,10 @@ class Feature(BaseModel):
     description = models.CharField(max_length=150)
     is_active = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name = "ویژگی"
+        verbose_name_plural = "ویژگی ها"
+
 
 class Meet(BaseModel):
     owner = None
@@ -110,3 +114,7 @@ class Meet(BaseModel):
     date = models.DateField(null=True)
     time = models.TimeField(null=True)
     message = models.TextField()
+
+    class Meta:
+        verbose_name = "ملاقات"
+        verbose_name_plural = "ملاقات ها"

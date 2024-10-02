@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load math_filters %}
+{% block content %}
+    <!-- Page Banner Section Start -->
+    {% include 'includes/page_banner.html' with page_name="SHOPPING CART" %}
+    <!-- Page Banner Section End -->
+
+    <!-- Shopping Cart Section Start -->
+    <div class="section section-padding">
+        <div class="container">
+            <div class="row mb-n6 mb-lg-n10">
+
+                <div class="col-12 mb-6 mb-lg-10">
+
+                    <!-- Cart Table For Tablet & Up Devices Start -->
+                    <table class="cart-table table table-bordered text-center align-middle mb-6 d-none d-md-table">
+                        <thead>
+                        <tr>
+                            <th class="image">Image</th>
+                            <th class="title">Product</th>
+                            <th class="price">Price</th>
+                            <th class="quantity">Quantity</th>
+                            <th class="total">Total</th>
+                            <th class="remove">Remove</th>
+                        </tr>
+                        </thead>
+                        <tbody class="border-top-0">
+                        {% for order_item in object.items.all %}
+                            <tr>
+                                <th><a href="{% url 'products:product-detail' order_item.product.id %}">
+                                    <img src="{% if order_item.product.images.exists %}
+                                    {{ order_item.product.images.all.first.media.url }}
+                                    {% else %}
+                                    {% static 'images/products/single/single-product-thumb-1.jpg' %}
+                                    {% endif %}"
+                                         alt="{{ order_item.product.name }}">
+                                </a></th>
+                                <td>
+                                    <a href="{% url 'products:product-detail' order_item.product.id %}">{{ order_item.product.name }}</a>
+                                </td>
+                                {% if order_item.product.discount and order_item.product.discount.is_active %}
+                                    <td>
+                                        <del>${{ order_item.price }}</del>
+                                        ${{ order_item.price|discount_percentage:order_item.product.discount.value }}
+                                    </td>
+                                    {#                                    <td>${{ order_item.price|discount_percentage:order_item.product.discount.value }}</td>#}
+                                {% else %}
+                                    <td>${{ order_item.price }}</td>
+                                {% endif %}
+                                <td>
+                                    {{ order_item.quantity }}
+                                </td>
+                                <td>${{ order_item.final_price }}</td>
+                                <td>
+                                    <form action="{% url 'products:remove-to-cart' order_item.product.id %}"
+                                          method="POST"
+                                          style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="remove-btn"
+                                                style="background: none; border: none; cursor: pointer;">
+                                            <i class="sli-close"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <!-- Cart Table For Tablet & Up Devices End -->
+
+                    <!-- Cart Table For Mobile Devices Start -->
+                    <div class="cart-products-mobile d-md-none">
+                        {% for order_item in object.items.all %}
+                            <div class="cart-product-mobile">
+                                <div class="cart-product-mobile-thumb">
+                                    <a href="{% url 'products:product-detail' order_item.product.id %}"
+                                       class="cart-product-mobile-image"><img
+                                            src="{% if order_item.product.images.exists %}
+                                    {{ order_item.product.images.all.first.media.url }}
+                                    {% else %}
+                                    {% static 'images/products/single/single-product-thumb-1.jpg' %}
+                                    {% endif %}"
+                                            alt="House Coffee Original" width="90" height="103"></a>
+                                    <form action="{% url 'products:remove-to-cart' order_item.product.id %}"
+                                          method="POST"
+                                          style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="cart-product-mobile-remove">
+                                            {#                                                style="background: none; border: none; cursor: pointer;">#}
+                                            <i class="sli-close"></i>
+                                        </button>
+                                    </form>
+                                    {#                                    <button class="cart-product-mobile-remove"><i class="sli-close"></i></button>#}
+                                </div>
+                                <div class="cart-product-mobile-content">
+                                    <h5 class="cart-product-mobile-title"><a
+                                            href="{% url 'products:product-detail' order_item.product.id %}">{{ order_item.product.name }}</a>
+                                    </h5>
+                                    {% if order_item.product.discount and order_item.product.discount.is_active %}
+                                        <span class="cart-product-mobile-quantity">{{ order_item.quantity }} x <del>${{ order_item.price }}</del> - ${{ order_item.price|discount_percentage:order_item.product.discount.value }}</span>
+
+                                    {% else %}
+                                        <span class="cart-product-mobile-quantity">{{ order_item.quantity }} x ${{ order_item.price }}</span>
+                                    {% endif %}
+                                    <span class="cart-product-mobile-total"><b>Total:</b> ${{ order_item.final_price }}</span>
+                                    <div class="product-quantity-count">
+                                        <button class="dec qty-btn">-</button>
+                                        <input class="product-quantity-box" type="text" name="quantity"
+                                               value="{{ order_item.quantity }}">
+                                        <button class="inc qty-btn">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- Cart Table For Mobile Devices End -->
+
+                    <!-- Cart Action Buttons Start -->
+                    <div class="row justify-content-between gap-3">
+                        <div class="col-auto">
+                            <a href="{% url 'products:product-list' %}" class="btn btn-outline-dark btn-primary-hover rounded-0">
+    Continue Shopping
+</a>
+{#                            <button class="btn btn-outline-dark btn-primary-hover rounded-0">Continue Shopping</button>#}
+                        </div>
+                        <div class="col-auto d-flex flex-wrap gap-3">
+{#                            <button class="btn btn-outline-dark btn-primary-hover rounded-0">Update Cart</button>#}
+                            <form action="{% url 'products:clear-cart' %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-light btn-primary-hover rounded-0">
+                                    Clear Cart
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Cart Action Buttons End -->
+
+                </div>
+
+                <!-- Cart Totals Start -->
+                <div class="col">
+                    <div class="cart-totals">
+                        <h4 class="title">Cart totals</h4>
+                        <table class="table table-borderless bg-transparent">
+                            <tbody>
+{#                            <tr class="subtotal">#}
+{#                                <th>Subtotal</th>#}
+{#                                <td><span class="amount">£242.00</span></td>#}
+{#                            </tr>#}
+                            <tr class="total">
+                                <th>Total</th>
+                                <td><strong><span class="amount">{{ order.total_price }}</span></strong></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <a href="" class="btn btn-dark btn-primary-hover rounded-0">Proceed to checkout</a>
+                    </div>
+                </div>
+                <!-- Cart Totals End -->
+
+            </div>
+        </div>
+    </div>
+    <!-- Shopping Cart Section End -->
+{% endblock %}

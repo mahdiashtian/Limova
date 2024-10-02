@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 from decouple import config
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -165,3 +166,7 @@ AUTH_USER_MODEL = 'users.User'
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]
 APPEND_SLASH = True
+# settings.py
+USE_TZ = True  # Timezone support is enabled
+TIME_ZONE = 'UTC'  # or your desired timezone (e.g., 'America/New_York')
+LOGIN_URL = reverse_lazy('users:login')
