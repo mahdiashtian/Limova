@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import BooleanField, Case, When, Avg, OuterRef, Subquery, Value, FloatField
 from django.db.models.functions import Now, Coalesce
@@ -9,14 +11,14 @@ from products.models import Product, Order, OrderItem
 from taxonomy.models import Comment
 
 
-class OrderDetail(DetailView):
+class OrderDetail(LoginRequiredMixin, DetailView):
     template_name = 'shopping-cart.html'
 
     def get_queryset(self):
         return Order.objects.filter(owner=self.request.user)
 
 
-class LastOrderDetail(DetailView):
+class LastOrderDetail(LoginRequiredMixin, DetailView):
     template_name = 'shopping-cart.html'
 
     def get_queryset(self):
@@ -35,7 +37,8 @@ class ProductDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         user = self.request.user
         if user.is_authenticated:
-            context['object_in_cart'] = OrderItem.objects.filter(order__status='pending', order__owner=self.request.user,
+            context['object_in_cart'] = OrderItem.objects.filter(order__status='pending',
+                                                                 order__owner=self.request.user,
                                                                  product=self.get_object()).first()
         return context
 
@@ -84,6 +87,7 @@ class ProductListView(ListView):
         return context
 
 
+@login_required
 def add_to_cart(request, product_id):
     quantity = int(request.POST.get('quantity', 1))
     product = get_object_or_404(Product, id=product_id)
@@ -98,6 +102,7 @@ def add_to_cart(request, product_id):
     return redirect(referer)  # Redirect to cart detail page
 
 
+@login_required
 def remove_to_cart(request, product_id):
     if request.method == 'POST':
         product = get_object_or_404(Product, id=product_id)
@@ -110,6 +115,7 @@ def remove_to_cart(request, product_id):
         return redirect('/')
 
 
+@login_required
 def clear_cart(request):
     if request.method == 'POST':
         user = request.user
