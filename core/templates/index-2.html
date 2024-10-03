@@ -1887,7 +1887,7 @@
                                     <ul class="blog-meta">
                                         <li>{{ article.created_at|date:"j F, Y" }}</li>
                                     </ul>
-                                    <p>{{ article.description|slice:":68" }}</p>
+                                    <p>{{ article.description|slice:":68"|safe }}</p>
                                     <a href="{% url 'articles:article-detail' article.id %}" class="btn">Explore
                                         More</a>
                                 </div>
