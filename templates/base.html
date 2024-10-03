@@ -228,7 +228,7 @@
                             <li><a href="{% url 'core:contact-us' %}">Contact us</a></li>
                             {#                            <li><a href="wishlist.html">Wishlist</a></li>#}
                             {% if request.user.is_authenticated %}
-                                <li><a href="my-account.html">My Account</a></li>
+                                <li><a href="{% url 'users:my-account' %}">My Account</a></li>
                             {% else %}
                                 <li><a href="{% url 'users:login' %}">Sign in</a></li>
                                 <li><a href="{% url 'users:signup' %}">Sign up</a></li>
