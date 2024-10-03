@@ -33,8 +33,10 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['object_in_cart'] = OrderItem.objects.filter(order__status='pending', order__owner=self.request.user,
-                                                             product=self.get_object()).first()
+        user = self.request.user
+        if user.is_authenticated:
+            context['object_in_cart'] = OrderItem.objects.filter(order__status='pending', order__owner=self.request.user,
+                                                                 product=self.get_object()).first()
         return context
 
 
