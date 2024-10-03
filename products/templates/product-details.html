@@ -146,30 +146,38 @@
                             <li><span class="label">Color :</span>
                                 <div class="value">
                                     <div class="single-product-variation-color-wrap">
-                                        <div class="single-product-variation-color-item"><input type="radio"
-                                                                                                name="color"
-                                                                                                id="color-purple"
-                                                                                                checked><label
-                                                for="color-purple" style="background-color: purple;">purple</label>
-                                        </div>
-                                        <div class="single-product-variation-color-item"><input type="radio"
-                                                                                                name="color"
-                                                                                                id="color-violet"><label
-                                                for="color-violet" style="background-color: violet;">violet</label>
-                                        </div>
-                                        <div class="single-product-variation-color-item"><input type="radio"
-                                                                                                name="color"
-                                                                                                id="color-black"><label
-                                                for="color-black" style="background-color: black;">black</label></div>
-                                        <div class="single-product-variation-color-item"><input type="radio"
-                                                                                                name="color"
-                                                                                                id="color-pink"><label
-                                                for="color-pink" style="background-color: pink;">pink</label></div>
-                                        <div class="single-product-variation-color-item"><input type="radio"
-                                                                                                name="color"
-                                                                                                id="color-orange"><label
-                                                for="color-orange" style="background-color: orange;">orange</label>
-                                        </div>
+                                        {% for color in object.colors.all %}
+                                            <div class="single-product-variation-color-item"><input type="radio"
+                                                                                                    name="color"
+                                                                                                    id="color-{{ color.name }}"><label
+                                                    for="color-{{ color.name }}" style="background-color: {{ color.name }};">{{ color.name }}</label>
+                                            </div>
+
+                                        {% endfor %}
+                                        {#                                        <div class="single-product-variation-color-item"><input type="radio"#}
+                                        {#                                                                                                name="color"#}
+                                        {#                                                                                                id="color-purple"#}
+                                        {#                                                                                                checked><label#}
+                                        {#                                                for="color-purple" style="background-color: purple;">purple</label>#}
+                                        {#                                        </div>#}
+                                        {#                                        <div class="single-product-variation-color-item"><input type="radio"#}
+                                        {#                                                                                                name="color"#}
+                                        {#                                                                                                id="color-violet"><label#}
+                                        {#                                                for="color-violet" style="background-color: violet;">violet</label>#}
+                                        {#                                        </div>#}
+                                        {#                                        <div class="single-product-variation-color-item"><input type="radio"#}
+                                        {#                                                                                                name="color"#}
+                                        {#                                                                                                id="color-black"><label#}
+                                        {#                                                for="color-black" style="background-color: black;">black</label></div>#}
+                                        {#                                        <div class="single-product-variation-color-item"><input type="radio"#}
+                                        {#                                                                                                name="color"#}
+                                        {#                                                                                                id="color-pink"><label#}
+                                        {#                                                for="color-pink" style="background-color: pink;">pink</label></div>#}
+                                        {#                                        <div class="single-product-variation-color-item"><input type="radio"#}
+                                        {#                                                                                                name="color"#}
+                                        {#                                                                                                id="color-orange"><label#}
+                                        {#                                                for="color-orange" style="background-color: orange;">orange</label>#}
+                                        {#                                        </div>#}
                                     </div>
                                 </div>
                             </li>
@@ -219,8 +227,9 @@
                                         <div class="product-quantity-count">
                                             <button type="button" class="qty-btn dec">-</button>
                                             <input class="product-quantity-box" type="text" name="quantity"
-                                                   value={% if object_in_cart %}{{ object_in_cart.quantity }}{% else %}1{% endif %}
-                                                           >
+                                                   value=
+                                                           {% if object_in_cart %}{{ object_in_cart.quantity }}{% else %}1{% endif %}
+                                            >
                                             <button type="button" class="qty-btn inc">+</button>
                                         </div>
                                         <button type="submit" class="btn btn-dark btn-primary-hover rounded-0">ADD TO
