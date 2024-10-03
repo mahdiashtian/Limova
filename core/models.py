@@ -84,7 +84,7 @@ class AboutUs(BaseModel):
 
 class Slider(BaseModel):
     owner = None
-    image = models.OneToOneField(Media, on_delete=models.SET_NULL, null=True, blank=True)
+    image = models.ForeignKey(Media, on_delete=models.SET_NULL, null=True, blank=True)
     small_text = models.CharField(max_length=25)
     medium_text = models.CharField(max_length=50)
     large_text = models.CharField(max_length=255)
