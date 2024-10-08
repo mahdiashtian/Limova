@@ -1280,6 +1280,17 @@ hr {
     color: black;
 }
 
+.image-text-container {
+    /* Adjust the height as needed */
+    height: 300px; /* Set to your desired height */
+    /* Optional: Add padding to the paragraph */
+    padding: 20px;
+    color: white; /* Adjust text color for contrast */
+    display: flex;
+    align-items: center; /* Center text vertically */
+}
+
+
 .justified-text {
     text-align: justify; /* Justifies the text */
     line-height: 1.6; /* Optional: improves readability */
