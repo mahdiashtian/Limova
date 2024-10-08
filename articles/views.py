@@ -12,7 +12,7 @@ class ArticleList(DetailView):
         return Article.objects.all().order_by('id')
 
     def get_object(self, queryset=None):
-        return Article.objects.all().filter(archived_at__isnull=False).order_by('id')
+        return Article.objects.all().filter(archived_at__isnull=True).order_by('id').first()
 
 
 class ArticleDetail(DetailView):
