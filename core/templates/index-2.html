@@ -249,7 +249,7 @@
         <div class="container">
             <div class="section-title section-title-center">
                 {#                <p class="title">What Happens Here</p>#}
-                <h2 class="sub-title">OFFICE AREA</h2>
+                <h2 class="sub-title">OFFICE INFO</h2>
 
             </div>
             <div class="row row-cols-md-2 row-cols-1 mb-n8">
@@ -276,38 +276,61 @@
                 </div>
 
                 <div class="col-lg-5 col mb-8">
-                    <div class="reservation-form">
-                        <div class="block-title">
-                            <p class="title">#APPOINTMENT</p>
-                            <h2 class="sub-title">APPOINTMENT</h2>
-                        </div>
-                        <form action="{% url 'core:meet' %}" method="post">
-                            {% csrf_token %}
-                            <div class="input-field"><input class="form-field" name="email" type="email"
-                                                            placeholder="Your Email">
+                                            <div class="blog">
+                                <a href="{% url 'articles:article-list' %}" class="blog-thumb"><img loading="lazy"
+                                                                                                    src="{% if article.media %}
+                                                                                                 {{ article.media.media.url }}
+                                                                                                 {% else %}
+                                                                                                 {% static 'images/blog/blog-1.jpg' %}
+                                                                                                 {% endif %}"
+                                                                                                    alt="{{ article.title }}"
+                                                                                                    width="348"
+                                                                                                    height="232"></a>
+                                <div class="blog-content">
+                                    <h4 class="blog-title"><a
+                                            href="{% url 'articles:article-list' %}">{{ article.title }}</a>
+                                    </h4>
+                                    <ul class="blog-meta">
+                                        <li>{{ article.created_at|date:"j F, Y" }}</li>
+                                    </ul>
+                                    <p>{{ article.description|remove_html|slice:":68" }}</p>
+                                    <a href="{% url 'articles:article-list' %}" class="btn">Explore
+                                        More</a>
+                                </div>
                             </div>
-                            <div class="input-field"><input class="form-field" name="count" type="number" value="1"
-                                                            min="1"></div>
-                            <div class="input-field"><input class="form-field" name="date" type="date"
-                                                            value="2024-01-01"></div>
-                            <div class="input-field"><input class="form-field" name="time" type="time" value="13:00">
-                            </div>
-                            <div class="input-field"><textarea class="form-field" name="message"
-                                                               placeholder="Your Message"></textarea>
-                            </div>
-                            <div class="input-field"><input class="btn btn-dark btn-primary-hover rounded-0 w-100"
-                                                            type="submit" value="Send Appointment"></div>
-                        </form>
-                        {% if messages %}
-                            <div class="messages">
-                                {% for message in messages %}
-                                    <div class="alert alert-{{ message.tags }}">
-                                        {{ message }}
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
+
+{#                    <div class="reservation-form">#}
+{#                        <div class="block-title">#}
+{#                            <p class="title">#APPOINTMENT</p>#}
+{#                            <h2 class="sub-title">APPOINTMENT</h2>#}
+{#                        </div>#}
+{#                        <form action="{% url 'core:meet' %}" method="post">#}
+{#                            {% csrf_token %}#}
+{#                            <div class="input-field"><input class="form-field" name="email" type="email"#}
+{#                                                            placeholder="Your Email">#}
+{#                            </div>#}
+{#                            <div class="input-field"><input class="form-field" name="count" type="number" value="1"#}
+{#                                                            min="1"></div>#}
+{#                            <div class="input-field"><input class="form-field" name="date" type="date"#}
+{#                                                            value="2024-01-01"></div>#}
+{#                            <div class="input-field"><input class="form-field" name="time" type="time" value="13:00">#}
+{#                            </div>#}
+{#                            <div class="input-field"><textarea class="form-field" name="message"#}
+{#                                                               placeholder="Your Message"></textarea>#}
+{#                            </div>#}
+{#                            <div class="input-field"><input class="btn btn-dark btn-primary-hover rounded-0 w-100"#}
+{#                                                            type="submit" value="Send Appointment"></div>#}
+{#                        </form>#}
+{#                        {% if messages %}#}
+{#                            <div class="messages">#}
+{#                                {% for message in messages %}#}
+{#                                    <div class="alert alert-{{ message.tags }}">#}
+{#                                        {{ message }}#}
+{#                                    </div>#}
+{#                                {% endfor %}#}
+{#                            </div>#}
+{#                        {% endif %}#}
+{#                    </div>#}
                 </div>
 
             </div>
@@ -1893,44 +1916,44 @@
     <!-- Gallery Section End -->
 
     <!-- Blog Section Start -->
-    <div class="h2-blog-section section section-padding pt-0">
-        <div class="container">
-            <div class="section-title section-title-center">
+{#    <div class="h2-blog-section section section-padding pt-0">#}
+{#        <div class="container">#}
+{#            <div class="section-title section-title-center">#}
                 {#                <p class="title">What Happens Here</p>#}
-                <h2 class="sub-title">EXPLOR STONE PAPER</h2>
-
-            </div>
-
-            <div class="blog-carousel swiper">
-
+{#                <h2 class="sub-title">EXPLOR STONE PAPER</h2>#}
+{##}
+{#            </div>#}
+{##}
+{#            <div class="blog-carousel swiper">#}
+{##}
                 {#                <div class="swiper-wrapper">#}
-                {% if article %}
-                    <div style="display: flex;align-items: center;justify-items: center;margin: 100px;height: 100%" class="justify-content-center">
-                        <div class="col-lg-5 col mb-8 ">
-                            <div class="blog">
-                                <a href="{% url 'articles:article-list' %}" class="blog-thumb"><img loading="lazy"
-                                                                                                    src="{% if article.media %}
-                                                                                                 {{ article.media.media.url }}
-                                                                                                 {% else %}
-                                                                                                 {% static 'images/blog/blog-1.jpg' %}
-                                                                                                 {% endif %}"
-                                                                                                    alt="{{ article.title }}"
-                                                                                                    width="348"
-                                                                                                    height="232"></a>
-                                <div class="blog-content">
-                                    <h4 class="blog-title"><a
-                                            href="{% url 'articles:article-list' %}">{{ article.title }}</a>
-                                    </h4>
-                                    <ul class="blog-meta">
-                                        <li>{{ article.created_at|date:"j F, Y" }}</li>
-                                    </ul>
-                                    <p>{{ article.description|remove_html|slice:":68" }}</p>
-                                    <a href="{% url 'articles:article-list' %}" class="btn">Explore
-                                        More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{#                {% if article %}#}
+{#                    <div style="display: flex;align-items: center;justify-items: center;margin: 100px;height: 100%" class="justify-content-center">#}
+{#                        <div class="col-lg-5 col mb-8 ">#}
+{#                            <div class="blog">#}
+{#                                <a href="{% url 'articles:article-list' %}" class="blog-thumb"><img loading="lazy"#}
+{#                                                                                                    src="{% if article.media %}#}
+{#                                                                                                 {{ article.media.media.url }}#}
+{#                                                                                                 {% else %}#}
+{#                                                                                                 {% static 'images/blog/blog-1.jpg' %}#}
+{#                                                                                                 {% endif %}"#}
+{#                                                                                                    alt="{{ article.title }}"#}
+{#                                                                                                    width="348"#}
+{#                                                                                                    height="232"></a>#}
+{#                                <div class="blog-content">#}
+{#                                    <h4 class="blog-title"><a#}
+{#                                            href="{% url 'articles:article-list' %}">{{ article.title }}</a>#}
+{#                                    </h4>#}
+{#                                    <ul class="blog-meta">#}
+{#                                        <li>{{ article.created_at|date:"j F, Y" }}</li>#}
+{#                                    </ul>#}
+{#                                    <p>{{ article.description|remove_html|slice:":68" }}</p>#}
+{#                                    <a href="{% url 'articles:article-list' %}" class="btn">Explore#}
+{#                                        More</a>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
                     {#                        <div class="swiper-slide">#}
                     {#                            <div class="blog">#}
                     {#                                <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"#}
@@ -1955,100 +1978,100 @@
                     {#                                </div>#}
                     {#                            </div>#}
                     {#                        </div>#}
-
-                {% else %}
-                    <div class="swiper-slide">
-                        <div class="blog">
-                            <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"
-                                                                                             src="{% static 'images/blog/blog-1.jpg' %}"
-                                                                                             alt="Watch misni sdedn nises"
-                                                                                             width="348"
-                                                                                             height="232"></a>
-                            <div class="blog-content">
-                                <h4 class="blog-title"><a href="blog-details-left-sidebar.html">Watch misni sdedn
-                                    nises</a></h4>
-                                <ul class="blog-meta">
-                                    <li>14 November, 2023</li>
-                                    <li><a href="blog-details-left-sidebar.html">0 Comments</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore...</p>
-                                <a href="blog-details-left-sidebar.html" class="btn">Explore More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="blog">
-                            <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"
-                                                                                             src="{% static 'images/blog/blog-2.jpg' %}"
-                                                                                             alt="Jininsi smart watch mnisyh nise"
-                                                                                             width="348"
-                                                                                             height="232"></a>
-                            <div class="blog-content">
-                                <h4 class="blog-title"><a href="blog-details-left-sidebar.html">Jininsi smart watch
-                                    mnisyh nise</a></h4>
-                                <ul class="blog-meta">
-                                    <li>14 November, 2023</li>
-                                    <li><a href="blog-details-left-sidebar.html">0 Comments</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore...</p>
-                                <a href="blog-details-left-sidebar.html" class="btn">Explore More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="blog">
-                            <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"
-                                                                                             src="{% static 'images/blog/blog-3.jpg' %}"
-                                                                                             alt="Minis mnies anide ewnis"
-                                                                                             width="348"
-                                                                                             height="232"></a>
-                            <div class="blog-content">
-                                <h4 class="blog-title"><a href="blog-details-left-sidebar.html">Minis mnies anide
-                                    ewnis</a></h4>
-                                <ul class="blog-meta">
-                                    <li>14 November, 2023</li>
-                                    <li><a href="blog-details-left-sidebar.html">0 Comments</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore...</p>
-                                <a href="blog-details-left-sidebar.html" class="btn">Explore More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="blog">
-                            <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"
-                                                                                             src="{% static 'images/blog/blog-4.jpg' %}"
-                                                                                             alt="Smgori tuin nibes kninwe"
-                                                                                             width="348"
-                                                                                             height="232"></a>
-                            <div class="blog-content">
-                                <h4 class="blog-title"><a href="blog-details-left-sidebar.html">Smgori tuin nibes
-                                    kninwe</a></h4>
-                                <ul class="blog-meta">
-                                    <li>14 November, 2023</li>
-                                    <li><a href="blog-details-left-sidebar.html">0 Comments</a></li>
-                                </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore...</p>
-                                <a href="blog-details-left-sidebar.html" class="btn">Explore More</a>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
+{##}
+{#                {% else %}#}
+{#                    <div class="swiper-slide">#}
+{#                        <div class="blog">#}
+{#                            <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"#}
+{#                                                                                             src="{% static 'images/blog/blog-1.jpg' %}"#}
+{#                                                                                             alt="Watch misni sdedn nises"#}
+{#                                                                                             width="348"#}
+{#                                                                                             height="232"></a>#}
+{#                            <div class="blog-content">#}
+{#                                <h4 class="blog-title"><a href="blog-details-left-sidebar.html">Watch misni sdedn#}
+{#                                    nises</a></h4>#}
+{#                                <ul class="blog-meta">#}
+{#                                    <li>14 November, 2023</li>#}
+{#                                    <li><a href="blog-details-left-sidebar.html">0 Comments</a></li>#}
+{#                                </ul>#}
+{#                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor#}
+{#                                    incididunt ut labore...</p>#}
+{#                                <a href="blog-details-left-sidebar.html" class="btn">Explore More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="swiper-slide">#}
+{#                        <div class="blog">#}
+{#                            <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"#}
+{#                                                                                             src="{% static 'images/blog/blog-2.jpg' %}"#}
+{#                                                                                             alt="Jininsi smart watch mnisyh nise"#}
+{#                                                                                             width="348"#}
+{#                                                                                             height="232"></a>#}
+{#                            <div class="blog-content">#}
+{#                                <h4 class="blog-title"><a href="blog-details-left-sidebar.html">Jininsi smart watch#}
+{#                                    mnisyh nise</a></h4>#}
+{#                                <ul class="blog-meta">#}
+{#                                    <li>14 November, 2023</li>#}
+{#                                    <li><a href="blog-details-left-sidebar.html">0 Comments</a></li>#}
+{#                                </ul>#}
+{#                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor#}
+{#                                    incididunt ut labore...</p>#}
+{#                                <a href="blog-details-left-sidebar.html" class="btn">Explore More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="swiper-slide">#}
+{#                        <div class="blog">#}
+{#                            <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"#}
+{#                                                                                             src="{% static 'images/blog/blog-3.jpg' %}"#}
+{#                                                                                             alt="Minis mnies anide ewnis"#}
+{#                                                                                             width="348"#}
+{#                                                                                             height="232"></a>#}
+{#                            <div class="blog-content">#}
+{#                                <h4 class="blog-title"><a href="blog-details-left-sidebar.html">Minis mnies anide#}
+{#                                    ewnis</a></h4>#}
+{#                                <ul class="blog-meta">#}
+{#                                    <li>14 November, 2023</li>#}
+{#                                    <li><a href="blog-details-left-sidebar.html">0 Comments</a></li>#}
+{#                                </ul>#}
+{#                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor#}
+{#                                    incididunt ut labore...</p>#}
+{#                                <a href="blog-details-left-sidebar.html" class="btn">Explore More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="swiper-slide">#}
+{#                        <div class="blog">#}
+{#                            <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"#}
+{#                                                                                             src="{% static 'images/blog/blog-4.jpg' %}"#}
+{#                                                                                             alt="Smgori tuin nibes kninwe"#}
+{#                                                                                             width="348"#}
+{#                                                                                             height="232"></a>#}
+{#                            <div class="blog-content">#}
+{#                                <h4 class="blog-title"><a href="blog-details-left-sidebar.html">Smgori tuin nibes#}
+{#                                    kninwe</a></h4>#}
+{#                                <ul class="blog-meta">#}
+{#                                    <li>14 November, 2023</li>#}
+{#                                    <li><a href="blog-details-left-sidebar.html">0 Comments</a></li>#}
+{#                                </ul>#}
+{#                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor#}
+{#                                    incididunt ut labore...</p>#}
+{#                                <a href="blog-details-left-sidebar.html" class="btn">Explore More</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endif %}#}
                 {#                </div>#}
-
+{##}
                 {#                <div class="swiper-pagination d-md-none"></div>#}
                 {#                <div class="swiper-button-prev d-none d-md-flex"></div>#}
                 {#                <div class="swiper-button-next d-none d-md-flex"></div>#}
-            </div>
-
-        </div>
-    </div>
+{#            </div>#}
+{##}
+{#        </div>#}
+{#    </div>#}
     <!-- Blog Section End -->
 {% endblock %}
