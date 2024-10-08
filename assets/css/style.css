@@ -1301,8 +1301,8 @@ hr {
 }
 
 .container-image {
-    max-width: 800px; /* Set a max width for the container */
-    margin: 0 auto; /* Center the container */
+    max-width: 1200px; /* Set a max width for the container */
+    /*margin: 0 auto; !* Center the container *!*/
 }
 
 .side-image {
