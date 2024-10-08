@@ -32,15 +32,15 @@
                 <nav class="main-menu">
                     <ul>
                         <li><a href="{% url 'core:home' %}">Home</a></li>
-                        <li><a href="{% url 'products:product-list' %}">Shop</a></li>
-                        <li><a href="{% url 'articles:article-list' %}">Explore</a></li>
-                        <li><a href="{% url 'core:contact-us' %}">Contact Us</a></li>
                         <li><a href="{% url 'core:about-us' %}">About Us</a></li>
+                        <li><a href="{% url 'articles:article-list' %}">Explore</a></li>
+                        <li><a href="{% url 'products:product-list' %}">Shop</a></li>
+                        <li><a href="{% url 'core:contact-us' %}">Contact Us</a></li>
                         {% if request.user.is_authenticated %}
                             <li><a href="{% url 'users:logout' %}">Logout</a></li>
                         {% else %}
                             <li><a href="{% url 'users:login' %}">Sign in</a></li>
-                            <li><a href="{% url 'users:signup' %}">Sign up</a></li>
+                            {#                            <li><a href="{% url 'users:signup' %}">Sign up</a></li>#}
                         {% endif %}
                     </ul>
                 </nav>
@@ -123,8 +123,7 @@
                         <button class="header-cart-product-remove"><i class="sli-close"></i></button>
                     </div>
                     <div class="header-cart-product-content">
-                        <h5 class="header-cart-product-title"><a href="../../templates/product-details.html">House
-                            Coffee Original</a>
+                        <h5 class="header-cart-product-title"><a href="../../templates/product-details.html">Limova</a>
                         </h5>
                         <span class="header-cart-product-quantity">1 x $110.00</span>
                     </div>
@@ -163,15 +162,15 @@
         <nav class="mobile-menu">
             <ul>
                 <li><a href="{% url 'core:home' %}">Home</a></li>
-                <li><a href="{% url 'products:product-list' %}">Shop</a></li>
-                <li><a href="{% url 'articles:article-list' %}">Explore</a></li>
-                <li><a href="{% url 'core:contact-us' %}">Contact Us</a></li>
                 <li><a href="{% url 'core:about-us' %}">About Us</a></li>
+                <li><a href="{% url 'articles:article-list' %}">Explore</a></li>
+                <li><a href="{% url 'products:product-list' %}">Shop</a></li>
+                <li><a href="{% url 'core:contact-us' %}">Contact Us</a></li>
                 {% if request.user.is_authenticated %}
                     <li><a href="{% url 'users:logout' %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'users:login' %}">Sign in</a></li>
-                    <li><a href="{% url 'users:signup' %}">Sign up</a></li>
+                    {#                    <li><a href="{% url 'users:signup' %}">Sign up</a></li>#}
                 {% endif %}
             </ul>
         </nav>
@@ -193,7 +192,8 @@
                 <div class="col-lg-4 col-sm-6 col-12 mb-8">
                     <div class="footer-widget footer-widget-dark">
                         <h5 class="footer-widget-title">About Info</h5>
-                        <p>This site specializes in selling eco-friendly stone paper products, offering high-quality, durable, and sustainable alternatives to traditional paper for a greener future.</p>
+                        <p>This site specializes in selling eco-friendly stone paper products, offering high-quality,
+                            durable, and sustainable alternatives to traditional paper for a greener future.</p>
                         <ul class="footer-widget-list-icon">
                             <li><i class="sli-location-pin"></i>Addresss: Exiner Str. 23a 12355 Berlin Germany</li>
                             <li><i class="sli-envelope"></i>Email: Info@systemtechnology.de <br> Pr@systemtechnology.de
@@ -239,18 +239,18 @@
                 <!-- Footer Widget End -->
 
                 <!-- Footer Widget Start -->
-{#                <div class="col-lg-2 col-sm-6 col-12 mb-8">#}
-{#                    <div class="footer-widget footer-widget-dark">#}
-{#                        <h5 class="footer-widget-title">Follow Us On</h5>#}
-{#                        <ul class="footer-widget-list-icon">#}
-{#                            <li><a href="#"><i class="sli-social-facebook"></i>Facebook</a></li>#}
-{#                            <li><a href="#"><i class="sli-social-twitter"></i>Twitter</a></li>#}
-{#                            <li><a href="#"><i class="sli-social-instagram"></i>Instagram</a></li>#}
-{#                            <li><a href="#"><i class="sli-social-youtube"></i>Youtube</a></li>#}
-{#                            <li><a href="#"><i class="sli-social-pinterest"></i>Pinterest</a></li>#}
-{#                        </ul>#}
-{#                    </div>#}
-{#                </div>#}
+                {#                <div class="col-lg-2 col-sm-6 col-12 mb-8">#}
+                {#                    <div class="footer-widget footer-widget-dark">#}
+                {#                        <h5 class="footer-widget-title">Follow Us On</h5>#}
+                {#                        <ul class="footer-widget-list-icon">#}
+                {#                            <li><a href="#"><i class="sli-social-facebook"></i>Facebook</a></li>#}
+                {#                            <li><a href="#"><i class="sli-social-twitter"></i>Twitter</a></li>#}
+                {#                            <li><a href="#"><i class="sli-social-instagram"></i>Instagram</a></li>#}
+                {#                            <li><a href="#"><i class="sli-social-youtube"></i>Youtube</a></li>#}
+                {#                            <li><a href="#"><i class="sli-social-pinterest"></i>Pinterest</a></li>#}
+                {#                        </ul>#}
+                {#                    </div>#}
+                {#                </div>#}
                 <!-- Footer Widget End -->
 
             </div>

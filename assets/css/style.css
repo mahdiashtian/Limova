@@ -1275,7 +1275,9 @@ hr {
 }
 
 .btn-primary {
-    color: #fff;
+    border-color: white;
+    background-color: white;
+    color: black;
 }
 
 .btn-outline-light {
@@ -1323,6 +1325,12 @@ hr {
     border-color: #f8f9fa;
     background-color: #f8f9fa;
     color: #000;
+}
+
+.btn-dark-hover:hover {
+    border-color: #212529;
+    background-color: #212529;
+    color: #fff;
 }
 
 .btn-dark-hover:hover {
