@@ -45,73 +45,6 @@
         </div>
     </div>
     <!-- About Us Section End -->
-
-    <!-- Testimonial Section Start -->
-    <div class="h1-testimonial-section section section-padding bg-light">
-        <div class="container">
-            <div class="section-title section-title-center">
-                <p class="title">What Client Says</p>
-                <h2 class="sub-title">Testimonials</h2>
-
-            </div>
-
-            <div class="testimonial-slider swiper">
-
-                <div class="swiper-wrapper">
-                    {% for comment in comments %}
-                        {% include 'includes/testimonials.html' with comment=comment %}
-                    {% empty %}
-                        <div class="swiper-slide">
-                            <div class="testimonial">
-                                <div class="testimonial-client-thumb"><img loading="lazy"
-                                                                           src="{% static 'images/testimonial/testimonial-1.png' %}"
-                                                                           alt="Hester Perkins" width="100"
-                                                                           height="100">
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>I've been drinking coffee for years and I can honestly say that coffee is the
-                                        best
-                                        product out there. Coffee has a perfect taste and it wakes me up in the morning.
-                                        It's
-                                        also really affordable.</p>
-                                </div>
-                                <div class="testimonial-client-info">
-                                    <h5 class="testimonial-client-name">Hester Perkins</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="testimonial">
-                                <div class="testimonial-client-thumb"><img loading="lazy"
-                                                                           src="{% static 'images/testimonial/testimonial-2.png' %}"
-                                                                           alt="Hester Perkins" width="100"
-                                                                           height="100">
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>I've been drinking coffee for years and I can honestly say that coffee is the
-                                        best
-                                        product out there. Coffee has a perfect taste and it wakes me up in the morning.
-                                        It's
-                                        also really affordable.</p>
-                                </div>
-                                <div class="testimonial-client-info">
-                                    <h5 class="testimonial-client-name">Hester Perkins</h5>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-
-                </div>
-
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev d-none d-md-flex"></div>
-                <div class="swiper-button-next d-none d-md-flex"></div>
-            </div>
-
-        </div>
-    </div>
-    <!-- Testimonial Section End -->
-
     <!-- Team Section Start -->
     <div class="section section-padding">
         <div class="container">
@@ -231,74 +164,141 @@
         </div>
     </div>
     <!-- Team Section End -->
-
-    <!-- Gallery Section Start -->
-    <div class="h1-gallery-section section section-padding pt-0">
+    <!-- Testimonial Section Start -->
+    <div class="h1-testimonial-section section section-padding bg-light">
         <div class="container">
             <div class="section-title section-title-center">
-                <p class="title">What Happens Here</p>
-                <h2 class="sub-title">LIMOVA GALLERY</h2>
+                <p class="title">What Client Says</p>
+                <h2 class="sub-title">Testimonials</h2>
 
             </div>
 
-            <div class="mfp-zoom-gallery row row-cols-lg-3 row-cols-sm-2 row-cols-1 mb-n6">
-                {% for image in obj.gallery.all %}
-                    {% include 'includes/limova_gallery.html' with immage=image %}
-                {% empty %}
-                    <div class="col mb-6">
-                        <a href="{% static 'images/gallery/big/gallery-1.jpg' %}" class="gallery-item">
-                            <img loading="lazy" src="{% static 'images/gallery/gallery-1.jpg' %}" alt="gallery 1"
-                                 width="348"
-                                 height="418">
-                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>
-                        </a>
-                    </div>
-                    <div class="col mb-6">
-                        <a href="{% static 'images/gallery/big/gallery-2.jpg' %}" class="gallery-item">
-                            <img loading="lazy" src="{% static 'images/gallery/gallery-2.jpg' %}" alt="gallery 2"
-                                 width="348"
-                                 height="418">
-                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>
-                        </a>
-                    </div>
-                    <div class="col mb-6">
-                        <a href="{% static 'images/gallery/big/gallery-3.jpg' %}" class="gallery-item">
-                            <img loading="lazy" src="{% static 'images/gallery/gallery-3.jpg' %}" alt="gallery 3"
-                                 width="348"
-                                 height="418">
-                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>
-                        </a>
-                    </div>
-                    <div class="col mb-6">
-                        <a href="{% static 'images/gallery/big/gallery-4.jpg' %}" class="gallery-item">
-                            <img loading="lazy" src="{% static 'images/gallery/gallery-4.jpg' %}" alt="gallery 4"
-                                 width="348"
-                                 height="418">
-                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>
-                        </a>
-                    </div>
-                    <div class="col mb-6">
-                        <a href="{% static 'images/gallery/big/gallery-5.jpg' %}" class="gallery-item">
-                            <img loading="lazy" src="{% static 'images/gallery/gallery-5.jpg' %}" alt="gallery 5"
-                                 width="348"
-                                 height="418">
-                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>
-                        </a>
-                    </div>
-                    <div class="col mb-6">
-                        <a href="{% static 'images/gallery/big/gallery-6.jpg' %}" class="gallery-item">
-                            <img loading="lazy" src="{% static 'images/gallery/gallery-6.jpg' %}" alt="gallery 6"
-                                 width="348"
-                                 height="418">
-                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>
-                        </a>
-                    </div>
-                {% endfor %}
+            <div class="testimonial-slider swiper">
 
+                <div class="swiper-wrapper">
+                    {% for comment in comments %}
+                        {% include 'includes/testimonials.html' with comment=comment %}
+                    {% empty %}
+                        <div class="swiper-slide">
+                            <div class="testimonial">
+                                <div class="testimonial-client-thumb"><img loading="lazy"
+                                                                           src="{% static 'images/testimonial/testimonial-1.png' %}"
+                                                                           alt="Hester Perkins" width="100"
+                                                                           height="100">
+                                </div>
+                                <div class="testimonial-text">
+                                    <p>I've been drinking coffee for years and I can honestly say that coffee is the
+                                        best
+                                        product out there. Coffee has a perfect taste and it wakes me up in the morning.
+                                        It's
+                                        also really affordable.</p>
+                                </div>
+                                <div class="testimonial-client-info">
+                                    <h5 class="testimonial-client-name">Hester Perkins</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial">
+                                <div class="testimonial-client-thumb"><img loading="lazy"
+                                                                           src="{% static 'images/testimonial/testimonial-2.png' %}"
+                                                                           alt="Hester Perkins" width="100"
+                                                                           height="100">
+                                </div>
+                                <div class="testimonial-text">
+                                    <p>I've been drinking coffee for years and I can honestly say that coffee is the
+                                        best
+                                        product out there. Coffee has a perfect taste and it wakes me up in the morning.
+                                        It's
+                                        also really affordable.</p>
+                                </div>
+                                <div class="testimonial-client-info">
+                                    <h5 class="testimonial-client-name">Hester Perkins</h5>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev d-none d-md-flex"></div>
+                <div class="swiper-button-next d-none d-md-flex"></div>
             </div>
 
         </div>
     </div>
+    <!-- Testimonial Section End -->
+
+
+
+    <!-- Gallery Section Start -->
+    {#    <div class="h1-gallery-section section section-padding pt-0">#}
+    {#        <div class="container">#}
+    {#            <div class="section-title section-title-center">#}
+    {#                <p class="title">What Happens Here</p>#}
+    {#                <h2 class="sub-title">LIMOVA GALLERY</h2>#}
+    {##}
+    {#            </div>#}
+    {##}
+    {#            <div class="mfp-zoom-gallery row row-cols-lg-3 row-cols-sm-2 row-cols-1 mb-n6">#}
+    {#                {% for image in obj.gallery.all %}#}
+    {#                    {% include 'includes/limova_gallery.html' with immage=image %}#}
+    {#                {% empty %}#}
+    {#                    <div class="col mb-6">#}
+    {#                        <a href="{% static 'images/gallery/big/gallery-1.jpg' %}" class="gallery-item">#}
+    {#                            <img loading="lazy" src="{% static 'images/gallery/gallery-1.jpg' %}" alt="gallery 1"#}
+    {#                                 width="348"#}
+    {#                                 height="418">#}
+    {#                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>#}
+    {#                        </a>#}
+    {#                    </div>#}
+    {#                    <div class="col mb-6">#}
+    {#                        <a href="{% static 'images/gallery/big/gallery-2.jpg' %}" class="gallery-item">#}
+    {#                            <img loading="lazy" src="{% static 'images/gallery/gallery-2.jpg' %}" alt="gallery 2"#}
+    {#                                 width="348"#}
+    {#                                 height="418">#}
+    {#                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>#}
+    {#                        </a>#}
+    {#                    </div>#}
+    {#                    <div class="col mb-6">#}
+    {#                        <a href="{% static 'images/gallery/big/gallery-3.jpg' %}" class="gallery-item">#}
+    {#                            <img loading="lazy" src="{% static 'images/gallery/gallery-3.jpg' %}" alt="gallery 3"#}
+    {#                                 width="348"#}
+    {#                                 height="418">#}
+    {#                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>#}
+    {#                        </a>#}
+    {#                    </div>#}
+    {#                    <div class="col mb-6">#}
+    {#                        <a href="{% static 'images/gallery/big/gallery-4.jpg' %}" class="gallery-item">#}
+    {#                            <img loading="lazy" src="{% static 'images/gallery/gallery-4.jpg' %}" alt="gallery 4"#}
+    {#                                 width="348"#}
+    {#                                 height="418">#}
+    {#                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>#}
+    {#                        </a>#}
+    {#                    </div>#}
+    {#                    <div class="col mb-6">#}
+    {#                        <a href="{% static 'images/gallery/big/gallery-5.jpg' %}" class="gallery-item">#}
+    {#                            <img loading="lazy" src="{% static 'images/gallery/gallery-5.jpg' %}" alt="gallery 5"#}
+    {#                                 width="348"#}
+    {#                                 height="418">#}
+    {#                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>#}
+    {#                        </a>#}
+    {#                    </div>#}
+    {#                    <div class="col mb-6">#}
+    {#                        <a href="{% static 'images/gallery/big/gallery-6.jpg' %}" class="gallery-item">#}
+    {#                            <img loading="lazy" src="{% static 'images/gallery/gallery-6.jpg' %}" alt="gallery 6"#}
+    {#                                 width="348"#}
+    {#                                 height="418">#}
+    {#                            <div class="gallery-item-overlay"><i class="sli-size-fullscreen"></i></div>#}
+    {#                        </a>#}
+    {#                    </div>#}
+    {#                {% endfor %}#}
+    {##}
+    {#            </div>#}
+    {##}
+    {#        </div>#}
+    {#    </div>#}
     <!-- Gallery Section End -->
 
 {% endblock %}
