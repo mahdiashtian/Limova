@@ -1282,14 +1282,15 @@ hr {
 
 
 .image-text-container {
-        display: flex; /* Use Flexbox for layout */
-        align-items: flex-start; /* Align items to the top */
-        margin: 20px 0; /* Optional: Add margin around the container */
-    }
+    display: flex; /* Use Flexbox for layout */
+    align-items: flex-start; /* Align items to the top */
+    margin: 20px 0; /* Optional: Add margin around the container */
+}
+
 
 .justified-text {
-    text-align: justify; /* Justifies the text */
-    line-height: 1.6; /* Optional: improves readability */
+    text-align: justify;
+    line-height: 1.6;
 }
 
 .center-container {
@@ -1298,6 +1299,24 @@ hr {
     align-items: center;
     height: 100vh; /* Full viewport height */
 }
+
+.container-image {
+    max-width: 1600px; /* Set a max width for the container */
+    margin: 0 auto; /* Center the container */
+}
+
+.side-image {
+    float: right; /* Float the image to the right */
+    margin-left: 20px; /* Optional: add some space between the text and the image */
+    width: 600px; /* Set a fixed width for the image */
+    height: 600px; /* Maintain aspect ratio */
+}
+
+.justified-text {
+    text-align: justify; /* Justifies the text */
+    line-height: 1.6; /* Improves readability */
+}
+
 
 .btn-outline-light {
     color: #fff;
