@@ -58,25 +58,25 @@
 
                         </div>
                     </div>
-                    <ul class="next-prev-post-nav">
-                        {% if previous_object %}
-
-                            <li><a href="{% url 'articles:article-detail' previous_object.id %}"><i
-                                    class="sli-arrow-left"></i>Older Post</a></li>
-                            {% else %}
-
-                            <li><a><i
-                                    class="sli-arrow-left"></i>Older Post</a></li>
-                        {% endif %}
-
-                        {% if next_object %}
-                            <li><a href="{% url 'articles:article-detail' next_object.id %}"><i
-                                    class="sli-arrow-right"></i>Newer Post</a></li>
-                            {% else %}
-                            <li><a><i
-                                    class="sli-arrow-right"></i>Newer Post</a></li>
-                        {% endif %}
-                    </ul>
+{#                    <ul class="next-prev-post-nav">#}
+{#                        {% if previous_object %}#}
+{##}
+{#                            <li><a href="{% url 'articles:article-detail' previous_object.id %}"><i#}
+{#                                    class="sli-arrow-left"></i>Older Post</a></li>#}
+{#                            {% else %}#}
+{##}
+{#                            <li><a><i#}
+{#                                    class="sli-arrow-left"></i>Older Post</a></li>#}
+{#                        {% endif %}#}
+{##}
+{#                        {% if next_object %}#}
+{#                            <li><a href="{% url 'articles:article-detail' next_object.id %}"><i#}
+{#                                    class="sli-arrow-right"></i>Newer Post</a></li>#}
+{#                            {% else %}#}
+{#                            <li><a><i#}
+{#                                    class="sli-arrow-right"></i>Newer Post</a></li>#}
+{#                        {% endif %}#}
+{#                    </ul>#}
                 </div>
 
 

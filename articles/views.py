@@ -4,12 +4,15 @@ from articles.models import Article
 
 
 # Create your views here.
-class ArticleList(ListView):
+class ArticleList(DetailView):
     # model = Article
-    template_name = 'blog-no-sidebar.html'
+    template_name = 'blog-details-right-sidebar.html'
 
     def get_queryset(self):
         return Article.objects.all().order_by('id')
+
+    def get_object(self, queryset=None):
+        return Article.objects.all().filter(archived_at__isnull=False).order_by('id')
 
 
 class ArticleDetail(DetailView):
