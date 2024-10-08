@@ -4,7 +4,6 @@
     <!-- Page Banner Section Start -->
     {% include 'includes/page_banner.html' with page_name="BLOG DETAIL" %}
     <!-- Page Banner Section End -->
-
     <!-- Blog Section Start -->
     <div class="shop-product-section section section-padding">
         <div class="container">
@@ -58,28 +57,41 @@
 
                         </div>
                     </div>
-{#                    <ul class="next-prev-post-nav">#}
-{#                        {% if previous_object %}#}
-{##}
-{#                            <li><a href="{% url 'articles:article-detail' previous_object.id %}"><i#}
-{#                                    class="sli-arrow-left"></i>Older Post</a></li>#}
-{#                            {% else %}#}
-{##}
-{#                            <li><a><i#}
-{#                                    class="sli-arrow-left"></i>Older Post</a></li>#}
-{#                        {% endif %}#}
-{##}
-{#                        {% if next_object %}#}
-{#                            <li><a href="{% url 'articles:article-detail' next_object.id %}"><i#}
-{#                                    class="sli-arrow-right"></i>Newer Post</a></li>#}
-{#                            {% else %}#}
-{#                            <li><a><i#}
-{#                                    class="sli-arrow-right"></i>Newer Post</a></li>#}
-{#                        {% endif %}#}
-{#                    </ul>#}
+                    {#                    <ul class="next-prev-post-nav">#}
+                    {#                        {% if previous_object %}#}
+                    {##}
+                    {#                            <li><a href="{% url 'articles:article-detail' previous_object.id %}"><i#}
+                    {#                                    class="sli-arrow-left"></i>Older Post</a></li>#}
+                    {#                            {% else %}#}
+                    {##}
+                    {#                            <li><a><i#}
+                    {#                                    class="sli-arrow-left"></i>Older Post</a></li>#}
+                    {#                        {% endif %}#}
+                    {##}
+                    {#                        {% if next_object %}#}
+                    {#                            <li><a href="{% url 'articles:article-detail' next_object.id %}"><i#}
+                    {#                                    class="sli-arrow-right"></i>Newer Post</a></li>#}
+                    {#                            {% else %}#}
+                    {#                            <li><a><i#}
+                    {#                                    class="sli-arrow-right"></i>Newer Post</a></li>#}
+                    {#                        {% endif %}#}
+                    {#                    </ul>#}
                 </div>
 
-
+                <!-- Paper Counter Section Start -->
+                <div class="col-12 mb-8 text-center">
+                    <div class="paper-counter-container"
+                         style="background-color: #f4f4f4; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <h3 style="font-family: 'Helvetica Neue', Arial, sans-serif; color: #333;">Tons of Paper
+                            Produced Today</h3>
+                        <iframe title="Tons of paper produced"
+                                src="https://www.theworldcounts.com/embeds/counters/69?background_color=white&color=black&font_family=%22Helvetica+Neue%22%2C+Arial%2C+sans-serif&font_size=14"
+                                style="border: none; width: 100%; max-width: 300px; height: 100px; margin: 0 auto;"
+                                height="100" width="300">
+                        </iframe>
+                    </div>
+                </div>
+                <!-- Paper Counter Section End -->
             </div>
         </div>
     </div>
