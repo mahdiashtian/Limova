@@ -17,17 +17,18 @@
                         {% static 'images/blog/blog-single-1.jpg' %}
                         {% endif %}"
                                                             alt="{{ object.title }}"></div>
+                        <hr/>
                         <div class="single-blog-content">
-{#                            <div style="text-align: center;">#}
-{#                                <iframe title="Tons of paper produced"#}
-{#                                        src="https://www.theworldcounts.com/embeds/counters/69?background_color=none&color=black&font_family=%22Helvetica+Neue%22%2C+Arial%2C+sans-serif&font_size=25">#}
-{#                                </iframe>#}
-{#                            </div>#}
-{#                            <hr/>#}
+                            {#                            <div style="text-align: center;">#}
+                            {#                                <iframe title="Tons of paper produced"#}
+                            {#                                        src="https://www.theworldcounts.com/embeds/counters/69?background_color=none&color=black&font_family=%22Helvetica+Neue%22%2C+Arial%2C+sans-serif&font_size=25">#}
+                            {#                                </iframe>#}
+                            {#                            </div>#}
+                            {#                            <hr/>#}
                             <h1 class="single-blog-title">{{ object.title }}</h1>
-{#                            <ul class="single-blog-meta">#}
-{#                                <li>Limova Team</li>#}
-{#                            </ul>#}
+                            {#                            <ul class="single-blog-meta">#}
+                            {#                                <li>Limova Team</li>#}
+                            {#                            </ul>#}
                             <div class="single-blog-description">
                                 {% if object.description %}
                                     {{ object.description|safe }}
