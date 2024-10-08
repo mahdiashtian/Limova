@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load math_filters %}
+{% load text_filters %}
 {% block content %}
     <!-- Slider Section Start -->
     <div class="h2-hero-section section">
@@ -1923,7 +1924,7 @@
                                     <ul class="blog-meta">
                                         <li>{{ article.created_at|date:"j F, Y" }}</li>
                                     </ul>
-                                    <p>{{ article.description|slice:":68"|safe }}</p>
+                                    <p>{{ article.description|remove_html|slice:":68" }}</p>
                                     <a href="{% url 'articles:article-list' %}" class="btn">Explore
                                         More</a>
                                 </div>
