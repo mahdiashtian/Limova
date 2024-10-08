@@ -1280,6 +1280,11 @@ hr {
     color: black;
 }
 
+.justified-text {
+    text-align: justify; /* Justifies the text */
+    line-height: 1.6; /* Optional: improves readability */
+}
+
 .center-container {
     display: flex;
     justify-content: center;
