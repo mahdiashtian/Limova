@@ -256,8 +256,12 @@
                 <div class="col-lg-7 col mb-8">
                     <iframe title="store location"
                             src="
-{#                            https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2433.732568574142!2d13.5021279!3d52.411522899999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a846663ba4eb27%3A0x2394d90945acfad7!2sExiner%20Str.%2023A%2C%2012355%20Berlin!5e0!3m2!1sfa!2sde!4v1726077692779!5m2!1sfa!2sde#}
-{#https://www.google.de/maps/place/Exiner+Str.+23A,+12355+Berlin/@52.4115229,13.499553,16z/data=!3m1!4b1!4m6!3m5!1s0x47a846663ba4eb27:0x2394d90945acfad7!8m2!3d52.4115229!4d13.5021279!16s%2Fg%2F11cpk2m3mw?entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D#}
+
+
+                                    {#                            https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2433.732568574142!2d13.5021279!3d52.411522899999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a846663ba4eb27%3A0x2394d90945acfad7!2sExiner%20Str.%2023A%2C%2012355%20Berlin!5e0!3m2!1sfa!2sde!4v1726077692779!5m2!1sfa!2sde#}
+
+
+                                    {#https://www.google.de/maps/place/Exiner+Str.+23A,+12355+Berlin/@52.4115229,13.499553,16z/data=!3m1!4b1!4m6!3m5!1s0x47a846663ba4eb27:0x2394d90945acfad7!8m2!3d52.4115229!4d13.5021279!16s%2Fg%2F11cpk2m3mw?entry=ttu&g_ep=EgoyMDI0MTAwMi4xIKXMDSoASAFQAw%3D%3D#}
     https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4867.465137148283!2d13.499553!3d52.4115229!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a846663ba4eb27%3A0x2394d90945acfad7!2sExiner%20Str.%2023A%2C%2012355%20Berlin!5e0!3m2!1sde!2sde!4v1728369614433!5m2!1sde!2sde
 "
                             style="border:0; width: 100%; min-height: 400px; height: 100%;" allowfullscreen=""
@@ -403,13 +407,17 @@
                     <div class="opening-time">
                         <h4 class="opening-time-title">OPENING TIME</h4>
                         <ul class="opening-time-schedule">
-                            <li><span class="day">Monday</span><span class="time">9.00am - 6.00pm</span></li>
-                            <li><span class="day">Tuesday</span><span class="time">9.00am - 6.00pm</span></li>
-                            <li><span class="day">Wednesday</span><span class="time">9.00am - 6.00pm</span></li>
-                            <li><span class="day">Thursday</span><span class="time">9.00am - 6.00pm</span></li>
-                            <li><span class="day">Firday</span><span class="time">9.00am - 6.00pm</span></li>
-                            <li><span class="day">Saturday</span><span class="time">9.00am - 3.00pm</span></li>
-                            <li><span class="day">Sunday</span><span class="time">Closed</span></li>
+                            {% for work_time in work_times %}
+                                {{ work_time.formatted_time_range|safe }}
+                            {% empty %}
+                                <li><span class="day">Monday</span><span class="time">9.00am - 6.00pm</span></li>
+                                <li><span class="day">Tuesday</span><span class="time">9.00am - 6.00pm</span></li>
+                                <li><span class="day">Wednesday</span><span class="time">9.00am - 6.00pm</span></li>
+                                <li><span class="day">Thursday</span><span class="time">9.00am - 6.00pm</span></li>
+                                <li><span class="day">Firday</span><span class="time">9.00am - 6.00pm</span></li>
+                                <li><span class="day">Saturday</span><span class="time">9.00am - 3.00pm</span></li>
+                                <li><span class="day">Sunday</span><span class="time">Closed</span></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -1881,7 +1889,7 @@
     <div class="h2-blog-section section section-padding pt-0">
         <div class="container">
             <div class="section-title section-title-center">
-{#                <p class="title">What Happens Here</p>#}
+                {#                <p class="title">What Happens Here</p>#}
                 <h2 class="sub-title">FEATURED BLOG</h2>
 
             </div>

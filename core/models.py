@@ -118,3 +118,32 @@ class Meet(BaseModel):
     class Meta:
         verbose_name = "ملاقات"
         verbose_name_plural = "ملاقات ها"
+
+
+class WorkTime(BaseModel):
+    owner = None
+    name = models.CharField(max_length=50, verbose_name="نام روز هفته")
+    start = models.TimeField(verbose_name="ساعت شروع")
+    end = models.TimeField(verbose_name="ساعت پایان")
+    close = models.BooleanField(default=False, verbose_name="بسته است", null=True, blank=True)
+
+    @property
+    def formatted_time_range(self):
+        if self.close:
+            return f'<li><span class="day">{self.name}</span><span class="time">Closed</span></li>'
+        start_time_str = self.start.strftime('%I.%M%p').lower().lstrip('0')
+        end_time_str = self.end.strftime('%I.%M%p').lower().lstrip('0')
+        return f'<li><span class="day">{self.name}</span><span class="time">{start_time_str} - {end_time_str}</span></li>'
+
+    # def save(self, *args, **kwargs):
+    #     if not self.pk:
+    #         return super(*args, **kwargs)
+    #     elif not self.start or not self.end:
+    #         self.close = True
+    #     else:
+    #         self.close = False
+    #     return super(*args, **kwargs)
+
+    class Meta:
+        verbose_name = "ساعت کاری"
+        verbose_name_plural = "ساعت های کاری"

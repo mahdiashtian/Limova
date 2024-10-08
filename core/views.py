@@ -13,7 +13,7 @@ from articles.models import Article
 from products.models import Product
 from taxonomy.models import Comment
 from core.forms import ContactUsForm, MeetForm
-from core.models import AboutUs, Slider, Feature
+from core.models import AboutUs, Slider, Feature, WorkTime
 from products.models import Product
 from taxonomy.models import Comment
 
@@ -45,6 +45,7 @@ class HomeView(TemplateView):
         data['features'] = Feature.objects.all().filter(is_active=True).order_by('created_at')[:6]
         data['product'] = product_list.order_by('-average_score', 'created_at')[:6]
         data['popular_products'] = data['product'][:3]
+        data['work_times'] = WorkTime.objects.filter(archived_at__isnull=True)[:7]
         data['articles'] = Article.objects.all().order_by('created_at')[:4]
         return data
 
