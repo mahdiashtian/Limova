@@ -1901,7 +1901,7 @@
             <div class="blog-carousel swiper">
 
                 {#                <div class="swiper-wrapper">#}
-                {% for article in articles %}
+                {% if article %}
                     <div class="center-container">
                         <div class="col-lg-5 col mb-8 ">
                             <div class="blog">
@@ -1953,7 +1953,7 @@
                     {#                            </div>#}
                     {#                        </div>#}
 
-                {% empty %}
+                {% else %}
                     <div class="swiper-slide">
                         <div class="blog">
                             <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"
@@ -2037,7 +2037,7 @@
                             </div>
                         </div>
                     </div>
-                {% endfor %}
+                {% endif %}
                 {#                </div>#}
 
                 {#                <div class="swiper-pagination d-md-none"></div>#}

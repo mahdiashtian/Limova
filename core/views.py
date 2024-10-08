@@ -46,7 +46,7 @@ class HomeView(TemplateView):
         data['product'] = product_list.order_by('-average_score', 'created_at')[:6]
         data['popular_products'] = data['product'][:3]
         data['work_times'] = WorkTime.objects.filter(archived_at__isnull=True)[:7]
-        data['articles'] = Article.objects.all().order_by('created_at')[:4]
+        data['article'] = Article.objects.all().order_by('created_at').first()
         return data
 
 
