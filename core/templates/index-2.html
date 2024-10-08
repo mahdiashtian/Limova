@@ -260,7 +260,9 @@
 
 
 
+
                                     {#                            https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2433.732568574142!2d13.5021279!3d52.411522899999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a846663ba4eb27%3A0x2394d90945acfad7!2sExiner%20Str.%2023A%2C%2012355%20Berlin!5e0!3m2!1sfa!2sde!4v1726077692779!5m2!1sfa!2sde#}
+
 
 
 
@@ -1902,18 +1904,18 @@
 
                 {#                <div class="swiper-wrapper">#}
                 {% if article %}
-                    <div class="center-container">
+                    <div style="display: flex;align-items: center;justify-items: center;margin: 100px;height: 100%" class="justify-content-center">
                         <div class="col-lg-5 col mb-8 ">
                             <div class="blog">
                                 <a href="{% url 'articles:article-list' %}" class="blog-thumb"><img loading="lazy"
-                                                                                                 src="{% if article.media %}
+                                                                                                    src="{% if article.media %}
                                                                                                  {{ article.media.media.url }}
                                                                                                  {% else %}
                                                                                                  {% static 'images/blog/blog-1.jpg' %}
                                                                                                  {% endif %}"
-                                                                                                 alt="{{ article.title }}"
-                                                                                                 width="348"
-                                                                                                 height="232"></a>
+                                                                                                    alt="{{ article.title }}"
+                                                                                                    width="348"
+                                                                                                    height="232"></a>
                                 <div class="blog-content">
                                     <h4 class="blog-title"><a
                                             href="{% url 'articles:article-list' %}">{{ article.title }}</a>
