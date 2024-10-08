@@ -456,7 +456,71 @@
         </div>
     </div>
     <!-- Coffee Menu Section End -->
+    <!-- Testimonial Section Start -->
+    <div class="h2-testimonial-section section section-padding bg-light">
+        <div class="container">
+            <div class="section-title section-title-center">
+                <p class="title">What Client Says</p>
+                <h2 class="sub-title">Testimonials</h2>
 
+            </div>
+
+            <div class="testimonial-slider swiper">
+
+                <div class="swiper-wrapper">
+                    {% for comment in comments %}
+                        {% include 'includes/testimonials.html' with comment=comment %}
+                    {% empty %}
+                        <div class="swiper-slide">
+                            <div class="testimonial">
+                                <div class="testimonial-client-thumb"><img loading="lazy"
+                                                                           src="{% static 'images/testimonial/testimonial-1.png' %}"
+                                                                           alt="Hester Perkins" width="100"
+                                                                           height="100">
+                                </div>
+                                <div class="testimonial-text">
+                                    <p>I've been drinking coffee for years and I can honestly say that coffee is the
+                                        best
+                                        product out there. Coffee has a perfect taste and it wakes me up in the morning.
+                                        It's
+                                        also really affordable.</p>
+                                </div>
+                                <div class="testimonial-client-info">
+                                    <h5 class="testimonial-client-name">Hester Perkins</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="testimonial">
+                                <div class="testimonial-client-thumb"><img loading="lazy"
+                                                                           src="{% static 'images/testimonial/testimonial-2.png' %}"
+                                                                           alt="Hester Perkins" width="100"
+                                                                           height="100">
+                                </div>
+                                <div class="testimonial-text">
+                                    <p>I've been drinking coffee for years and I can honestly say that coffee is the
+                                        best
+                                        product out there. Coffee has a perfect taste and it wakes me up in the morning.
+                                        It's
+                                        also really affordable.</p>
+                                </div>
+                                <div class="testimonial-client-info">
+                                    <h5 class="testimonial-client-name">Hester Perkins</h5>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev d-none d-md-flex"></div>
+                <div class="swiper-button-next d-none d-md-flex"></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Testimonial Section End -->
     <!-- Product Section Start -->
     <div class="h1-product-section section section-padding pt-0">
         <div class="container">
@@ -1722,71 +1786,7 @@
     {#    </div>#}
     {#    <!-- Product Section End -->#}
 
-    <!-- Testimonial Section Start -->
-    <div class="h2-testimonial-section section section-padding bg-light">
-        <div class="container">
-            <div class="section-title section-title-center">
-                <p class="title">What Client Says</p>
-                <h2 class="sub-title">Testimonials</h2>
 
-            </div>
-
-            <div class="testimonial-slider swiper">
-
-                <div class="swiper-wrapper">
-                    {% for comment in comments %}
-                        {% include 'includes/testimonials.html' with comment=comment %}
-                    {% empty %}
-                        <div class="swiper-slide">
-                            <div class="testimonial">
-                                <div class="testimonial-client-thumb"><img loading="lazy"
-                                                                           src="{% static 'images/testimonial/testimonial-1.png' %}"
-                                                                           alt="Hester Perkins" width="100"
-                                                                           height="100">
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>I've been drinking coffee for years and I can honestly say that coffee is the
-                                        best
-                                        product out there. Coffee has a perfect taste and it wakes me up in the morning.
-                                        It's
-                                        also really affordable.</p>
-                                </div>
-                                <div class="testimonial-client-info">
-                                    <h5 class="testimonial-client-name">Hester Perkins</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="testimonial">
-                                <div class="testimonial-client-thumb"><img loading="lazy"
-                                                                           src="{% static 'images/testimonial/testimonial-2.png' %}"
-                                                                           alt="Hester Perkins" width="100"
-                                                                           height="100">
-                                </div>
-                                <div class="testimonial-text">
-                                    <p>I've been drinking coffee for years and I can honestly say that coffee is the
-                                        best
-                                        product out there. Coffee has a perfect taste and it wakes me up in the morning.
-                                        It's
-                                        also really affordable.</p>
-                                </div>
-                                <div class="testimonial-client-info">
-                                    <h5 class="testimonial-client-name">Hester Perkins</h5>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-
-                </div>
-
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev d-none d-md-flex"></div>
-                <div class="swiper-button-next d-none d-md-flex"></div>
-            </div>
-
-        </div>
-    </div>
-    <!-- Testimonial Section End -->
 
     <!-- Gallery Section Start -->
     {#    <div class="h2-gallery-section section section-padding">#}
