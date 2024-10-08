@@ -1301,15 +1301,15 @@ hr {
 }
 
 .container-image {
-    max-width: 1600px; /* Set a max width for the container */
+    max-width: 800px; /* Set a max width for the container */
     margin: 0 auto; /* Center the container */
 }
 
 .side-image {
     float: right; /* Float the image to the right */
     margin-left: 20px; /* Optional: add some space between the text and the image */
-    width: 600px; /* Set a fixed width for the image */
-    height: 600px; /* Maintain aspect ratio */
+    width: 400px; /* Set a fixed width for the image */
+    height: 400px; /* Maintain aspect ratio */
 }
 
 .justified-text {
