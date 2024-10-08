@@ -1280,16 +1280,12 @@ hr {
     color: black;
 }
 
-.image-text-container {
-    /* Adjust the height as needed */
-    height: 300px; /* Set to your desired height */
-    /* Optional: Add padding to the paragraph */
-    padding: 20px;
-    color: white; /* Adjust text color for contrast */
-    display: flex;
-    align-items: center; /* Center text vertically */
-}
 
+.image-text-container {
+        display: flex; /* Use Flexbox for layout */
+        align-items: flex-start; /* Align items to the top */
+        margin: 20px 0; /* Optional: Add margin around the container */
+    }
 
 .justified-text {
     text-align: justify; /* Justifies the text */
