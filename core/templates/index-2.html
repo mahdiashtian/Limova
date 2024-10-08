@@ -1905,7 +1905,7 @@
                     <div class="center-container">
                         <div class="col-lg-5 col mb-8 ">
                             <div class="blog">
-                                <a href="blog-details-left-sidebar.html" class="blog-thumb"><img loading="lazy"
+                                <a href="{% url 'articles:article-list' %}" class="blog-thumb"><img loading="lazy"
                                                                                                  src="{% if article.media %}
                                                                                                  {{ article.media.media.url }}
                                                                                                  {% else %}
