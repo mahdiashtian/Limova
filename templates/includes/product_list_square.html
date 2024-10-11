@@ -36,8 +36,8 @@
         <div class="product-variation">
             <div class="product-variation-type">
                 {% for image in object.images.all %}
-                    <button class="product-variation-type-btn"
-                            data-tooltip-text={{ image.name }}>
+                    <button class="product-variation-type-btn">
+{#                            data-tooltip-text={{ image.name }}>#}
                         <img
                                 loading="lazy"
                                 src="{{ image.media.url }}"
