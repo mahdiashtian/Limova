@@ -4,6 +4,8 @@ from django.db import models
 class RuleChoices(models.TextChoices):
     DEVELOPER = "developer", "DEVELOPER"
     CEO = "ceo", "CEO"
+    PR = "PR Manager", "PR Manager"
+    MANAGING = "Managing Director", "Managing Director"
 
 
 class TypeChoices(models.TextChoices):

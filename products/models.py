@@ -47,6 +47,7 @@ class ProductSize(models.Model):
 
 
 class Product(BaseModel):
+    request_to_price = models.BooleanField(default=False)
     name = models.CharField(max_length=50, verbose_name="نام")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="قیمت")
     description = models.TextField(verbose_name="توضیحات")
