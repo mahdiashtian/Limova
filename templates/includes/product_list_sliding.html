@@ -73,7 +73,9 @@
         </h5>
         <p class="product-excerpt">{{ object.description }}</p>
         <div class="product-price">
-            {% if object.discount and object.discount.is_active %}
+            {% if object.request_to_price %}
+                Contact-us
+            {% elif object.discount and object.discount.is_active %}
                 <del>${{ object.price }}</del>
                 ${{ object.price|discount_percentage:object.discount.value }}
             {% else %}

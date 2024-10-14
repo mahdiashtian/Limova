@@ -21,23 +21,23 @@
                 {% include 'includes/sale-product.html' with value=object.discount.value %}
             {% endif %}
         {% endif %}
-{#        <div class="product-action">#}
-            {#            <button class="product-action-btn" data-tooltip-text="Quick View"#}
-            {#                    data-bs-toggle="modal" data-bs-target="#example{{ object.id }}"><i#}
-            {#                    class="sli-magnifier"></i></button>#}
-            {#                                            <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
-            {#                                                    class="sli-heart"></i></button>#}
-            {#                                            <button class="product-action-btn" data-tooltip-text="Compare"><i#}
-            {#                                                    class="sli-refresh"></i></button>#}
-{#            <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
-{#                    class="sli-bag"></i></button>#}
-{#        </div>#}
+        {#        <div class="product-action">#}
+        {#            <button class="product-action-btn" data-tooltip-text="Quick View"#}
+        {#                    data-bs-toggle="modal" data-bs-target="#example{{ object.id }}"><i#}
+        {#                    class="sli-magnifier"></i></button>#}
+        {#                                            <button class="product-action-btn" data-tooltip-text="Add to wishlist"><i#}
+        {#                                                    class="sli-heart"></i></button>#}
+        {#                                            <button class="product-action-btn" data-tooltip-text="Compare"><i#}
+        {#                                                    class="sli-refresh"></i></button>#}
+        {#            <button class="product-action-btn" data-tooltip-text="Add to cart"><i#}
+        {#                    class="sli-bag"></i></button>#}
+        {#        </div>#}
 
         <div class="product-variation">
             <div class="product-variation-type">
                 {% for image in object.images.all %}
                     <button class="product-variation-type-btn">
-{#                            data-tooltip-text={{ image.name }}>#}
+                        {#                            data-tooltip-text={{ image.name }}>#}
                         <img
                                 loading="lazy"
                                 src="{{ image.media.url }}"
@@ -75,7 +75,9 @@
         <h5 class="product-title"><a href="{% url 'products:product-detail' object.id %}">{{ object.name }}</a>
         </h5>
         <div class="product-price">
-            {% if object.discount and object.discount.is_active %}
+            {% if object.request_to_price %}
+                Contact-us
+            {% elif object.discount and object.discount.is_active %}
                 <del>${{ object.price }}</del>
                 ${{ object.price|discount_percentage:object.discount.value }}
             {% else %}
