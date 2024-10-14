@@ -218,7 +218,8 @@
                                 <i class="sli-envelope"></i> Ask About This product
                             </button>
                         </div>
-                        {% if request.user.is_authenticated %}
+                        {% if request.user.is_authenticated and not object.request_to_price%}
+
                             <div class="single-product-actions">
 
                                 <form action="{% url 'products:add-to-cart' product.id %}" method="POST">
@@ -260,6 +261,10 @@
                                     {#                                    <button class="btn btn-icon btn-light btn-primary-hover rounded-0"><i#}
                                     {#                                            class="sli-refresh"></i></button>#}
                                 </div>
+                            </div>
+                            {% elif object.request_to_price %}
+                             <div class="single-product-buy-now">
+                                <a href="{% url 'core:contact-us' %}" class="btn btn-dark btn-primary-hover rounded-0">Contact-us</a>
                             </div>
                         {% else %}
 
