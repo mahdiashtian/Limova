@@ -6,6 +6,7 @@ class RuleChoices(models.TextChoices):
     CEO = "ceo", "CEO"
     PR = "PR Manager", "PR Manager"
     MANAGING = "Managing Director", "Managing Director"
+    HEAD = "Head of Stone Paper Engineering", "Head of Stone Paper Engineering"
 
 
 class TypeChoices(models.TextChoices):
