@@ -62,27 +62,27 @@
                         </div>
 
                     {% endif %}
-                    <div class="header-action-item dropdown">
-                        <button class="header-action-toggle" type="button" data-bs-toggle="dropdown"><i
-                                class="sli-settings"></i></button>
-                        <div class="dropdown-menu header-dropdown-menu">
-                            <h6 class="header-dropdown-menu-title">Currency</h6>
-                            <ul>
-                                <li><a href="javascript:void(0)">USD - US Dollar</a></li>
-                                <li><a href="javascript:void(0)">EUR - Euro</a></li>
-                                <li><a href="javascript:void(0)">GBP - British Pound</a></li>
-                            </ul>
-                            <h6 class="header-dropdown-menu-title">Account</h6>
-                            <ul>
-                                {% if request.user.is_authenticated %}
-                                    <li><a href="{% url 'users:my-account' %}">My Account</a></li>
-                                {% else %}
-                                    <li><a href="{% url 'users:login' %}">Sign in</a></li>
-                                    <li><a href="{% url 'users:signup' %}">Sign up</a></li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
+{#                    <div class="header-action-item dropdown">#}
+{#                        <button class="header-action-toggle" type="button" data-bs-toggle="dropdown"><i#}
+{#                                class="sli-settings"></i></button>#}
+{#                        <div class="dropdown-menu header-dropdown-menu">#}
+{#                            <h6 class="header-dropdown-menu-title">Currency</h6>#}
+{#                            <ul>#}
+{#                                <li><a href="javascript:void(0)">USD - US Dollar</a></li>#}
+{#                                <li><a href="javascript:void(0)">EUR - Euro</a></li>#}
+{#                                <li><a href="javascript:void(0)">GBP - British Pound</a></li>#}
+{#                            </ul>#}
+{#                            <h6 class="header-dropdown-menu-title">Account</h6>#}
+{#                            <ul>#}
+{#                                {% if request.user.is_authenticated %}#}
+{#                                    <li><a href="{% url 'users:my-account' %}">My Account</a></li>#}
+{#                                {% else %}#}
+{#                                    <li><a href="{% url 'users:login' %}">Sign in</a></li>#}
+{#                                    <li><a href="{% url 'users:signup' %}">Sign up</a></li>#}
+{#                                {% endif %}#}
+{#                            </ul>#}
+{#                        </div>#}
+{#                    </div>#}
                     <div class="header-action-item d-lg-none">
                         <button class="header-action-toggle" type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvas-header"><i class="sli-menu"></i></button>
