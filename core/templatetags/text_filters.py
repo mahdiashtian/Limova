@@ -9,8 +9,8 @@ register = template.Library()
 def remove_html(value):
     """Remove HTML tags from a given text."""
     if isinstance(value, str):
-        return re.sub(r'<.*?>', '', value)  # Regular expression to remove HTML tags
-    return value  # Return the original value if it's not a string
+        return re.sub(r'<[^>]+>', '', value)  # Regular expression to remove HTML tags
+    return value
 
 
 @register.filter(name="split_with_decreasing_chunks")
